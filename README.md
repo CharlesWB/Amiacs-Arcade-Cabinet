@@ -1,8 +1,8 @@
-# Amiacs-Arcade-Cabinet
+# Amiacs Arcade Cabinet
 
 My adventures into creating a custom arcade cabinet.
 
-![SketchUp of Amiacs Arcade Cabinet](./images/Amiacs Arcade Cabinet.png)
+![SketchUp of Amiacs Arcade Cabinet](./images/Amiacs%20Arcade%20Cabinet.png)
 
 ## License
 
