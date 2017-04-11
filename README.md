@@ -1,6 +1,6 @@
 # Amiacs Arcade Cabinet
 
-My adventures into creating a custom arcade cabinet.
+My adventures in creating a custom arcade cabinet.
 
 ![SketchUp of Amiacs Arcade Cabinet](./images/Amiacs%20Arcade%20Cabinet.png)
 
