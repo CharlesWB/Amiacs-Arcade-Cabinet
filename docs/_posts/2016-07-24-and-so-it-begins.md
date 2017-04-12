@@ -7,6 +7,6 @@ Years ago I thought about building a MAME arcade machine. Which at the time mean
 
 Then Coding Horror wrote his post about [Raspberry Pi revolutionizing emulation](https://blog.codinghorror.com/the-raspberry-pi-has-revolutionized-emulation/).
 Suddenly the desire to relive all those 80's arcade games came back. And to have an actual 80's style arcade cabinet.
-Buttons, joystick, trackball, flashing lights the whole works.
+Buttons, joystick, trackball, flashing lights, the whole works.
 
 And so it begins...
