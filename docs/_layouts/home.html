@@ -15,6 +15,18 @@ layout: default
 
     {{ post.excerpt }}
 
+    {% capture content_words %}
+      {{ post.content | number_of_words }}
+    {% endcapture %}
+
+    {% capture excerpt_words %}
+      {{ post.excerpt | number_of_words }}
+    {% endcapture %}
+
+    {% if excerpt_words != content_words %}
+      <em><a href="{{ post.url | relative_url }}">Read more</a></em>
+    {% endif %}
+
     {% if post != site.posts.last %}
     <hr />
     {% endif %}
