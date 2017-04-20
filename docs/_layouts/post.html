@@ -12,5 +12,11 @@ layout: default
         {{ content }}
     </section>
 
+    {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">
+            <h5>Next post: {{page.next.title}}</h5>
+        </a>
+    {% endif %}
+
     {% if site.disqus.shortname %} {% include disqus_comments.html %} {% endif %}
 </article>
