@@ -6,6 +6,7 @@ date:   2016-07-25 12:00:00
 Okay, so I want an 80's style arcade cabinet with buttons, joystick, trackball, and flashing lights.
 What does that actually involve? Time to research what my options are.
 
+
 The pictures and discussions on [Coding Horror's post](https://blog.codinghorror.com/the-raspberry-pi-has-revolutionized-emulation/) defined most of my choices.
 
 Here's the wishlist I came up with:
