@@ -1,3 +1,5 @@
+// Based on Blink-a-tron from http://www.retrobuiltgames.com/porta-pi-arcade-help/blinky-led-buttons/
+
 #include <Wire.h>
 #include <Adafruit_MCP23017.h>
 
@@ -8,14 +10,14 @@
 Adafruit_MCP23017 player1;
 Adafruit_MCP23017 player2;
 
-int player1LedArray[playerRows][playerColumns] = 
+int player1LedArray[playerRows][playerColumns] =
 {
   {8, 9, -1, -1, -1},
   {-1, 0, 1, 2, 3},
   {-1, 4, 5, 6, 7}
 };
 
-int player2LedArray[playerRows][playerColumns] = 
+int player2LedArray[playerRows][playerColumns] =
 {
   {-1, -1, -1, 8, 9},
   {0, 1, 2, 3, -1},
@@ -29,22 +31,22 @@ void setup() {
   {
     player1.pinMode(pin, OUTPUT);
   }
-  
+
   player2.begin(1);
   player2.writeGPIOAB(0);
   for (int pin = 0; pin < playerMaximumPins; pin++)
   {
     player2.pinMode(pin, OUTPUT);
   }
-  
+
 //  player2.pinMode(0, OUTPUT);
 //  player2.pullUp(0, HIGH);
 //  player2.digitalWrite(0, HIGH);
-  
+
 //  pinMode(3, OUTPUT);
 //  digitalWrite(3, HIGH);
 //  analogWrite(3, 8);
-  
+
 //  initializeUsingWire();
 }
 
@@ -57,7 +59,7 @@ void loop() {
   }
 
   delay(100);
-  
+
   allPlayerDigitalWrite(HIGH);
 
   for(int delayTime = 250; delayTime > 0; delayTime -= 25)
@@ -80,7 +82,7 @@ void loop() {
   }
 
   delay(100);
-  
+
   inOrder(500);
 
 //  testUsingWire();
@@ -168,7 +170,7 @@ void randomTogglePin(int delayTime)
     {
       playerPinDigitalWrite(row, column, LOW);
     }
-  
+
     delay(delayTime);
   }
 }
@@ -192,7 +194,7 @@ void entireRow(int delayTime)
     {
       playerPinDigitalWrite(row, column, HIGH);
     }
-    
+
     delay(delayTime);
 
     for (int column = 0; column < 2 * playerColumns; column++)
@@ -252,7 +254,7 @@ void testUsingWire()
   Wire.write(0x12);
   Wire.write(0);
   Wire.endTransmission();
-  
+
   Wire.beginTransmission(0x20);
   Wire.write(0x13);
   Wire.write(0);
