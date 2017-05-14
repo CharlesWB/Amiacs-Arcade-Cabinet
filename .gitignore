@@ -294,3 +294,6 @@ __pycache__/
 _site
 .sass-cache
 .jekyll-metadata
+
+# Sketchup backup
+*.skb
