@@ -12,7 +12,7 @@ I had recently purchased a [3D printer](http://a.co/9hegcnT) and I realized that
 
 I created a 3D printable speaker grille. Nothing fancy, a rectangular part with four mounting holes and a lot
 of holes in a circular pattern. It's a component in the
-[SketchUp model]({{ site.github.repository_url | absolute_url }}/models/).
+[SketchUp model]({{ site.github.repository_url }}/models/).
 
 3D printing is still new to me so getting that first layer to stick took some work. Especially all those circles.
 It wasn't perfect but eventually I printed on a glass sheet which gave me a very smooth surface finish.
