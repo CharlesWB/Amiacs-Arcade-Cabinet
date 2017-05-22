@@ -11,7 +11,7 @@ the top of the monitor can move around.
 At the time I did a quick fix by placing a piece of MDF behind the top of the monitor. This would stop
 the monitor from being pushed too far back. (Because I know the kids will touch the monitor to point
 at things.) This piece is not shown in the
-[SketchUp model]({{ site.github.repository_url }}/models/).
+[SketchUp model](/models/).
 
 This still allowed the monitor the move forward and side to side so I tried an even cheaper fix by pushing foam
 around the top corners. It worked well enough to get through play testing.
