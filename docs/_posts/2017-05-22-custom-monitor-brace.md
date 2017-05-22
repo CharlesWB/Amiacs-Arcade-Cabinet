@@ -2,9 +2,11 @@
 layout: post
 title:  "Custom Monitor Brace"
 date:   2017-05-22 16:45:00
+excerpt_separator: <!--more-->
 ---
 As I noted in a previous post the monitor mount works fine, but because it only holds the monitor at the bottom
 the top of the monitor can move around.
+<!--more-->
 
 At the time I did a quick fix by placing a piece of MDF behind the top of the monitor. This would stop
 the monitor from being pushed too far back. (Because I know the kids will touch the monitor to point
