@@ -1,4 +1,6 @@
 // Based on Blink-a-tron from http://www.retrobuiltgames.com/porta-pi-arcade-help/blinky-led-buttons/
+// Schematic drawn in Tinkercad Circuits as "Test Arcade Button LEDs".
+// https://www.tinkercad.com/things/3QHra1MhREQ-test-arcade-button-leds
 
 #include <Wire.h>
 #include <Adafruit_MCP23017.h>

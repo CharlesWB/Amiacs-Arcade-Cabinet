@@ -297,3 +297,6 @@ _site
 
 # Sketchup backup
 *.skb
+
+# Visual Studio Code cache/options directory
+.vscode/
