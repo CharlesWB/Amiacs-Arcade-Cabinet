@@ -30,9 +30,11 @@ void receiveData(int byteCount){
   Serial.print("byte count: ");
   Serial.println(byteCount);
 
-  while(Wire.available()) {
+  Serial.println(Wire.available());
+
+  if(byteCount == 1) {
     number = Wire.read();
-    Serial.print("data received: ");
+    Serial.print("byte received: ");
     Serial.println(number);
 
     if (number == 1){
@@ -46,6 +48,14 @@ void receiveData(int byteCount){
         Serial.println("LED off");
         state = 0;
       }
+    }
+  }
+  else {
+    Serial.println("data received:");
+    
+    while(Wire.available()) {
+      byte b = Wire.read();
+      Serial.println(b);
     }
   }
 }
