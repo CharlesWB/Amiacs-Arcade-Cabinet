@@ -4,6 +4,7 @@ Ideas
 - displayModes may turn into the command byte of I2C. It would define the action to be done. Such as set or enable.
 */
 
+#include <Wire.h>
 #include "FastLED.h"
 #include "SingleTriColorLEDController.h"
 
@@ -16,6 +17,8 @@ CRGB playerColors[2] = {CRGB::Blue, CRGB::Red};
 #define NUM_TRACKBALLS 1
 CRGB trackballs[NUM_TRACKBALLS];
 
+#define SLAVE_ADDRESS 0x07
+
 
 enum displayModes {
   ATTRACT,
@@ -27,6 +30,9 @@ enum displayModes {
 
 
 void setup() {
+  Wire.begin(SLAVE_ADDRESS);
+  Wire.onReceive(receiveEvent);
+  
   SingleTriColorLEDController<TRACKBALL_RED_PIN, TRACKBALL_GREEN_PIN, TRACKBALL_BLUE_PIN> trackballLEDController;
   FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
   trackballs[0] = defaultSystemColor;
@@ -36,5 +42,9 @@ void setup() {
 
 void loop() {
 
+}
+
+void receiveEvent(int byteCount) {
+    
 }
 
