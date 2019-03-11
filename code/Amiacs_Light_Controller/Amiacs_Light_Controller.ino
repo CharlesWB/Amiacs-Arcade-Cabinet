@@ -11,7 +11,7 @@ Ideas:
 #include "FastLED.h"
 #include "SingleTriColorLEDController.h"
 
-CRGB defaultSystemColor = CRGB::Orange;
+const CRGB defaultSystemColor = CRGB::Orange;
 
 // Minimum of 1 and maximum of 4.
 #define NUM_PLAYERS 2
@@ -24,6 +24,12 @@ CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
 #define NUM_TRACKBALLS 1
 CRGB trackballs[NUM_TRACKBALLS];
 CRGBPalette16 trackballPalette;
+
+#define AMBIENT_LIGHT_DATA_PIN 11
+#define AMBIENT_LIGHT_CLOCK_PIN 13
+// Can only be 1. No other values have been implemented.
+#define AMBIENT_NUM_LEDS 1
+CRGB ambientLights[AMBIENT_NUM_LEDS];
 
 #define SLAVE_ADDRESS 0x07
 
@@ -39,17 +45,19 @@ enum displayModes {
 
 void setup() {
   Serial.begin(9600);
+
+  SetupTrackballLights();
+  SetupAmbientLights();
   
   SetupTrackballPalette();
-  
-  SingleTriColorLEDController<TRACKBALL_RED_PIN, TRACKBALL_GREEN_PIN, TRACKBALL_BLUE_PIN> trackballLEDController;
-  FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
-  trackballs[0] = defaultSystemColor;
 
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveEvent);
+
+  ResetLightsToSystemDefault();
   
   FastLED.show();
+  delay(1000);
 }
 
 void loop() {
@@ -57,11 +65,20 @@ void loop() {
   CycleTrackballPalette();
 
   FastLED.show();
-  delay(500);
+  delay(100);
 }
 
 void receiveEvent(int byteCount) {
     
+}
+
+void SetupTrackballLights() {
+  static SingleTriColorLEDController<TRACKBALL_RED_PIN, TRACKBALL_GREEN_PIN, TRACKBALL_BLUE_PIN> trackballLEDController;
+  FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
+}
+
+void SetupAmbientLights() {
+  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN>(ambientLights, AMBIENT_NUM_LEDS).setCorrection(TypicalLEDStrip);
 }
 
 // The intent for this palette is to cycle through all the player colors while a game is playing.
@@ -78,6 +95,11 @@ void SetupTrackballPalette() {
   #else
     trackballPalette = RainbowColors_p;
   #endif
+}
+
+void ResetLightsToSystemDefault() {
+  trackballs[0] = defaultSystemColor;
+  ambientLights[0] = defaultSystemColor;
 }
 
 void CycleTrackballPalette() {
