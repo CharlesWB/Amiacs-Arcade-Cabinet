@@ -11,27 +11,31 @@ Ideas:
 #include "FastLED.h"
 #include "SingleTriColorLEDController.h"
 
-const CRGB defaultSystemColor = CRGB::Orange;
-
+// General definitions.
 // Minimum of 1 and maximum of 4.
 #define NUM_PLAYERS 2
-CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
+// Can only be 1. No other values have been implemented.
+#define NUM_TRACKBALLS 1
+// Can only be 1. No other values have been implemented.
+#define AMBIENT_NUM_LEDS 1
 
+#define SLAVE_ADDRESS 0x07
+
+// Pin definitions.
 #define TRACKBALL_RED_PIN 3
 #define TRACKBALL_GREEN_PIN 5
 #define TRACKBALL_BLUE_PIN 6
-// Can only be 1. No other values have been implemented.
-#define NUM_TRACKBALLS 1
+#define AMBIENT_LIGHT_DATA_PIN 11
+#define AMBIENT_LIGHT_CLOCK_PIN 13
+
+
+const CRGB defaultSystemColor = CRGB::Orange;
+CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
+
 CRGB trackballs[NUM_TRACKBALLS];
 CRGBPalette16 trackballPalette;
 
-#define AMBIENT_LIGHT_DATA_PIN 11
-#define AMBIENT_LIGHT_CLOCK_PIN 13
-// Can only be 1. No other values have been implemented.
-#define AMBIENT_NUM_LEDS 1
 CRGB ambientLights[AMBIENT_NUM_LEDS];
-
-#define SLAVE_ADDRESS 0x07
 
 
 enum displayModes {
