@@ -25,6 +25,7 @@ Ideas:
 #define TRACKBALL_RED_PIN 3
 #define TRACKBALL_GREEN_PIN 5
 #define TRACKBALL_BLUE_PIN 6
+#define MARQUEE_LIGHT_PIN 9
 #define AMBIENT_LIGHT_DATA_PIN 11
 #define AMBIENT_LIGHT_CLOCK_PIN 13
 
@@ -52,6 +53,7 @@ void setup() {
 
   SetupTrackballLights();
   SetupAmbientLights();
+  SetupMarqueeLights();
   
   SetupTrackballPalette();
 
@@ -67,6 +69,7 @@ void setup() {
 void loop() {
   // Temporary testing until display modes are implemented.
   CycleTrackballPalette();
+  CycleMarqueeBrightness();
 
   FastLED.show();
   delay(100);
@@ -83,6 +86,11 @@ void SetupTrackballLights() {
 
 void SetupAmbientLights() {
   FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN>(ambientLights, AMBIENT_NUM_LEDS).setCorrection(TypicalLEDStrip);
+}
+
+void SetupMarqueeLights() {
+  pinMode(MARQUEE_LIGHT_PIN, OUTPUT);
+  analogWrite(MARQUEE_LIGHT_PIN, 255);
 }
 
 // The intent for this palette is to cycle through all the player colors while a game is playing.
@@ -110,6 +118,12 @@ void CycleTrackballPalette() {
   static uint8_t trackballPaletteIndex = 0;
   trackballs[0] = ColorFromPalette(trackballPalette, trackballPaletteIndex);
   trackballPaletteIndex += 4;
+}
+
+void CycleMarqueeBrightness() {
+  static uint8_t marqueeBrightness = 255;
+  analogWrite(MARQUEE_LIGHT_PIN, marqueeBrightness);
+  marqueeBrightness -= 4;
 }
 
 void Debug_PrintColorInformation(const struct CRGB &color) {
