@@ -12,7 +12,7 @@ Ideas:
 #include "SingleTriColorLEDController.h"
 
 // General definitions.
-// Minimum of 1 and maximum of 4.
+// Can only be 2. No other values have been implemented.
 #define NUM_PLAYERS 2
 // Can only be 1. No other values have been implemented.
 #define NUM_TRACKBALLS 1
@@ -93,20 +93,10 @@ void SetupMarqueeLights() {
   analogWrite(MARQUEE_LIGHT_PIN, 255);
 }
 
-// The intent for this palette is to cycle through all the player colors while a game is playing.
+// The intent for this palette is to cycle through the player colors while a game is playing.
 // Because we can't know when a specific player is playing.
 void SetupTrackballPalette() {
-  #if NUM_PLAYERS == 1
-    trackballPalette = CRGBPalette16(playerColors[0]);
-  #elif NUM_PLAYERS == 2
-    trackballPalette = CRGBPalette16(playerColors[0], playerColors[1]);
-  #elif NUM_PLAYERS == 3
-    trackballPalette = CRGBPalette16(playerColors[0], playerColors[1], playerColors[2]);
-  #elif NUM_PLAYERS == 4
-    trackballPalette = CRGBPalette16(playerColors[0], playerColors[1], playerColors[2], playerColors[3]);
-  #else
-    trackballPalette = RainbowColors_p;
-  #endif
+  trackballPalette = CRGBPalette16(playerColors[0], playerColors[1]);
 }
 
 void ResetLightsToSystemDefault() {
