@@ -72,7 +72,7 @@ void loop() {
   CycleMarqueeBrightness();
 
   FastLED.show();
-  delay(100);
+  delay(50);
 }
 
 void receiveEvent(int byteCount) {
@@ -115,9 +115,12 @@ void ResetLightsToSystemDefault() {
 }
 
 void CycleTrackballPalette() {
-  static uint8_t trackballPaletteIndex = 0;
-  trackballs[0] = ColorFromPalette(trackballPalette, trackballPaletteIndex);
-  trackballPaletteIndex += 4;
+  static uint8_t trackballPaletteIndex = 128;
+  
+  // Although ColorFromPalette takes 0 to 255, CRGBPalette16 is an array of 16 so after 240 (15 x 16) it
+  // appears to be rapidly cycling back to the start. To work around this we'll only use 0 to 240.
+  trackballs[0] = ColorFromPalette(trackballPalette, scale8(cos8(trackballPaletteIndex), 240));
+  trackballPaletteIndex++;
 }
 
 void CycleMarqueeBrightness() {
