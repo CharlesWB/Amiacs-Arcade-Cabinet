@@ -1,6 +1,6 @@
 /*
 To Do:
-- How should the color palette index be handled? Such as in CycleTrackballPalette.
+- How should the color palette index be handled? Such as in CycleTrackballByPalette.
 
 Ideas:
 - Would a sine wave, breathe, heartbeat, or some kind of bounce effect for the cycle time make it interesting?
@@ -43,9 +43,9 @@ Ideas:
 #define PLAYER1_LIGHT_R2 5
 #define PLAYER1_LIGHT_L1 6
 #define PLAYER1_LIGHT_R1 7
-#define PLAYER1_LIGHT_START 8
-#define PLAYER1_LIGHT_SELECT 9
-#define PLAYER1_LIGHT_EXIT 10
+#define PLAYER1_LIGHT_SELECT 8
+#define PLAYER1_LIGHT_START 9
+#define PLAYER1_LIGHT_COMMAND 10
 #define PLAYER1_LIGHT_HOTKEY 11
 #define PLAYER2_LIGHT_B 12
 #define PLAYER2_LIGHT_A 13
@@ -55,9 +55,9 @@ Ideas:
 #define PLAYER2_LIGHT_R2 17
 #define PLAYER2_LIGHT_L1 18
 #define PLAYER2_LIGHT_R1 19
-#define PLAYER2_LIGHT_START 20
-#define PLAYER2_LIGHT_SELECT 21
-#define PLAYER2_LIGHT_EXIT 22
+#define PLAYER2_LIGHT_SELECT 20
+#define PLAYER2_LIGHT_START 21
+#define PLAYER2_LIGHT_COMMAND 22
 #define PLAYER2_LIGHT_HOTKEY 23
 
 #define PLAYER_LIGHTS_LAYOUT_ROWS 3
@@ -65,7 +65,7 @@ Ideas:
 
 int playerLightLayout[PLAYER_LIGHTS_LAYOUT_ROWS][PLAYER_LIGHTS_LAYOUT_COLUMNS] =
 {
-  {-1, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, -1, PLAYER1_LIGHT_EXIT, -1, -1, PLAYER2_LIGHT_EXIT, -1, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_START, -1},
+  {-1, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, -1, PLAYER1_LIGHT_COMMAND, -1, -1, PLAYER2_LIGHT_COMMAND, -1, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_START, -1},
   {-1, -1, -1, PLAYER1_LIGHT_Y, PLAYER1_LIGHT_X, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_R2, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_X, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_R2, -1},
   {PLAYER1_LIGHT_HOTKEY, -1, -1, PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1, PLAYER2_LIGHT_HOTKEY}
 };
@@ -121,8 +121,8 @@ void setup() {
 
 void loop() {
   // Temporary testing until display modes are implemented.
-  CyclePlayerByColumn();
-  CycleTrackballPalette();
+  CyclePlayerLightsByColumn();
+  CycleTrackballByPalette();
   CycleMarqueeBrightness();
 
   FastLED.show();
@@ -167,13 +167,13 @@ void ResetLightsToSystemDefault() {
   ambientLights[0] = defaultSystemColor;
 }
 
-void CyclePlayerByColumn() {
+void CyclePlayerLightsByColumn() {
   static uint8_t playerLightColumn = 0;
 
   for(int pin = 0; pin < NUM_PLAYER_LIGHTS; pin++) {
     playerLightController.setPWM(pin, 0);
   }
-  
+
   for(uint8_t row = 0; row < PLAYER_LIGHTS_LAYOUT_ROWS; row++) {
     if(playerLightLayout[row][playerLightColumn] != -1) {
       playerLightController.setPWM(playerLightLayout[row][playerLightColumn], 4095);
@@ -186,13 +186,25 @@ void CyclePlayerByColumn() {
   }
 }
 
-void CycleTrackballPalette() {
+void CycleTrackballByPalette() {
   static uint8_t trackballPaletteIndex = 128;
 
   // Although ColorFromPalette takes 0 to 255, CRGBPalette16 is an array of 16 so after 240 (15 x 16) it
   // appears to be rapidly cycling back to the start. To work around this we'll only use 0 to 240.
   trackballs[0] = ColorFromPalette(trackballPalette, scale8(cos8(trackballPaletteIndex), 240));
-  trackballPaletteIndex++;
+  trackballPaletteIndex += 4;
+}
+
+void CycleTrackballByPlayerColor() {
+  static uint8_t trackballPlayerIndex = 0;
+
+  trackballs[0] = playerColors[trackballPlayerIndex];
+
+  trackballPlayerIndex++;
+  if(trackballPlayerIndex >= NUM_PLAYERS)
+  {
+    trackballPlayerIndex = 0;
+  }
 }
 
 void CycleMarqueeBrightness() {

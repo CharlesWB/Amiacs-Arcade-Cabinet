@@ -7,8 +7,9 @@
 /// @tparam RED_PIN the pin to write data out for the red LED
 /// @tparam GREEN_PIN the pin to write data out for the green LED
 /// @tparam BLUE_PIN the pin to write data out for the blue LED
+/// @tparam isAnodeCommon indicates if the LED is using a common anode.
 /// @tparam RGB_ORDER the RGB ordering for the led data
-template<uint8_t RED_PIN, uint8_t GREEN_PIN, uint8_t BLUE_PIN, EOrder RGB_ORDER = RGB>
+template<uint8_t RED_PIN, uint8_t GREEN_PIN, uint8_t BLUE_PIN, bool isAnodeCommon = true, EOrder RGB_ORDER = RGB>
 class SingleTriColorLEDController : public CPixelLEDController<RGB_ORDER> {
 public:
   SingleTriColorLEDController() {}
@@ -28,6 +29,12 @@ protected:
       uint8_t r = pixels.loadAndScale0();
       uint8_t g = pixels.loadAndScale1();
       uint8_t b = pixels.loadAndScale2();
+
+      if(isAnodeCommon) {
+          r = 255 - r;
+          g = 255 - g;
+          b = 255 - b;
+      }
 
       analogWrite(RED_PIN, r);
       analogWrite(GREEN_PIN, g);
