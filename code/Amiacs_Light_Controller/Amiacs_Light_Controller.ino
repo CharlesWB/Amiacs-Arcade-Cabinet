@@ -4,7 +4,11 @@ To Do:
 
 Ideas:
 - Would a sine wave, breathe, heartbeat, or some kind of bounce effect for the cycle time make it interesting?
-- displayModes may turn into the command byte of I2C. It would define the action to be done. Such as set or enable.
+- The cycle time of brightness or color would be a rate such as steps/millisecond.
+- DisplayMode may turn into the command byte of I2C. It would define the action to be done. Such as set or enable.
+- Create a Brightness class that handles the differences between max levels for the TLC5947 and others.
+-- Use 4095 (uint16_t) as maximum. Map all others from that value.
+-- Allows setting a maximum. Possibly controlled by dimmer.
 */
 
 #include <Adafruit_TLC5947.h>
@@ -60,10 +64,10 @@ Ideas:
 #define PLAYER2_LIGHT_COMMAND 22
 #define PLAYER2_LIGHT_HOTKEY 23
 
-#define PLAYER_LIGHTS_LAYOUT_ROWS 3
-#define PLAYER_LIGHTS_LAYOUT_COLUMNS 12
+#define PLAYER_ALL_LIGHTS_LAYOUT_ROWS 3
+#define PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS 12
 
-int playerLightLayout[PLAYER_LIGHTS_LAYOUT_ROWS][PLAYER_LIGHTS_LAYOUT_COLUMNS] =
+int playerAllLightLayout[PLAYER_ALL_LIGHTS_LAYOUT_ROWS][PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS] =
 {
   {-1, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, -1, PLAYER1_LIGHT_COMMAND, -1, -1, PLAYER2_LIGHT_COMMAND, -1, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_START, -1},
   {-1, -1, -1, PLAYER1_LIGHT_Y, PLAYER1_LIGHT_X, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_R2, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_X, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_R2, -1},
@@ -90,8 +94,8 @@ CRGBPalette16 trackballPalette;
 CRGB ambientLights[AMBIENT_NUM_LEDS];
 
 
-enum displayModes {
-  STARTING,
+enum DisplayMode {
+  STARTING, // takes 60 seconds, 40 seconds to play intro video
   ATTRACT,
   MUTE, // Or DIMMED, SCREENSAVER_ACTIVE
   GAME_PLAYING,
@@ -99,21 +103,28 @@ enum displayModes {
   TESTING,
 };
 
+DisplayMode displayMode = STARTING;
+
 
 void setup() {
   Serial.begin(9600);
+
+  // There's a short delay between when the Arduino starts and when the button
+  // encoder and the Adafruit TLC5947 boards get power from the Raspberry Pi.
+  // We'll wait for that so that the TLC5947 will be properly initialized.
+  delay(5000);
+
+  SetupTrackballPlayersPalette();
 
   SetupPlayerLights();
   SetupTrackballLights();
   SetupAmbientLights();
   SetupMarqueeLights();
 
-  SetupTrackballPalette();
-
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveEvent);
 
-  ResetLightsToSystemDefault();
+  SetLightsToSystemDefaultColor();
 
   FastLED.show();
   delay(100);
@@ -121,9 +132,9 @@ void setup() {
 
 void loop() {
   // Temporary testing until display modes are implemented.
-  CyclePlayerLightsByColumn();
-  CycleTrackballByPalette();
-  CycleMarqueeBrightness();
+  // CyclePlayerLightsByColumn();
+//  CycleTrackballByPalette();
+//  CycleMarqueeBrightness();
 
   FastLED.show();
   playerLightController.write();
@@ -132,6 +143,12 @@ void loop() {
 
 void receiveEvent(int byteCount) {
 
+}
+
+// The intent for this palette is to cycle through the player colors while a game is playing.
+// Because we don't know when a specific player is playing so we show both colors.
+void SetupTrackballPlayersPalette() {
+  trackballPalette = CRGBPalette16(playerColors[0], playerColors[1]);
 }
 
 void SetupPlayerLights() {
@@ -156,13 +173,7 @@ void SetupMarqueeLights() {
   analogWrite(MARQUEE_LIGHT_PIN, 255);
 }
 
-// The intent for this palette is to cycle through the player colors while a game is playing.
-// Because we don't know when a specific player is playing.
-void SetupTrackballPalette() {
-  trackballPalette = CRGBPalette16(playerColors[0], playerColors[1]);
-}
-
-void ResetLightsToSystemDefault() {
+void SetLightsToSystemDefaultColor() {
   trackballs[0] = defaultSystemColor;
   ambientLights[0] = defaultSystemColor;
 }
@@ -174,14 +185,14 @@ void CyclePlayerLightsByColumn() {
     playerLightController.setPWM(pin, 0);
   }
 
-  for(uint8_t row = 0; row < PLAYER_LIGHTS_LAYOUT_ROWS; row++) {
-    if(playerLightLayout[row][playerLightColumn] != -1) {
-      playerLightController.setPWM(playerLightLayout[row][playerLightColumn], 4095);
+  for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+    if(playerAllLightLayout[row][playerLightColumn] != -1) {
+      playerLightController.setPWM(playerAllLightLayout[row][playerLightColumn], 4095);
     }
   }
 
   playerLightColumn++;
-  if(playerLightColumn >= PLAYER_LIGHTS_LAYOUT_COLUMNS) {
+  if(playerLightColumn >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
     playerLightColumn = 0;
   }
 }
