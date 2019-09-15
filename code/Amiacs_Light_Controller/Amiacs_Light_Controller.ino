@@ -171,6 +171,8 @@ void LoopStartingDisplayMode() {
   }
 
   uint16_t brightness;
+  uint8_t frame;
+  uint8_t value;
 
   switch(phase) {
     case 0:
@@ -182,7 +184,9 @@ void LoopStartingDisplayMode() {
       trackballs[0] = CRGB::Black;
       break;
     case 2:
-      brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, maximumPlayerLightBrightness);
+      frame = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, 255);
+      value = quadwave8(frame);
+      brightness = map(value, 0, 255, 0, maximumPlayerLightBrightness);
       SetAllPlayerLightsBrightness(brightness);
 
       brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, 255);
@@ -190,7 +194,9 @@ void LoopStartingDisplayMode() {
       FastLED.setBrightness(brightness);
       break;
     case 3:
-      brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], maximumPlayerLightBrightness, 0);
+      frame = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, 255);
+      value = quadwave8(frame);
+      brightness = map(value, 0, 255, 0, maximumPlayerLightBrightness);
       SetAllPlayerLightsBrightness(brightness);
 
       brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 255, 0);
