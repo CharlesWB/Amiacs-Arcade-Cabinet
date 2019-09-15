@@ -93,6 +93,9 @@ CRGBPalette16 trackballPalette;
 
 CRGB ambientLights[AMBIENT_NUM_LEDS];
 
+uint16_t maximumPlayerLightBrightness = 4095;
+uint8_t maximumMarqueeBrightness = 255;
+
 
 enum DisplayMode {
   STARTING, // takes 60 seconds, 40 seconds to play intro video
@@ -124,7 +127,7 @@ void setup() {
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveEvent);
 
-  SetLightsToSystemDefaultColor();
+//  SetLightsToSystemDefaultColor();
 
   FastLED.show();
   delay(100);
@@ -136,41 +139,84 @@ void loop() {
 //  CycleTrackballByPalette();
 //  CycleMarqueeBrightness();
 
+  switch(displayMode) {
+    case STARTING:
+      LoopStartingDisplayMode();
+      break;
+    case ATTRACT:
+      LoopAttractDisplayMode();
+      break;
+  }
+
   FastLED.show();
   playerLightController.write();
-  delay(1000);
+}
+
+// The display mode during startup is about verifying that all the lights work.
+// This will:
+// - Blink once.
+// - Turn all lights on for a moment. Use this to verify they are all working.
+// - Fade the brightness out and in as a simple test of functionality.
+void LoopStartingDisplayMode() {
+  static unsigned long startTime = millis();
+
+  static unsigned long startingPhaseTimeline[] = {0, 2000, 3000, 7000, 11000};
+
+  unsigned long now = millis() - startTime;
+  byte phase = 0;
+  for(byte i = 0; i < (sizeof(startingPhaseTimeline) / sizeof(startingPhaseTimeline[0])); i++) {
+    if(now > startingPhaseTimeline[i]) {
+      phase = i;
+    }
+  }
+
+  uint16_t brightness;
+
+  switch(phase) {
+    case 0:
+      TurnOnAllPlayerLights();
+      trackballs[0] = defaultSystemColor;
+      break;
+    case 1:
+      TurnOffAllPlayerLights();
+      trackballs[0] = CRGB::Black;
+      break;
+    case 2:
+      brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, maximumPlayerLightBrightness);
+      SetAllPlayerLightsBrightness(brightness);
+
+      brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, 255);
+      trackballs[0] = defaultSystemColor;
+      FastLED.setBrightness(brightness);
+      break;
+    case 3:
+      brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], maximumPlayerLightBrightness, 0);
+      SetAllPlayerLightsBrightness(brightness);
+
+      brightness = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 255, 0);
+      trackballs[0] = defaultSystemColor;
+      FastLED.setBrightness(brightness);
+      break;
+    case 4:
+      FastLED.setBrightness(255);
+      displayMode = ATTRACT;
+      break;
+  }
+}
+
+void LoopAttractDisplayMode() {
+  int playerLight = random8(NUM_PLAYER_LIGHTS);
+  int on = random8(100);
+  if(on > 50) {
+    playerLightController.setPWM(playerLight, maximumPlayerLightBrightness);
+  }
+  else {
+    playerLightController.setPWM(playerLight, 0);
+  }
 }
 
 void receiveEvent(int byteCount) {
 
-}
-
-// The intent for this palette is to cycle through the player colors while a game is playing.
-// Because we don't know when a specific player is playing so we show both colors.
-void SetupTrackballPlayersPalette() {
-  trackballPalette = CRGBPalette16(playerColors[0], playerColors[1]);
-}
-
-void SetupPlayerLights() {
-  playerLightController.begin();
-  for(int pin = 0; pin < NUM_PLAYER_LIGHTS; pin++) {
-    playerLightController.setPWM(pin, 4095);
-  }
-  playerLightController.write();
-}
-
-void SetupTrackballLights() {
-  static SingleTriColorLEDController<TRACKBALL_RED_PIN, TRACKBALL_GREEN_PIN, TRACKBALL_BLUE_PIN> trackballLEDController;
-  FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
-}
-
-void SetupAmbientLights() {
-  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN>(ambientLights, AMBIENT_NUM_LEDS).setCorrection(TypicalLEDStrip);
-}
-
-void SetupMarqueeLights() {
-  pinMode(MARQUEE_LIGHT_PIN, OUTPUT);
-  analogWrite(MARQUEE_LIGHT_PIN, 255);
 }
 
 void SetLightsToSystemDefaultColor() {
@@ -178,16 +224,38 @@ void SetLightsToSystemDefaultColor() {
   ambientLights[0] = defaultSystemColor;
 }
 
-void CyclePlayerLightsByColumn() {
-  static uint8_t playerLightColumn = 0;
+// *** Player Lights ***
 
+void SetupPlayerLights() {
+  playerLightController.begin();
   for(int pin = 0; pin < NUM_PLAYER_LIGHTS; pin++) {
     playerLightController.setPWM(pin, 0);
   }
+  playerLightController.write();
+}
+
+void SetAllPlayerLightsBrightness(uint16_t brightness) {
+  for(int pin = 0; pin < NUM_PLAYER_LIGHTS; pin++) {
+    playerLightController.setPWM(pin, brightness);
+  }
+}
+
+void TurnOnAllPlayerLights() {
+  SetAllPlayerLightsBrightness(maximumPlayerLightBrightness);
+}
+
+void TurnOffAllPlayerLights() {
+  SetAllPlayerLightsBrightness(0);
+}
+
+void CyclePlayerLightsByColumn() {
+  static uint8_t playerLightColumn = 0;
+
+  TurnOffAllPlayerLights();
 
   for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
     if(playerAllLightLayout[row][playerLightColumn] != -1) {
-      playerLightController.setPWM(playerAllLightLayout[row][playerLightColumn], 4095);
+      playerLightController.setPWM(playerAllLightLayout[row][playerLightColumn], maximumPlayerLightBrightness);
     }
   }
 
@@ -195,6 +263,20 @@ void CyclePlayerLightsByColumn() {
   if(playerLightColumn >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
     playerLightColumn = 0;
   }
+}
+
+// *** Trackball Lights ***
+
+// The intent for this palette is to cycle through the player colors while a game is playing.
+// Because we don't know when a specific player is playing so we show both colors.
+void SetupTrackballPlayersPalette() {
+  trackballPalette = CRGBPalette16(playerColors[0], playerColors[1]);
+}
+
+void SetupTrackballLights() {
+  static SingleTriColorLEDController<TRACKBALL_RED_PIN, TRACKBALL_GREEN_PIN, TRACKBALL_BLUE_PIN> trackballLEDController;
+  FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
+  trackballs[0] = CRGB::Black;
 }
 
 void CycleTrackballByPalette() {
@@ -218,11 +300,27 @@ void CycleTrackballByPlayerColor() {
   }
 }
 
+// *** Ambient Lights ***
+
+void SetupAmbientLights() {
+  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN>(ambientLights, AMBIENT_NUM_LEDS).setCorrection(TypicalLEDStrip);
+  ambientLights[0] = CRGB::Black;
+}
+
+// *** Marquee Lights ***
+
+void SetupMarqueeLights() {
+  pinMode(MARQUEE_LIGHT_PIN, OUTPUT);
+  analogWrite(MARQUEE_LIGHT_PIN, maximumMarqueeBrightness);
+}
+
 void CycleMarqueeBrightness() {
-  static uint8_t marqueeBrightness = 255;
+  static uint8_t marqueeBrightness = maximumMarqueeBrightness;
   analogWrite(MARQUEE_LIGHT_PIN, marqueeBrightness);
   marqueeBrightness -= 4;
 }
+
+// *** Debug ***
 
 void Debug_PrintColorInformation(const struct CRGB &color) {
   Serial.print("Red: ");
