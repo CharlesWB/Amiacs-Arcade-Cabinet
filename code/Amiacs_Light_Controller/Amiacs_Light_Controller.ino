@@ -152,58 +152,34 @@ void loop() {
 
 // The display mode during startup is about verifying that all the lights work.
 // The lights are expected to have been turned on to their default colors during setup.
-// This will:
-// - Blink once. This is actually a very fast fade out and in.
-// - Turn all lights on for a moment. Use this to verify they are all working.
-// - Fade the brightness out and in as a simple test of functionality.
+// This will fade the brightness in and out and an increasing rate.
 void LoopStartingDisplayMode() {
   static unsigned long startTime = millis();
 
-  static unsigned long startingPhaseTimeline[] = {0, 2000, 3000, 7000, 11000, 12000};
+  static unsigned long startingStepTimeline[] = {0, 5000, 8000, 9000, 9500, 10000, 10500};
 
   unsigned long now = millis() - startTime;
-  byte phase = 0;
-  for(byte i = 0; i < (sizeof(startingPhaseTimeline) / sizeof(startingPhaseTimeline[0])); i++) {
-    if(now > startingPhaseTimeline[i]) {
-      phase = i;
+  uint8_t step = 0;
+  uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
+  for(uint8_t i = 0; i < stepCount; i++) {
+    if(now > startingStepTimeline[i]) {
+      step = i;
     }
   }
 
-  uint16_t brightness;
-  uint8_t frame;
-  uint8_t value;
+  if(step < stepCount - 1) {
+    uint8_t frame = map(now, startingStepTimeline[step], startingStepTimeline[step + 1], 255, 0);
 
-  switch(phase) {
-    case 0:
-      TurnOffAllPlayerLights();
-      fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
-      break;
-    case 1:
-      TurnOnAllPlayerLights();
-      fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
-      break;
-    case 2:
-      frame = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 255, 0);
-      brightness = quadwave8(frame);
-      // SetAllPlayerLightsBrightness(brightness);
+    // Offset the frame by 128 so that the brightness starts at 255.
+    uint8_t brightness = quadwave8(frame + 128);
 
-      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
-      fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
-      break;
-    case 3:
-      frame = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, 255);
-      brightness = quadwave8(frame);
-      // SetAllPlayerLightsBrightness(brightness);
-
-      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
-      fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
-      break;
-    case 4:
-      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, 255));
-      fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
-    case 5:
-      displayMode = ATTRACT;
-      break;
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
+    fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
+  }
+  else {
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, 255));
+    fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+    displayMode = ATTRACT;
   }
 }
 
