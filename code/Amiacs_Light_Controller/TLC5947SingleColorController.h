@@ -1,4 +1,4 @@
-// Since this is for single color LEDs the best color to specify in FastLED is CRGB::White.
+// Since this is for single color LEDs the best color to specify in FastLED is CRGB::White or CHSV(0, 0, 255).
 // This way changing the brightness will work correctly.
 // Any color can be specified but this will result in a different brightness.
 
@@ -23,9 +23,9 @@ protected:
   virtual void init() {
     // TODO This is hard-coded to a single 24 pin TLC5947 board.
     controller = new Adafruit_TLC5947(1, CLOCK_PIN, DATA_PIN, LATCH_PIN);
-    
+
     controller->begin();
-    
+
     for(int pin = 0; pin < 24; pin++) {
       controller->setPWM(pin, 0);
     }
@@ -34,7 +34,7 @@ protected:
 
   virtual void showPixels(PixelController<RGB> &pixels) {
     uint16_t pin = 0;
-    
+
     while(pixels.has(1)) {
       uint8_t r = pixels.loadAndScale0();
       uint8_t g = pixels.loadAndScale1();
@@ -50,7 +50,7 @@ protected:
       pixels.stepDithering();
       pixels.advanceData();
     }
-    
+
     controller->write();
   }
 };

@@ -84,7 +84,7 @@ int playerPrimaryLightLayout[PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS][PLAYER_PRIMARY_L
   {PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1}
 };
 
-const CRGB defaultSystemColor = CRGB::Orange;
+const CHSV defaultSystemColor = CHSV(HUE_ORANGE, 255, 255);
 CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
 
 // The intent for this palette is to cycle through the player colors while a game is playing.
@@ -187,17 +187,20 @@ void LoopStartingDisplayMode() {
       brightness = quadwave8(frame);
       // SetAllPlayerLightsBrightness(brightness);
 
-      FastLED.setBrightness(brightness);
+      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
+      fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
       break;
     case 3:
       frame = map(now, startingPhaseTimeline[phase], startingPhaseTimeline[phase + 1], 0, 255);
       brightness = quadwave8(frame);
       // SetAllPlayerLightsBrightness(brightness);
 
-      FastLED.setBrightness(brightness);
+      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
+      fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
       break;
     case 4:
-      FastLED.setBrightness(255);
+      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, 255));
+      fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
     case 5:
       displayMode = ATTRACT;
       break;
