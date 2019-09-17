@@ -208,6 +208,8 @@ void LoopStartingDisplayMode() {
 }
 
 void LoopAttractDisplayMode() {
+  static unsigned long startTime = millis();
+
   int playerLight = random8(NUM_PLAYER_LIGHTS);
   int on = random8(100);
   if(on > 50) {
@@ -215,6 +217,13 @@ void LoopAttractDisplayMode() {
   }
   else {
     playerLights[playerLight] = CRGB::Black;
+  }
+
+  if(millis() - startTime > 500) {
+    CRGB color = ColorFromPalette(RainbowColors_p, random8(240), 255, NOBLEND);
+    fill_solid(trackballs, NUM_TRACKBALLS, color);
+
+    startTime = millis();
   }
 }
 
