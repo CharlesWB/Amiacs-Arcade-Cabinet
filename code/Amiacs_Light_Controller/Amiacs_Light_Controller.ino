@@ -84,6 +84,10 @@ int playerPrimaryLightLayout[PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS][PLAYER_PRIMARY_L
   {PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1}
 };
 
+// Although the color of the player lights is defined by the button plastic,
+// for FastLED the player light color is white.
+const CHSV playerLightColor = CHSV(0, 0, 255);
+
 const CHSV defaultSystemColor = CHSV(HUE_ORANGE, 255, 255);
 CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
 
@@ -173,11 +177,11 @@ void LoopStartingDisplayMode() {
     // Offset the frame by 128 so that the brightness starts at 255.
     uint8_t brightness = quadwave8(frame + 128);
 
-    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(playerLightColor.hue, playerLightColor.sat, brightness));
     fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
   }
   else if(step < stepCount - 1) {
-    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, 255));
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
     fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   }
   else {
@@ -191,7 +195,7 @@ void LoopAttractDisplayMode() {
   int playerLight = random8(NUM_PLAYER_LIGHTS);
   int on = random8(100);
   if(on > 50) {
-    playerLights[playerLight] = CRGB::White;
+    playerLights[playerLight] = playerLightColor;
   }
   else {
     playerLights[playerLight] = CRGB::Black;
@@ -210,7 +214,7 @@ void receiveEvent(int byteCount) {
 }
 
 void SetLightsToSystemDefaultColor() {
-  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::White);
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
   fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
 }
@@ -229,7 +233,7 @@ void SetAllPlayerLightsBrightness(uint8_t brightness) {
 }
 
 void TurnOnAllPlayerLights() {
-  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::White);
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
 }
 
 void TurnOffAllPlayerLights() {
