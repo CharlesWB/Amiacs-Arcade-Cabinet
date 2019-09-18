@@ -152,22 +152,22 @@ void loop() {
 
 // The display mode during startup is about verifying that all the lights work.
 // The lights are expected to have been turned on to their default colors during setup.
-// This will fade the brightness in and out and an increasing rate.
+// This will fade the brightness in and out and an increasing rate then pause before switching to attract mode.
 void LoopStartingDisplayMode() {
   static unsigned long startTime = millis();
 
-  static unsigned long startingStepTimeline[] = {0, 5000, 8000, 9000, 9500, 10000, 10500};
+  static unsigned long startingStepTimeline[] = {0, 5000, 8000, 10000, 11000, 11500, 12000, 12200, 12400, 12600, 12800, 13000, 18000};
+  uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
 
   unsigned long now = millis() - startTime;
   uint8_t step = 0;
-  uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
   for(uint8_t i = 0; i < stepCount; i++) {
     if(now > startingStepTimeline[i]) {
       step = i;
     }
   }
 
-  if(step < stepCount - 1) {
+  if(step < stepCount - 2) {
     uint8_t frame = map(now, startingStepTimeline[step], startingStepTimeline[step + 1], 255, 0);
 
     // Offset the frame by 128 so that the brightness starts at 255.
@@ -176,9 +176,11 @@ void LoopStartingDisplayMode() {
     fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, brightness));
     fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
   }
-  else {
+  else if(step < stepCount - 1) {
     fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(0, 0, 255));
     fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+  }
+  else {
     displayMode = ATTRACT;
   }
 }
