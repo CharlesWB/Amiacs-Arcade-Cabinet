@@ -111,6 +111,14 @@ enum DisplayMode {
 
 DisplayMode displayMode = STARTING;
 
+enum AttractDisplayMode {
+  RANDOM_BLINK,
+  CYLON,
+  NUM_ATTRACT_DISPLAY_MODES,
+};
+
+AttractDisplayMode attractDisplayMode = RANDOM_BLINK;
+
 
 void setup() {
   Serial.begin(9600);
@@ -202,15 +210,19 @@ void LoopAttractDisplayMode() {
   unsigned long now = millis() - startTime;
 
   if(now < duration) {
-    if(currentAttractDisplayMode == 0) {
+    if(attractDisplayMode == RANDOM_BLINK) {
       AttractDisplayModeRandomBlink();
     }
-    else {
+    else if(attractDisplayMode == CYLON) {
       AttractDisplayModeCylon();
     }
   }
   else {
-    currentAttractDisplayMode = 1 - currentAttractDisplayMode;
+    attractDisplayMode = attractDisplayMode + 1;
+    if(attractDisplayMode == NUM_ATTRACT_DISPLAY_MODES) {
+      attractDisplayMode = 0;
+    }
+
     duration = minimumDuration + (random8(10) * 1000);
     startTime = millis();
   }
