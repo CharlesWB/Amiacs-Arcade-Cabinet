@@ -168,7 +168,7 @@ void loop() {
 void LoopStartingDisplayMode() {
   static unsigned long startTime = millis();
 
-  static unsigned long startingStepTimeline[] = {0, 5000, 8000, 10000, 11000, 11500, 12000, 12200, 12400, 12600, 12800, 13000, 18000};
+  static unsigned long startingStepTimeline[] = {0, 5000, 8000, 10000, 11000, 11500, 12000, 12300, 12500, 12700, 12900, 13100, 18100};
   uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
 
   unsigned long now = millis() - startTime;
