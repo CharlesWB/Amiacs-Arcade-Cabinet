@@ -189,7 +189,76 @@ void LoopStartingDisplayMode() {
   }
 }
 
+// Cycle through attract display modes.
 void LoopAttractDisplayMode() {
+  const static unsigned long minimumDuration = 20000;
+
+  static unsigned long startTime = millis();
+
+  static unsigned long duration = minimumDuration + (random8(10) * 1000);
+
+  static uint8_t currentAttractDisplayMode = 0;
+
+  unsigned long now = millis() - startTime;
+
+  if(now < duration) {
+    if(currentAttractDisplayMode == 0) {
+      AttractDisplayModeRandomBlink();
+    }
+    else {
+      AttractDisplayModeCylon();
+    }
+  }
+  else {
+    currentAttractDisplayMode = 1 - currentAttractDisplayMode;
+    duration = minimumDuration + (random8(10) * 1000);
+    startTime = millis();
+  }
+}
+
+// Cycle back and forth through the columns, fading out the other columns.
+void AttractDisplayModeCylon() {
+  static unsigned long duration = 2400;
+
+  static unsigned long startTime = millis();
+
+  unsigned long now = millis() - startTime;
+
+  if(now < 20)
+  {
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
+  }
+  else {
+    int step = (now - duration * int(now / duration)) / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
+    if(step >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
+      step = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - step - 1;
+    }
+
+    for(uint8_t column = 0; column < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS; column++) {
+      if(step == column) {
+        for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+          playerLights[playerAllLightLayout[row][column]] = playerLightColor;
+        }
+      }
+      else {
+        for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+          playerLights[playerAllLightLayout[row][column]].nscale8(250);
+        }
+      }
+    }
+
+    if(step < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS / 2) {
+      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
+    }
+    else {
+      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
+    }
+  }
+}
+
+// Randomly blink the player lights.
+// Randomly change the color of the trackball.
+void AttractDisplayModeRandomBlink() {
   static unsigned long startTime = millis();
 
   int playerLight = random8(NUM_PLAYER_LIGHTS);
@@ -202,7 +271,7 @@ void LoopAttractDisplayMode() {
   }
 
   if(millis() - startTime > 500) {
-    CRGB color = ColorFromPalette(RainbowColors_p, random8(240), 255, NOBLEND);
+    CRGB color = ColorFromPalette(RainbowColors_p, random8(240), 255, LINEARBLEND);
     fill_solid(trackballs, NUM_TRACKBALLS, color);
 
     startTime = millis();
