@@ -117,7 +117,7 @@ enum AttractDisplayMode {
   NUM_ATTRACT_DISPLAY_MODES,
 };
 
-AttractDisplayMode attractDisplayMode = RANDOM_BLINK;
+AttractDisplayMode attractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
 
 
 void setup() {
@@ -201,6 +201,8 @@ void LoopStartingDisplayMode() {
 void LoopAttractDisplayMode() {
   const static unsigned long minimumDuration = 20000;
 
+  static bool initializeDisplayMode = true;
+
   static unsigned long startTime = millis();
 
   static unsigned long duration = minimumDuration + (random8(10) * 1000);
@@ -211,21 +213,32 @@ void LoopAttractDisplayMode() {
 
   if(now < duration) {
     if(attractDisplayMode == RANDOM_BLINK) {
+      if(initializeDisplayMode) {
+        AttractDisplayModeRandomBlinkInitialize();
+        initializeDisplayMode = false;
+      }
       AttractDisplayModeRandomBlink();
     }
     else if(attractDisplayMode == CYLON) {
+      if(initializeDisplayMode) {
+        AttractDisplayModeCylonInitialize();
+        initializeDisplayMode = false;
+      }
       AttractDisplayModeCylon();
     }
   }
   else {
-    attractDisplayMode = attractDisplayMode + 1;
-    if(attractDisplayMode == NUM_ATTRACT_DISPLAY_MODES) {
-      attractDisplayMode = 0;
-    }
+    attractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
+    initializeDisplayMode = true;
 
     duration = minimumDuration + (random8(10) * 1000);
     startTime = millis();
   }
+}
+
+void AttractDisplayModeCylonInitialize() {
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
+  fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
 }
 
 // Cycle back and forth through the columns, fading out the other columns.
@@ -236,36 +249,39 @@ void AttractDisplayModeCylon() {
 
   unsigned long now = millis() - startTime;
 
-  if(now < 20)
-  {
-    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
+  int step = (now - duration * int(now / duration)) / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
+  if(step >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
+    step = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - step - 1;
   }
-  else {
-    int step = (now - duration * int(now / duration)) / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
-    if(step >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
-      step = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - step - 1;
-    }
 
-    for(uint8_t column = 0; column < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS; column++) {
-      if(step == column) {
-        for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+  for(uint8_t column = 0; column < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS; column++) {
+    if(step == column) {
+      for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+        if(playerAllLightLayout[row][column] >= 0) {
           playerLights[playerAllLightLayout[row][column]] = playerLightColor;
         }
       }
-      else {
-        for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+    }
+    else {
+      for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+        if(playerAllLightLayout[row][column] >= 0) {
           playerLights[playerAllLightLayout[row][column]].nscale8(250);
         }
       }
     }
-
-    if(step < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS / 2) {
-      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
-    }
-    else {
-      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
-    }
   }
+
+  if(step < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS / 2) {
+    fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
+  }
+  else {
+    fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
+  }
+}
+
+void AttractDisplayModeRandomBlinkInitialize() {
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
+  fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
 }
 
 // Randomly blink the player lights.
