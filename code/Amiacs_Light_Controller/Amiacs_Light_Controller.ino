@@ -84,6 +84,11 @@ int playerPrimaryLightLayout[PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS][PLAYER_PRIMARY_L
   {PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1}
 };
 
+int playerLightPatternZigZag[NUM_PLAYER_LIGHTS] = {
+  PLAYER1_LIGHT_HOTKEY, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, PLAYER1_LIGHT_Y, PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_X, PLAYER1_LIGHT_COMMAND, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER1_LIGHT_R2,
+  PLAYER2_LIGHT_COMMAND, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_X, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1, PLAYER2_LIGHT_R2, PLAYER2_LIGHT_START, PLAYER2_LIGHT_HOTKEY,
+};
+
 // Although the color of the player lights is defined by the button plastic,
 // for FastLED the player light color is white.
 const CHSV playerLightColor = CHSV(0, 0, 255);
@@ -114,6 +119,7 @@ DisplayMode displayMode = STARTING;
 enum AttractDisplayMode {
   RANDOM_BLINK,
   CYLON,
+  ZIGZAG,
   NUM_ATTRACT_DISPLAY_MODES,
 };
 
@@ -226,12 +232,57 @@ void LoopAttractDisplayMode() {
       }
       AttractDisplayModeCylon();
     }
+    else if(attractDisplayMode == ZIGZAG) {
+      if(initializeDisplayMode) {
+        AttractDisplayModeZigZagInitialize();
+        initializeDisplayMode = false;
+      }
+      AttractDisplayModeZigZag();
+    }
   }
   else {
     attractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
     initializeDisplayMode = true;
 
     duration = minimumDuration + (random8(10) * 1000);
+    startTime = millis();
+  }
+}
+
+void AttractDisplayModeZigZagInitialize() {
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
+  playerLights[playerLightPatternZigZag[0]] = playerLightColor;
+  fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
+}
+
+// Cycle up and down through the columns.
+void AttractDisplayModeZigZag() {
+  static unsigned long startTime = millis();
+
+  static uint8_t currentLight = 0;
+
+  if((millis() - startTime) > 100) {
+    currentLight++;
+    if(currentLight >= NUM_PLAYER_LIGHTS) {
+      currentLight = 0;
+    }
+
+    for(int light = 0; light < NUM_PLAYER_LIGHTS; light++) {
+      if(light == currentLight) {
+        playerLights[playerLightPatternZigZag[light]] = playerLightColor;
+      }
+      else {
+        playerLights[playerLightPatternZigZag[light]].nscale8(200);
+      }
+    }
+
+    if(currentLight < NUM_PLAYER_LIGHTS / 2) {
+      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
+    }
+    else {
+      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
+    }
+
     startTime = millis();
   }
 }
