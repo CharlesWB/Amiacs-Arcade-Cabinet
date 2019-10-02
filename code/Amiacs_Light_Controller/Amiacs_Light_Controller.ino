@@ -3,12 +3,7 @@ To Do:
 - How should the color palette index be handled? Such as in CycleTrackballByPalette.
 
 Ideas:
-- Would a sine wave, breathe, heartbeat, or some kind of bounce effect for the cycle time make it interesting?
-- The cycle time of brightness or color would be a rate such as steps/millisecond.
 - DisplayMode may turn into the command byte of I2C. It would define the action to be done. Such as set or enable.
-- Create a Brightness class that handles the differences between max levels for the TLC5947 and others.
--- Use 4095 (uint16_t) as maximum. Map all others from that value.
--- Allows setting a maximum. Possibly controlled by dimmer.
 */
 
 #include <Adafruit_TLC5947.h>
@@ -66,13 +61,15 @@ Ideas:
 #define PLAYER2_LIGHT_HOTKEY 23
 
 #define PLAYER_ALL_LIGHTS_LAYOUT_ROWS 3
-#define PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS 12
+#define PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS 11
+#define PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS 6
+#define PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS 5
 
 int playerAllLightLayout[PLAYER_ALL_LIGHTS_LAYOUT_ROWS][PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS] =
 {
-  {-1, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, -1, PLAYER1_LIGHT_COMMAND, -1, -1, PLAYER2_LIGHT_COMMAND, -1, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_START, -1},
-  {-1, -1, -1, PLAYER1_LIGHT_Y, PLAYER1_LIGHT_X, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_R2, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_X, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_R2, -1},
-  {PLAYER1_LIGHT_HOTKEY, -1, -1, PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1, PLAYER2_LIGHT_HOTKEY}
+  {-1, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, PLAYER1_LIGHT_COMMAND, -1, -1, PLAYER2_LIGHT_COMMAND, -1, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_START, -1},
+  {-1, -1, PLAYER1_LIGHT_Y, PLAYER1_LIGHT_X, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_R2, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_X, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_R2, -1},
+  {PLAYER1_LIGHT_HOTKEY, -1, PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1, PLAYER2_LIGHT_HOTKEY}
 };
 
 #define PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS 2
@@ -82,11 +79,6 @@ int playerPrimaryLightLayout[PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS][PLAYER_PRIMARY_L
 {
   {PLAYER1_LIGHT_Y, PLAYER1_LIGHT_X, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_R2, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_X, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_R2},
   {PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1}
-};
-
-int playerLightPatternZigZag[NUM_PLAYER_LIGHTS] = {
-  PLAYER1_LIGHT_HOTKEY, PLAYER1_LIGHT_SELECT, PLAYER1_LIGHT_START, PLAYER1_LIGHT_Y, PLAYER1_LIGHT_B, PLAYER1_LIGHT_A, PLAYER1_LIGHT_X, PLAYER1_LIGHT_COMMAND, PLAYER1_LIGHT_L2, PLAYER1_LIGHT_L1, PLAYER1_LIGHT_R1, PLAYER1_LIGHT_R2,
-  PLAYER2_LIGHT_COMMAND, PLAYER2_LIGHT_Y, PLAYER2_LIGHT_B, PLAYER2_LIGHT_A, PLAYER2_LIGHT_X, PLAYER2_LIGHT_SELECT, PLAYER2_LIGHT_L2, PLAYER2_LIGHT_L1, PLAYER2_LIGHT_R1, PLAYER2_LIGHT_R2, PLAYER2_LIGHT_START, PLAYER2_LIGHT_HOTKEY,
 };
 
 // Although the color of the player lights is defined by the button plastic,
@@ -119,7 +111,7 @@ DisplayMode displayMode = STARTING;
 enum AttractDisplayMode {
   RANDOM_BLINK,
   CYLON,
-  ZIGZAG,
+  IN_TO_CENTER,
   NUM_ATTRACT_DISPLAY_MODES,
 };
 
@@ -203,7 +195,6 @@ void LoopStartingDisplayMode() {
   }
 }
 
-// Cycle through attract display modes.
 void LoopAttractDisplayMode() {
   const static unsigned long minimumDuration = 20000;
 
@@ -220,24 +211,24 @@ void LoopAttractDisplayMode() {
   if(now < duration) {
     if(attractDisplayMode == RANDOM_BLINK) {
       if(initializeDisplayMode) {
-        AttractDisplayModeRandomBlinkInitialize();
+        AttractDisplayModeInitialize();
         initializeDisplayMode = false;
       }
       AttractDisplayModeRandomBlink();
     }
     else if(attractDisplayMode == CYLON) {
       if(initializeDisplayMode) {
-        AttractDisplayModeCylonInitialize();
+        AttractDisplayModeInitialize();
         initializeDisplayMode = false;
       }
       AttractDisplayModeCylon();
     }
-    else if(attractDisplayMode == ZIGZAG) {
+    else if(attractDisplayMode == IN_TO_CENTER) {
       if(initializeDisplayMode) {
-        AttractDisplayModeZigZagInitialize();
+        AttractDisplayModeInitialize();
         initializeDisplayMode = false;
       }
-      AttractDisplayModeZigZag();
+      AttractDisplayModeInToCenter();
     }
   }
   else {
@@ -249,50 +240,48 @@ void LoopAttractDisplayMode() {
   }
 }
 
-void AttractDisplayModeZigZagInitialize() {
-  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
-  playerLights[playerLightPatternZigZag[0]] = playerLightColor;
-  fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
-}
-
-// Cycle up and down through the columns.
-void AttractDisplayModeZigZag() {
-  static unsigned long startTime = millis();
-
-  static uint8_t currentLight = 0;
-
-  if((millis() - startTime) > 100) {
-    currentLight++;
-    if(currentLight >= NUM_PLAYER_LIGHTS) {
-      currentLight = 0;
-    }
-
-    for(int light = 0; light < NUM_PLAYER_LIGHTS; light++) {
-      if(light == currentLight) {
-        playerLights[playerLightPatternZigZag[light]] = playerLightColor;
-      }
-      else {
-        playerLights[playerLightPatternZigZag[light]].nscale8(200);
-      }
-    }
-
-    if(currentLight < NUM_PLAYER_LIGHTS / 2) {
-      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
-    }
-    else {
-      fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
-    }
-
-    startTime = millis();
-  }
-}
-
-void AttractDisplayModeCylonInitialize() {
+void AttractDisplayModeInitialize() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
   fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
 }
 
+// Cycle columns in to the center and back, fading out the other columns.
+// Fade the trackball in sync with the cycle.
+void AttractDisplayModeInToCenter() {
+  static unsigned long duration = 2400;
+
+  static unsigned long startTime = millis();
+
+  unsigned long now = millis() - startTime;
+
+  int player1Column = (now - duration * int(now / duration)) / (duration / (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS));
+  if(player1Column >= PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) {
+    player1Column = (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) - player1Column - 1;
+  }
+
+  int player2Column = (now - duration * int(now / duration)) / (duration / (2 * PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS));
+  if(player2Column >= PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS) {
+    player2Column = (2 * PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS) - player2Column - 1;
+  }
+
+  for(uint8_t column = 0; column < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS; column++) {
+    for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+      if(playerAllLightLayout[row][column] >= 0) {
+        if(column == player1Column || column == PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS - player2Column - 1) {
+          playerLights[playerAllLightLayout[row][column]] = playerLightColor;
+        }
+        else {
+          playerLights[playerAllLightLayout[row][column]].nscale8(250);
+        }
+      }
+    }
+  }
+
+  fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS, 20, 255)));
+}
+
 // Cycle back and forth through the columns, fading out the other columns.
+// Cycle the trackball between player colors.
 void AttractDisplayModeCylon() {
   static unsigned long duration = 2400;
 
@@ -300,39 +289,30 @@ void AttractDisplayModeCylon() {
 
   unsigned long now = millis() - startTime;
 
-  int step = (now - duration * int(now / duration)) / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
-  if(step >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
-    step = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - step - 1;
+  int playerColumn = (now - duration * int(now / duration)) / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
+  if(playerColumn >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
+    playerColumn = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - playerColumn - 1;
   }
 
   for(uint8_t column = 0; column < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS; column++) {
-    if(step == column) {
-      for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
-        if(playerAllLightLayout[row][column] >= 0) {
+    for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
+      if(playerAllLightLayout[row][column] >= 0) {
+        if(playerColumn == column) {
           playerLights[playerAllLightLayout[row][column]] = playerLightColor;
         }
-      }
-    }
-    else {
-      for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
-        if(playerAllLightLayout[row][column] >= 0) {
+        else {
           playerLights[playerAllLightLayout[row][column]].nscale8(250);
         }
       }
     }
   }
 
-  if(step < PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS / 2) {
+  if(playerColumn < PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
   }
   else {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
   }
-}
-
-void AttractDisplayModeRandomBlinkInitialize() {
-  fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
-  fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
 }
 
 // Randomly blink the player lights.
