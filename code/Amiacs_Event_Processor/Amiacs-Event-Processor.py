@@ -2,6 +2,13 @@
 #
 # The event bash scripts expect this to be located in ~/amiacs.
 #
+# Install
+# cd ~
+# mkdir amiacs
+# cd amiacs
+# wget https://raw.githubusercontent.com/CharlesWB/Amiacs-Arcade-Cabinet/master/code/Amiacs_Event_Processor/Amiacs-Event-Processor.py
+# chmod +x Amiacs-Event-Processor.py
+#
 # References
 # https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
 # https://github.com/RetroPie/RetroPie-Setup/wiki/runcommand#runcommand-onstart-and-runcommand-onend-scripts
@@ -21,5 +28,5 @@ parser.add_argument('system', help='the system (eg: atari2600, nes, snes, megadr
 
 args = parser.parse_args()
 
-logging.info(args.command)
+logging.info(args.event)
 logging.info(args.system)
