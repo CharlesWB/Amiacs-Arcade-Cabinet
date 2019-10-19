@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 Amiacs_Event_Processor.py sleep 'not used'
+python3 ~/amiacs/Amiacs_Event_Processor.py sleep 'not used'

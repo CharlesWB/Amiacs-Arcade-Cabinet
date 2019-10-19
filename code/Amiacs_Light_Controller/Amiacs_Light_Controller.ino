@@ -1,6 +1,7 @@
 /*
 To Do:
 - How should the color palette index be handled? Such as in CycleTrackballByPalette.
+- Attract display mode should dim over time.
 
 Ideas:
 - DisplayMode may turn into the command byte of I2C. It would define the action to be done. Such as set or enable.
@@ -98,12 +99,9 @@ CRGB ambientLights[NUM_AMBIENT_LEDS];
 
 
 enum DisplayMode {
-  STARTING, // takes 60 seconds to get a running Emulation Station. 40 seconds of that is to play the intro video.
-  ATTRACT,
-  MUTE, // Or DIMMED, SCREENSAVER_ACTIVE
-  GAME_PLAYING,
-  GAME_PAUSED, // RetroPie may not provide a way to respond to paused games.
-  TESTING,
+  STARTING, // Initial mode while system starts.
+  ATTRACT, // Mode used Emulation Station enters sleep.
+  SYSTEM_RUNNING, // Mode used when a game system or Emulation Station is running.
 };
 
 DisplayMode displayMode = STARTING;

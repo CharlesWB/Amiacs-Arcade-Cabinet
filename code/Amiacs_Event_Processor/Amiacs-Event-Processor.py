@@ -1,5 +1,7 @@
 # Processes events from Retropie and Emulation Station to drive the light controller.
 #
+# The event bash scripts expect this to be located in ~/amiacs.
+#
 # References
 # https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
 # https://github.com/RetroPie/RetroPie-Setup/wiki/runcommand#runcommand-onstart-and-runcommand-onend-scripts
@@ -11,7 +13,7 @@
 import argparse
 import logging
 
-logging.basicConfig(filename='Amiacs_Event_Processor.log',level=logging.INFO)
+logging.basicConfig(filename='Amiacs-Event-Processor.log',level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that is happening')
