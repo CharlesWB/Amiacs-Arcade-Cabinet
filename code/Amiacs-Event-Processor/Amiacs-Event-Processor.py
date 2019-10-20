@@ -28,12 +28,12 @@ parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake']
 parser.add_argument('system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
 parser.add_argument('emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
 parser.add_argument('rompath', help='the full path to the rom file')
-parser.add_argument('command', help='the full command line used to launch the emulator')
+parser.add_argument('commandline', help='the full command line used to launch the emulator')
 
 args = parser.parse_args()
 
-logging.info(args.event)
-logging.info(args.system)
-logging.info(args.emulator)
-logging.info(args.rompath)
-logging.info(args.command)
+logging.info('event:%s', args.event)
+logging.info('system:%s', args.system)
+logging.info('emulator:%s', args.emulator)
+logging.info('rompath:%s', args.rompath)
+logging.info('commandline:%s', args.commandline)
