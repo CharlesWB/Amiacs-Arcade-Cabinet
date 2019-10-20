@@ -7,10 +7,11 @@
 # mkdir amiacs
 # cd amiacs
 # wget https://raw.githubusercontent.com/CharlesWB/Amiacs-Arcade-Cabinet/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py
-# chmod +x Amiacs-Event-Processor.py
 #
 # References
 # https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
+# I'm not getting scripting to work. There's no indication that the bash script is called.
+#
 # https://github.com/RetroPie/RetroPie-Setup/wiki/runcommand#runcommand-onstart-and-runcommand-onend-scripts
 #
 # Notes
@@ -20,13 +21,19 @@
 import argparse
 import logging
 
-logging.basicConfig(filename='~/amiacs/Amiacs-Event-Processor.log',level=logging.INFO)
+logging.basicConfig(filename='/home/pi/amiacs/Amiacs-Event-Processor.log',level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that is happening')
 parser.add_argument('system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
+parser.add_argument('emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
+parser.add_argument('rompath', help='the full path to the rom file')
+parser.add_argument('command', help='the full command line used to launch the emulator')
 
 args = parser.parse_args()
 
 logging.info(args.event)
 logging.info(args.system)
+logging.info(args.emulator)
+logging.info(args.rompath)
+logging.info(args.command)
