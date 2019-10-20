@@ -6,7 +6,7 @@
 # cd ~
 # mkdir amiacs
 # cd amiacs
-# wget https://raw.githubusercontent.com/CharlesWB/Amiacs-Arcade-Cabinet/master/code/Amiacs_Event_Processor/Amiacs-Event-Processor.py
+# wget https://raw.githubusercontent.com/CharlesWB/Amiacs-Arcade-Cabinet/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py
 # chmod +x Amiacs-Event-Processor.py
 #
 # References
@@ -20,7 +20,7 @@
 import argparse
 import logging
 
-logging.basicConfig(filename='Amiacs-Event-Processor.log',level=logging.INFO)
+logging.basicConfig(filename='~/amiacs/Amiacs-Event-Processor.log',level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that is happening')
