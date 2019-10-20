@@ -6,7 +6,7 @@
 # cd ~
 # mkdir amiacs
 # cd amiacs
-# wget https://raw.githubusercontent.com/CharlesWB/Amiacs-Arcade-Cabinet/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py
+# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py
 #
 # References
 # https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
