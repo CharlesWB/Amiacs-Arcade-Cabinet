@@ -27,6 +27,7 @@ Ideas:
 #define PLAYER_LIGHTS_LATCH_PIN 10
 #define PLAYER_LIGHTS_DATA_PIN 12
 #define PLAYER_LIGHTS_CLOCK_PIN 13
+#define PLAYER_LIGHTS_BLANK = 8
 #define TRACKBALL_RED_PIN 3
 #define TRACKBALL_GREEN_PIN 5
 #define TRACKBALL_BLUE_PIN 6
@@ -336,7 +337,9 @@ void AttractDisplayModeRandomBlink() {
 }
 
 void receiveEvent(int byteCount) {
-
+  byte command = Wire.read();
+  Serial.print("Command: ");
+  Serial.println(command);
 }
 
 void SetLightsToSystemDefaultColor() {

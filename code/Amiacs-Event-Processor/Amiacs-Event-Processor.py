@@ -20,8 +20,12 @@
 
 import argparse
 import logging
+import smbus
 
 logging.basicConfig(filename='/home/pi/amiacs/Amiacs-Event-Processor.log',level=logging.INFO)
+
+bus = SMBus(1)
+address = 0x07
 
 parser = argparse.ArgumentParser()
 parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that is happening')
@@ -37,3 +41,9 @@ logging.info('system:%s', args.system)
 logging.info('emulator:%s', args.emulator)
 logging.info('rompath:%s', args.rompath)
 logging.info('commandline:%s', args.commandline)
+
+if args.event == 'game-start':
+    bus.write_byte(address, 1)
+
+if args.event == 'game-end':
+    bus.write_byte(address, 0)
