@@ -9,13 +9,18 @@
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py
 #
 # References
-# https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
-# I'm not getting scripting to work. There's no indication that the bash script is called.
-#
 # https://github.com/RetroPie/RetroPie-Setup/wiki/runcommand#runcommand-onstart-and-runcommand-onend-scripts
 #
+# https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
+# Event scripting was added with RetroPie 4.5 (Emulation Station v2.8.4).
+# I was able to get game-start, game-end and quit events to fire, but not sleep, wake, screensaver-start, and screensaver-stop.
+# Sleep and wake are in the source code (es-core/src/Window.cpp), but not the screensaver events. Maybe I
+# don't understand when sleep and wake occur.
+# I need screensaver events to work. I'm using runcommand for the game start and end. For now we'll
+# fake it in the light controller.
+#
 # Notes
-# Emulation Station events do not provide the system name. Runcommand does. Maybe could be read from rom path.
+# Emulation Station events do not provide the system name. Runcommand does. Maybe could be parsed from rom path.
 # Emulation station events do provide the rom name and path separately. Runcommand combines them.
 
 import argparse
