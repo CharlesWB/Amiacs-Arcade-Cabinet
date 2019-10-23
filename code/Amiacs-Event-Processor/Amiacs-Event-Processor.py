@@ -32,8 +32,8 @@ logging.basicConfig(filename='/home/pi/amiacs/Amiacs-Event-Processor.log',level=
 bus = SMBus(1)
 address = 0x07
 
-parser = argparse.ArgumentParser()
-parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that is happening')
+parser = argparse.ArgumentParser('Given event information, send a command to the Amiacs light controller.')
+parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that has occurred')
 parser.add_argument('system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
 parser.add_argument('emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
 parser.add_argument('rompath', help='the full path to the rom file')
