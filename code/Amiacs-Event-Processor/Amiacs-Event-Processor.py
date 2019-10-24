@@ -29,7 +29,7 @@ import smbus
 
 logging.basicConfig(filename='/home/pi/amiacs/Amiacs-Event-Processor.log',level=logging.INFO)
 
-bus = SMBus(1)
+bus = smbus.SMBus(1)
 address = 0x07
 
 parser = argparse.ArgumentParser('Given event information, send a command to the Amiacs light controller.')
