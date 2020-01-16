@@ -105,7 +105,7 @@ enum DisplayMode {
   // Mode used when Emulation Station displays a screensaver.
   ATTRACT,
   // Mode used when the Emulation Station is running.
-  EMULATION_STATION_RUNNING,
+  EMULATION_STATION,
   // Mode used when a game system is running.
   GAME_RUNNING,
 };
@@ -158,6 +158,9 @@ void loop() {
     case ATTRACT:
       LoopAttractDisplayMode();
       break;
+    case EMULATION_STATION:
+      LoopEmulationStationDisplayMode();
+      break;
   }
 
   FastLED.show();
@@ -195,7 +198,27 @@ void LoopStartingDisplayMode() {
     fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   }
   else {
-    displayMode = ATTRACT;
+    displayMode = EMULATION_STATION;
+  }
+}
+
+void LoopEmulationStationDisplayMode() {
+  static bool initializeDisplayMode = true;
+
+  if(initializeDisplayMode) {
+    initializeDisplayMode = false;
+
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
+    playerLights[PLAYER1_LIGHT_L2] = CRGB::Black;
+    playerLights[PLAYER1_LIGHT_R2] = CRGB::Black;
+    playerLights[PLAYER1_LIGHT_COMMAND] = CRGB::Black;
+    playerLights[PLAYER1_LIGHT_HOTKEY] = CRGB::Black;
+    playerLights[PLAYER2_LIGHT_L2] = CRGB::Black;
+    playerLights[PLAYER2_LIGHT_R2] = CRGB::Black;
+    playerLights[PLAYER2_LIGHT_COMMAND] = CRGB::Black;
+    playerLights[PLAYER2_LIGHT_HOTKEY] = CRGB::Black;
+
+    fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
   }
 }
 
