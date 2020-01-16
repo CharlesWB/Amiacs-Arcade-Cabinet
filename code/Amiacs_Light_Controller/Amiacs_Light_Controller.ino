@@ -100,9 +100,14 @@ CRGB ambientLights[NUM_AMBIENT_LEDS];
 
 
 enum DisplayMode {
-  STARTING, // Initial mode while system starts.
-  ATTRACT, // Mode used when Emulation Station displays a screensaver.
-  SYSTEM_RUNNING, // Mode used when a game system or Emulation Station is running.
+  // Initial mode while system starts.
+  STARTING,
+  // Mode used when Emulation Station displays a screensaver.
+  ATTRACT,
+  // Mode used when the Emulation Station is running.
+  EMULATION_STATION_RUNNING,
+  // Mode used when a game system is running.
+  GAME_RUNNING,
 };
 
 DisplayMode displayMode = STARTING;
