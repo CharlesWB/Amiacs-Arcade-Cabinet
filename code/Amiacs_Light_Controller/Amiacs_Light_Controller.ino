@@ -101,7 +101,7 @@ CRGB ambientLights[NUM_AMBIENT_LEDS];
 
 enum DisplayMode {
   STARTING, // Initial mode while system starts.
-  ATTRACT, // Mode used Emulation Station enters sleep.
+  ATTRACT, // Mode used when Emulation Station displays a screensaver.
   SYSTEM_RUNNING, // Mode used when a game system or Emulation Station is running.
 };
 
@@ -162,10 +162,11 @@ void loop() {
 // The display mode during startup is about verifying that all the lights work.
 // The lights are expected to have been turned on to their default colors during setup.
 // This will fade the brightness in and out and an increasing rate then pause before switching to attract mode.
+// The typical time from power on to Emulation Station start is about one minute.
 void LoopStartingDisplayMode() {
   static unsigned long startTime = millis();
 
-  static unsigned long startingStepTimeline[] = {0, 5000, 8000, 10000, 11000, 11500, 12000, 12300, 12500, 12700, 12900, 13100, 18100};
+  static unsigned long startingStepTimeline[] = {0, 5000, 9900, 14700, 19200, 23200, 26700, 29600, 31900, 33400, 34200, 34800, 35400, 36000, 36400, 60000};
   uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
 
   unsigned long now = millis() - startTime;
