@@ -148,9 +148,8 @@ void setup() {
 
 void loop() {
   // Temporary testing until display modes are implemented.
-  // CyclePlayerLightsByColumn();
-//  CycleTrackballByPalette();
-//  CycleMarqueeBrightness();
+  // CycleTrackballByPalette();
+  // CycleMarqueeBrightness();
 
   switch(displayMode) {
     case STARTING:
@@ -373,23 +372,6 @@ void TurnOnAllPlayerLights() {
 
 void TurnOffAllPlayerLights() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
-}
-
-void CyclePlayerLightsByColumn() {
-  static uint8_t playerLightColumn = 0;
-
-  TurnOffAllPlayerLights();
-
-  for(uint8_t row = 0; row < PLAYER_ALL_LIGHTS_LAYOUT_ROWS; row++) {
-    if(playerAllLightLayout[row][playerLightColumn] != -1) {
-      // playerLightController.setPWM(playerAllLightLayout[row][playerLightColumn], maximumPlayerLightBrightness);
-    }
-  }
-
-  playerLightColumn++;
-  if(playerLightColumn >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
-    playerLightColumn = 0;
-  }
 }
 
 // *** Trackball Lights ***
