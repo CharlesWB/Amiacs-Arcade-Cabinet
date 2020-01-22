@@ -162,8 +162,6 @@ void loop() {
       LoopEmulationStationDisplayMode();
       break;
   }
-
-  FastLED.show();
 }
 
 // The display mode during startup is about verifying that all the lights work.
@@ -190,12 +188,18 @@ void LoopStartingDisplayMode() {
     // Offset the frame by 128 so that the brightness starts at 255.
     uint8_t brightness = quadwave8(frame + 128);
 
-    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(playerLightColor.hue, playerLightColor.sat, brightness));
-    fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
+    if(playerLights[0] != CHSV(playerLightColor.hue, playerLightColor.sat, brightness)) {
+      fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(playerLightColor.hue, playerLightColor.sat, brightness));
+      fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
+      FastLED.show();
+    }
   }
   else if(step < stepCount - 1) {
-    fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
-    fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+    if(playerLights[0] != playerLightColor) {
+      fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
+      fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+      FastLED.show();
+    }
   }
   else {
     displayMode = EMULATION_STATION;
@@ -219,6 +223,8 @@ void LoopEmulationStationDisplayMode() {
     playerLights[PLAYER2_LIGHT_HOTKEY] = CRGB::Black;
 
     fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+
+    FastLED.show();
   }
 }
 
@@ -265,11 +271,14 @@ void LoopAttractDisplayMode() {
     duration = minimumDuration + (random8(10) * 1000);
     startTime = millis();
   }
+
+  FastLED.show();
 }
 
 void AttractDisplayModeInitialize() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
   fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+  FastLED.show();
 }
 
 // Cycle columns in to the center and back, fading out the other columns.
@@ -366,14 +375,15 @@ void AttractDisplayModeRandomBlink() {
 
 void receiveEvent(int byteCount) {
   byte command = Wire.read();
-  Serial.print("Command: ");
-  Serial.println(command);
+//  Serial.print("Command: ");
+//  Serial.println(command);
 }
 
 void SetLightsToSystemDefaultColor() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
   fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
+  FastLED.show();
 }
 
 // *** Player Lights ***
