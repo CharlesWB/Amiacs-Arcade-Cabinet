@@ -209,75 +209,87 @@ void LoopStartingDisplayMode() {
 void LoopEmulationStationDisplayMode() {
   static bool initializeDisplayMode = true;
 
+  static unsigned long startTime = millis();
+
   if(initializeDisplayMode) {
+    startTime = millis();
+
+    EmulationStationDisplayModeInitialize();
+
     initializeDisplayMode = false;
+  }
 
-    fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
-    playerLights[PLAYER1_LIGHT_L2] = CRGB::Black;
-    playerLights[PLAYER1_LIGHT_R2] = CRGB::Black;
-    playerLights[PLAYER1_LIGHT_COMMAND] = CRGB::Black;
-    playerLights[PLAYER1_LIGHT_HOTKEY] = CRGB::Black;
-    playerLights[PLAYER2_LIGHT_L2] = CRGB::Black;
-    playerLights[PLAYER2_LIGHT_R2] = CRGB::Black;
-    playerLights[PLAYER2_LIGHT_COMMAND] = CRGB::Black;
-    playerLights[PLAYER2_LIGHT_HOTKEY] = CRGB::Black;
-
-    fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
-
-    FastLED.show();
+  // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
+  // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
+  // https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
+  // This will probably be confusing when the player is actively using Emulation Station.
+  if((millis() - startTime) > 300000) {
+    displayMode = ATTRACT;
+    initializeDisplayMode = true;
   }
 }
 
-void LoopAttractDisplayMode() {
-  const static unsigned long minimumDuration = 20000;
+void EmulationStationDisplayModeInitialize() {
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
 
+  playerLights[PLAYER1_LIGHT_L2] = CRGB::Black;
+  playerLights[PLAYER1_LIGHT_R2] = CRGB::Black;
+  playerLights[PLAYER1_LIGHT_COMMAND] = CRGB::Black;
+  playerLights[PLAYER1_LIGHT_HOTKEY] = CRGB::Black;
+  playerLights[PLAYER2_LIGHT_L2] = CRGB::Black;
+  playerLights[PLAYER2_LIGHT_R2] = CRGB::Black;
+  playerLights[PLAYER2_LIGHT_COMMAND] = CRGB::Black;
+  playerLights[PLAYER2_LIGHT_HOTKEY] = CRGB::Black;
+
+  fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+
+  FastLED.show();
+}
+
+void LoopAttractDisplayMode() {
   static bool initializeDisplayMode = true;
 
   static unsigned long startTime = millis();
 
-  static unsigned long duration = minimumDuration + (random8(10) * 1000);
-
-  static uint8_t currentAttractDisplayMode = 0;
-
   unsigned long now = millis() - startTime;
 
-  if(now < duration) {
+  if(initializeDisplayMode) {
+    startTime = millis();
+
+    AttractDisplayModeInitialize();
+
+    initializeDisplayMode = false;
+  }
+
+  if((millis() - startTime) <= 60000) {
     if(attractDisplayMode == RANDOM_BLINK) {
-      if(initializeDisplayMode) {
-        AttractDisplayModeInitialize();
-        initializeDisplayMode = false;
-      }
       AttractDisplayModeRandomBlink();
     }
     else if(attractDisplayMode == CYLON) {
-      if(initializeDisplayMode) {
-        AttractDisplayModeInitialize();
-        initializeDisplayMode = false;
-      }
       AttractDisplayModeCylon();
     }
     else if(attractDisplayMode == IN_TO_CENTER) {
-      if(initializeDisplayMode) {
-        AttractDisplayModeInitialize();
-        initializeDisplayMode = false;
-      }
       AttractDisplayModeInToCenter();
     }
+
+    FastLED.show();
   }
   else {
     attractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
+
+    // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
+    // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
+    // https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
+    // This will probably be confusing when the player is actively using Emulation Station.
+    displayMode = EMULATION_STATION;
     initializeDisplayMode = true;
-
-    duration = minimumDuration + (random8(10) * 1000);
-    startTime = millis();
   }
-
-  FastLED.show();
 }
 
 void AttractDisplayModeInitialize() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
   fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+
   FastLED.show();
 }
 
