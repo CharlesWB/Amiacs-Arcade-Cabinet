@@ -220,8 +220,8 @@ void LoopEmulationStationDisplayMode() {
   }
 
   // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
+  // See the comments about event scripting in Amiacs-Event-Processor.py.
   // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
-  // https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
   // This will probably be confusing when the player is actively using Emulation Station.
   if((millis() - startTime) > 300000) {
     displayMode = ATTRACT;
@@ -278,8 +278,8 @@ void LoopAttractDisplayMode() {
     attractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
 
     // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
+    // See the comments about event scripting in Amiacs-Event-Processor.py.
     // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
-    // https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
     // This will probably be confusing when the player is actively using Emulation Station.
     displayMode = EMULATION_STATION;
     initializeDisplayMode = true;
