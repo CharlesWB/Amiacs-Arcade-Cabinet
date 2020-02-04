@@ -27,17 +27,23 @@ import argparse
 import logging
 import smbus
 
-logging.basicConfig(filename='/home/pi/amiacs/Amiacs-Event-Processor.log',level=logging.INFO)
+logging.basicConfig(
+    filename='/home/pi/amiacs/Amiacs-Event-Processor.log', level=logging.INFO)
 
 bus = smbus.SMBus(1)
 address = 0x07
 
-parser = argparse.ArgumentParser('Given event information, send a command to the Amiacs light controller.')
-parser.add_argument('event', choices=['game-start', 'game-end', 'sleep', 'wake'], help='the event that has occurred')
-parser.add_argument('system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
-parser.add_argument('emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
+parser = argparse.ArgumentParser(
+    'Given event information, send a command to the Amiacs light controller.')
+parser.add_argument('event', choices=[
+                    'game-start', 'game-end', 'sleep', 'wake'], help='the event that has occurred')
+parser.add_argument(
+    'system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
+parser.add_argument(
+    'emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
 parser.add_argument('rompath', help='the full path to the rom file')
-parser.add_argument('commandline', help='the full command line used to launch the emulator')
+parser.add_argument(
+    'commandline', help='the full command line used to launch the emulator')
 
 args = parser.parse_args()
 
@@ -46,6 +52,7 @@ logging.info('system:%s', args.system)
 logging.info('emulator:%s', args.emulator)
 logging.info('rompath:%s', args.rompath)
 logging.info('commandline:%s', args.commandline)
+
 
 if args.event == 'game-start':
     bus.write_byte(address, 1)
