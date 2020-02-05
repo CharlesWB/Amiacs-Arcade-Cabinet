@@ -65,6 +65,10 @@ systemLights = {
     'arcade': CabinetLights(PlayerLights(B=Light.On))
 }
 
+gameLights = {
+    '88games.zip': CabinetLights()
+}
+
 logging.basicConfig(
     filename='/home/pi/amiacs/Amiacs-Event-Processor.log', level=logging.INFO)
 
@@ -93,9 +97,15 @@ logging.info('emulator:%s', args.emulator)
 logging.info('rompath:%s', args.rompath)
 logging.info('commandline:%s', args.commandline)
 
-if args.system in systemLights:
+# TODO The rompath needs to be parsed to get the rom filename for the dictionary index.
+if args.rompath in gameLights:
+    logging.info('Configuring lights for game %s', args.rompath)
+    lights = gameLights[args.rompath]
+elif args.system in systemLights:
+    logging.info('Configuring lights for system %s', args.system)
     lights = systemLights[args.system]
 else:
+    logging.info('Configuring default lights')
     lights = systemLights['default']
 
 
