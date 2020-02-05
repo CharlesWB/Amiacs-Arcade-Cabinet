@@ -26,6 +26,44 @@
 import argparse
 import logging
 import smbus
+from enum import Enum
+
+
+class Light(Enum):
+    Off = False
+    On = True
+
+
+class PlayerLights:
+    def __init__(
+            self,
+            B=Light.Off, A=Light.Off, Y=Light.Off, X=Light.Off,
+            L2=Light.Off, R2=Light.Off, L1=Light.Off, R1=Light.Off,
+            Select=Light.Off, Start=Light.Off, Command=Light.Off, HotKey=Light.Off):
+        self.B = B
+        self.A = A
+        self.Y = Y
+        self.X = X
+        self.L2 = L2
+        self.R2 = R2
+        self.L1 = L1
+        self.R1 = R1
+        self.Select = Select
+        self.Start = Start
+        self.Command = Command
+        self.HotKey = HotKey
+
+
+class CabinetLights:
+    def __init__(self, player1Lights=PlayerLights(), player2Lights=PlayerLights()):
+        self.player1Lights = player1Lights
+        self.player2Lights = player2Lights
+
+
+systemLights = {
+    'default': CabinetLights(),
+    'arcade': CabinetLights(PlayerLights(B=Light.On))
+}
 
 logging.basicConfig(
     filename='/home/pi/amiacs/Amiacs-Event-Processor.log', level=logging.INFO)
@@ -47,11 +85,18 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+logging.info('--------')
+logging.info('Arguments:')
 logging.info('event:%s', args.event)
 logging.info('system:%s', args.system)
 logging.info('emulator:%s', args.emulator)
 logging.info('rompath:%s', args.rompath)
 logging.info('commandline:%s', args.commandline)
+
+if args.system in systemLights:
+    lights = systemLights[args.system]
+else:
+    lights = systemLights['default']
 
 
 if args.event == 'game-start':
