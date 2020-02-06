@@ -38,8 +38,8 @@ class PlayerLights:
     def __init__(
             self,
             B=Light.Off, A=Light.Off, Y=Light.Off, X=Light.Off,
-            L2=Light.Off, R2=Light.Off, L1=Light.Off, R1=Light.Off,
-            Select=Light.Off, Start=Light.Off, Command=Light.Off, HotKey=Light.Off):
+            L1=Light.Off, R1=Light.Off, L2=Light.Off, R2=Light.Off,
+            HotKey=Light.Off, Select=Light.Off, Start=Light.Off, Command=Light.Off):
         self.B = B
         self.A = A
         self.Y = Y
@@ -53,11 +53,23 @@ class PlayerLights:
         self.Command = Command
         self.HotKey = HotKey
 
+    # This roughly aligns with the three rows of buttons.
+    # The indenting is intended to be used with the CabinetLights class.
+    def __repr__(self):
+        return (f'{self.__class__.__name__}(\n'
+                f'        HotKey={self.HotKey}, Select={self.Select}, Start={self.Start}, Command={self.Command},\n'
+                f'        Y={self.Y}, X={self.X}, L2={self.L2}, R2={self.R2},\n'
+                f'        B={self.B}, A={self.A}, L1={self.L1}, R1={self.R1})')
+
 
 class CabinetLights:
     def __init__(self, player1Lights=PlayerLights(), player2Lights=PlayerLights()):
         self.player1Lights = player1Lights
         self.player2Lights = player2Lights
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}(\n'
+                f'    player1Lights={self.player1Lights!r},\n    player2Lights={self.player2Lights!r})')
 
 
 systemLights = {
@@ -91,23 +103,24 @@ args = parser.parse_args()
 
 logging.info('--------')
 logging.info('Arguments:')
-logging.info('event:%s', args.event)
-logging.info('system:%s', args.system)
-logging.info('emulator:%s', args.emulator)
-logging.info('rompath:%s', args.rompath)
-logging.info('commandline:%s', args.commandline)
+logging.info('event=%s', args.event)
+logging.info('system=%s', args.system)
+logging.info('emulator=%s', args.emulator)
+logging.info('rompath=%s', args.rompath)
+logging.info('commandline=%s', args.commandline)
 
 # TODO The rompath needs to be parsed to get the rom filename for the dictionary index.
 if args.rompath in gameLights:
-    logging.info('Configuring lights for game %s', args.rompath)
+    logging.info('Configuring lights for game %s.', args.rompath)
     lights = gameLights[args.rompath]
 elif args.system in systemLights:
-    logging.info('Configuring lights for system %s', args.system)
+    logging.info('Configuring lights for system %s.', args.system)
     lights = systemLights[args.system]
 else:
-    logging.info('Configuring default lights')
+    logging.info('Configuring default lights.')
     lights = systemLights['default']
 
+logging.info(lights)
 
 if args.event == 'game-start':
     bus.write_byte(address, 1)
