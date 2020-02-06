@@ -33,6 +33,10 @@ class Light(Enum):
     Off = False
     On = True
 
+    # Not the best practice for repr, but it looks good in PlayerLights.
+    def __repr__(self):
+        return self.name
+
 
 class PlayerLights:
     def __init__(
@@ -40,26 +44,24 @@ class PlayerLights:
             B=Light.Off, A=Light.Off, Y=Light.Off, X=Light.Off,
             L1=Light.Off, R1=Light.Off, L2=Light.Off, R2=Light.Off,
             HotKey=Light.Off, Select=Light.Off, Start=Light.Off, Command=Light.Off):
+        # The order appears to be used by __dict__ which I use in __repr__.
+        # This order roughly aligns with the three rows of buttons.
         self.B = B
         self.A = A
+        self.L1 = L1
+        self.R1 = R1
         self.Y = Y
         self.X = X
         self.L2 = L2
         self.R2 = R2
-        self.L1 = L1
-        self.R1 = R1
+        self.HotKey = HotKey
         self.Select = Select
         self.Start = Start
         self.Command = Command
-        self.HotKey = HotKey
 
-    # This roughly aligns with the three rows of buttons.
-    # The indenting is intended to be used with the CabinetLights class.
+    # The indenting is designed for use with the CabinetLights class.
     def __repr__(self):
-        return (f'{self.__class__.__name__}(\n'
-                f'        HotKey={self.HotKey}, Select={self.Select}, Start={self.Start}, Command={self.Command},\n'
-                f'        Y={self.Y}, X={self.X}, L2={self.L2}, R2={self.R2},\n'
-                f'        B={self.B}, A={self.A}, L1={self.L1}, R1={self.R1})')
+        return '{}(\n        {})'.format(self.__class__.__name__, self.__dict__)
 
 
 class CabinetLights:
@@ -68,8 +70,7 @@ class CabinetLights:
         self.player2Lights = player2Lights
 
     def __repr__(self):
-        return (f'{self.__class__.__name__}(\n'
-                f'    player1Lights={self.player1Lights!r},\n    player2Lights={self.player2Lights!r})')
+        return "{}(\n    'player1Lights':{}\n    'player2Lights':{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights)
 
 
 systemLights = {
