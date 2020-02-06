@@ -110,12 +110,12 @@ logging.info('rompath=%s', args.rompath)
 logging.info('commandline=%s', args.commandline)
 
 # TODO The rompath needs to be parsed to get the rom filename for the dictionary index.
-if args.rompath in gameLights:
+if args.rompath.lower() in gameLights:
     logging.info('Configuring lights for game %s.', args.rompath)
-    lights = gameLights[args.rompath]
-elif args.system in systemLights:
+    lights = gameLights[args.rompath.lower()]
+elif args.system.lower() in systemLights:
     logging.info('Configuring lights for system %s.', args.system)
-    lights = systemLights[args.system]
+    lights = systemLights[args.system.lower()]
 else:
     logging.info('Configuring default lights.')
     lights = systemLights['default']
