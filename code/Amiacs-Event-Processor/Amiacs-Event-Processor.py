@@ -104,11 +104,11 @@ args = parser.parse_args()
 
 logging.info('--------')
 logging.info('Arguments:')
-logging.info('event=%s', args.event)
-logging.info('system=%s', args.system)
-logging.info('emulator=%s', args.emulator)
-logging.info('rompath=%s', args.rompath)
-logging.info('commandline=%s', args.commandline)
+logging.info('event:%s', args.event)
+logging.info('system:%s', args.system)
+logging.info('emulator:%s', args.emulator)
+logging.info('rompath:%s', args.rompath)
+logging.info('commandline:%s', args.commandline)
 
 # TODO The rompath needs to be parsed to get the rom filename for the dictionary index.
 if args.rompath.lower() in gameLights:
