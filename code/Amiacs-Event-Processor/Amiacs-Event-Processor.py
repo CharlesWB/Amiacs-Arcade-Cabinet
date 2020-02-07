@@ -54,9 +54,9 @@ class PlayerLights:
         self.X = X
         self.L2 = L2
         self.R2 = R2
-        self.HotKey = HotKey
         self.Select = Select
         self.Start = Start
+        self.HotKey = HotKey
         self.Command = Command
 
     # The indenting is designed for use with the CabinetLights class.
@@ -65,17 +65,83 @@ class PlayerLights:
 
 
 class CabinetLights:
-    def __init__(self, player1Lights=PlayerLights(), player2Lights=PlayerLights()):
+    def __init__(self, player1Lights=PlayerLights(), isTwoPlayer=True, player2Lights=PlayerLights()):
         self.player1Lights = player1Lights
-        self.player2Lights = player2Lights
+        if isTwoPlayer:
+            self.player2Lights = player1Lights
+        else:
+            self.player2Lights = player2Lights
 
     def __repr__(self):
         return "{}(\n    'player1Lights':{}\n    'player2Lights':{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights)
 
 
 systemLights = {
-    'default': CabinetLights(),
-    'arcade': CabinetLights(PlayerLights(B=Light.On))
+    'default': CabinetLights(PlayerLights(B=Light.On, A=Light.On), False),
+    'arcade': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'atari2600': CabinetLights(
+        PlayerLights(B=Light.On, HotKey=Light.On, Command=Light.On)),
+    'atari7800': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'c64': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, HotKey=Light.On, Command=Light.On)),
+    'coleco': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, HotKey=Light.On, Command=Light.On)),
+    'daphne': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Select=Light.On, Start=Light.On, Command=Light.On)),
+    'famicom': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'fds': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'gamegear': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'gb': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'gba': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'gbc': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'genesis': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'intellivision': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'markiii': CabinetLights(
+        PlayerLights(B=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'mastersystem': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'megadrivej': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'n64': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'neogeo': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'nes': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'nesh': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'pc': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On), False),
+    'pcengine': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'psx': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'scummvm': CabinetLights(
+        PlayerLights(B=Light.On, L2=Light.On, R2=Light.On), False),
+    'sega32x': CabinetLights(
+        PlayerLights(B=Light.On, X=Light.On, Y=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'segacd': CabinetLights(
+        PlayerLights(B=Light.On, X=Light.On, Y=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'segah': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'sg-1000': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'snes': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On)),
+    'turbografx16': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'virtualboy': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Select=Light.On, Start=Light.On, HotKey=Light.On, Command=Light.On))
 }
 
 gameLights = {
