@@ -37,6 +37,9 @@ class Light(Enum):
     def __repr__(self):
         return self.name
 
+    def I2CData(self):
+        return 1 if self == Light.On else 0
+
 
 class PlayerLights:
     def __init__(
@@ -63,6 +66,11 @@ class PlayerLights:
     def __repr__(self):
         return '{}(\n        {})'.format(self.__class__.__name__, self.__dict__)
 
+    # Returns the lights in a list. The order matches what Amiacs_Light_Controller.ino will expect.
+    def I2CData(self):
+        return [self.A.I2CData(), self.B.I2CData(), self.Y.I2CData(), self.X.I2CData(), self.L2.I2CData(), self.R2.I2CData(),
+                self.L1.I2CData(), self.R1.I2CData(), self.Select.I2CData(), self.Start.I2CData(), self.Command.I2CData(), self.HotKey.I2CData()]
+
 
 class CabinetLights:
     def __init__(self, player1Lights=PlayerLights(), isTwoPlayer=True, player2Lights=PlayerLights()):
@@ -74,6 +82,9 @@ class CabinetLights:
 
     def __repr__(self):
         return "{}(\n    'player1Lights':{}\n    'player2Lights':{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights)
+
+    def I2CData(self):
+        return self.player1Lights.I2CData() + self.player2Lights.I2CData()
 
 
 systemLights = {
@@ -176,21 +187,21 @@ logging.info('emulator:%s', args.emulator)
 logging.info('rompath:%s', args.rompath)
 logging.info('commandline:%s', args.commandline)
 
-# TODO The rompath needs to be parsed to get the rom filename for the dictionary index.
-if args.rompath.lower() in gameLights:
-    logging.info('Configuring lights for game %s.', args.rompath)
-    lights = gameLights[args.rompath.lower()]
-elif args.system.lower() in systemLights:
-    logging.info('Configuring lights for system %s.', args.system)
-    lights = systemLights[args.system.lower()]
-else:
-    logging.info('Configuring default lights.')
-    lights = systemLights['default']
-
-logging.info(lights)
-
 if args.event == 'game-start':
-    bus.write_byte(address, 1)
+    # TODO The rompath needs to be parsed to get the rom filename for the dictionary index.
+    if args.rompath.lower() in gameLights:
+        logging.info('Configuring lights for game %s.', args.rompath)
+        lights = gameLights[args.rompath.lower()]
+    elif args.system.lower() in systemLights:
+        logging.info('Configuring lights for system %s.', args.system)
+        lights = systemLights[args.system.lower()]
+    else:
+        logging.info('Configuring default lights.')
+        lights = systemLights['default']
+
+    logging.info(lights)
+
+    bus.write_i2c_block_data(address, 3, lights.I2CData())
 
 if args.event == 'game-end':
-    bus.write_byte(address, 0)
+    bus.write_byte(address, 2)
