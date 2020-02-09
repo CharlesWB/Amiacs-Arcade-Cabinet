@@ -30,7 +30,7 @@ import smbus
 from enum import Enum
 
 
-# These value match what is found in Amiacs_Light_Controller.ino.
+# These values match what is found in Amiacs_Light_Controller.ino.
 class DisplayMode(Enum):
     Starting = 0
     Attract = 1
