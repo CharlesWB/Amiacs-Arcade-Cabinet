@@ -97,6 +97,82 @@ class CabinetLights:
         return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [1 if self.usesTrackball else 0]
 
 
+trackballGames = [
+    "720.zip",
+    "aburner.zip",
+    "aburner2.zip",
+    "alien3.zip",
+    "amspdwy.zip",
+    "apb.zip",
+    "arcadecl.zip",
+    "arkanoid.zip",
+    "arkatour.zip",
+    "arknoid2.zip",
+    "arkretrn.zip",
+    "blaster.zip",
+    "block.zip",
+    "cameltry.zip",
+    "ccastles.zip",
+    "centiped.zip",
+    "chasehq.zip",
+    "chqflag.zip",
+    "contcirc.zip",
+    "countryc.zip",
+    "csprint.zip",
+    "dblaxle.zip",
+    "duckhunt.zip",
+    "esb.zip",
+    "gloc.zip",
+    "gt2k.zip",
+    "gt3d.zip",
+    "gt97.zip",
+    "gt98.zip",
+    "gt99.zip",
+    "gtclassc.zip",
+    "gtg2.zip",
+    "hangon.zip",
+    "hangonjr.zip",
+    "hcrash.zip",
+    "hotrod.zip",
+    "hydra.zip",
+    "ikari.zip",
+    "indyheat.zip",
+    "jpark.zip",
+    "konamigt.zip",
+    "krzybowl.zip",
+    "lethalen.zip",
+    "marble.zip",
+    "mhavoc.zip",
+    "milliped.zip",
+    "minigolf.zip",
+    "missile.zip",
+    "msgundam.zip",
+    "nightstr.zip",
+    "offroad.zip",
+    "omegrace.zip",
+    "opwolf.zip",
+    "othunder.zip",
+    "outrun.zip",
+    "paperboy.zip",
+    "polepos.zip",
+    "polepos2.zip",
+    "rachero.zip",
+    "redbaron.zip",
+    "roadblst.zip",
+    "sbrkout.zip",
+    "shangon.zip",
+    "sharrier.zip",
+    "spyhunt.zip",
+    "spyhunt2.zip",
+    "ssprint.zip",
+    "startrek.zip",
+    "starwars.zip",
+    "superchs.zip",
+    "tempest.zip",
+    "toutrun.zip",
+    "turkhunt.zip",
+    "usclssic.zip"]
+
 systemLights = {
     'default': CabinetLights(PlayerLights(B=Light.On, A=Light.On), False),
     'arcade': CabinetLights(
@@ -212,7 +288,7 @@ if args.event == 'game-start':
         logging.info('Configuring default lights.')
         lights = systemLights['default']
 
-    if romname.lower() == "720.zip":
+    if romname.lower() in trackballGames:
         lights.usesTrackball = True
 
     logging.info(lights)
