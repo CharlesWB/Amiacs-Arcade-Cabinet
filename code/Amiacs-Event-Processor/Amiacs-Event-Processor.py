@@ -190,12 +190,12 @@ args = parser.parse_args()
 
 logging.info('--------')
 logging.info('Arguments:')
-logging.info('event:%s', args.event)
-logging.info('system:%s', args.system)
-logging.info('emulator:%s', args.emulator)
-logging.info('rom name:%s', os.path.basename(args.rompath))
-logging.info('rompath:%s', args.rompath)
-logging.info('commandline:%s', args.commandline)
+logging.info('event: %s', args.event)
+logging.info('system: %s', args.system)
+logging.info('emulator: %s', args.emulator)
+logging.info('rom name: %s', os.path.basename(args.rompath))
+logging.info('rompath: %s', args.rompath)
+logging.info('commandline: %s', args.commandline)
 
 if args.event == 'game-start':
     if os.path.basename(args.rompath).lower() in gameLights:
