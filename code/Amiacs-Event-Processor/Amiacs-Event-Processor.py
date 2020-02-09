@@ -166,7 +166,7 @@ systemLights = {
 
 gameLights = {
     'asteroid.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, HotKey=Light.On, Command=Light.On))
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, HotKey=Light.On, Command=Light.On), False)
 }
 
 logging.basicConfig(
