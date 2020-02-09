@@ -212,7 +212,7 @@ if args.event == 'game-start':
         logging.info('Configuring default lights.')
         lights = systemLights['default']
 
-    if romname.lower() == "720.zip"
+    if romname.lower() == "720.zip":
         lights.usesTrackball = True
 
     logging.info(lights)
