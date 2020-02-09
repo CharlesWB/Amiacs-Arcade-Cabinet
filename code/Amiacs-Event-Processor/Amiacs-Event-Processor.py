@@ -165,7 +165,8 @@ systemLights = {
 }
 
 gameLights = {
-    '88games.zip': CabinetLights()
+    'asteroid.zip': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, HotKey=Light.On, Command=Light.On))
 }
 
 logging.basicConfig(
