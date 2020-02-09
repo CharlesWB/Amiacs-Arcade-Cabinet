@@ -212,7 +212,7 @@ if args.event == 'game-start':
 
     logging.info(lights)
 
-    bus.write_i2c_block_data(address, DisplayMode.Game_Running, lights.I2CData())
+    bus.write_i2c_block_data(address, DisplayMode.Game_Running.value, lights.I2CData())
 
 if args.event == 'game-end':
     bus.write_byte(address, DisplayMode.Emulation_Station)
