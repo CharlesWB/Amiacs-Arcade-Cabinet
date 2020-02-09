@@ -243,7 +243,9 @@ systemLights = {
 
 gameLights = {
     'asteroid.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, HotKey=Light.On, Command=Light.On), False)
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, HotKey=Light.On, Command=Light.On), False),
+    'centiped.zip': CabinetLights(
+        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, HotKey=Light.On, Command=Light.On), False)
 }
 
 logging.basicConfig(
