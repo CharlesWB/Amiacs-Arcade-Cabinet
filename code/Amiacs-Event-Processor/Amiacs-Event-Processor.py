@@ -82,9 +82,9 @@ class PlayerLights:
 
 
 class CabinetLights:
-    def __init__(self, player1Lights=PlayerLights(), isTwoPlayer=True, player2Lights=PlayerLights()):
+    def __init__(self, player1Lights=PlayerLights(), isTwoControllerGame=True, player2Lights=PlayerLights()):
         self.player1Lights = player1Lights
-        if isTwoPlayer:
+        if isTwoControllerGame:
             self.player2Lights = player1Lights
         else:
             self.player2Lights = player2Lights
