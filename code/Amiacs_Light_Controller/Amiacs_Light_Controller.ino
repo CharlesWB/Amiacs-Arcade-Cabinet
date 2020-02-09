@@ -402,10 +402,20 @@ void receiveEvent(int byteCount) {
 
       if(displayMode == GAME_RUNNING) {
         if(b == 1) {
-          playerLights[playerLight] = playerLightColor;
+          if(playerLight < NUM_PLAYER_LIGHTS) {
+            playerLights[playerLight] = playerLightColor;
+          }
+          else {
+            fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+          }
         }
         else {
-          playerLights[playerLight] = CRGB::Black;
+          if(playerLight < NUM_PLAYER_LIGHTS) {
+            playerLights[playerLight] = CRGB::Black;
+          }
+          else {
+            fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+          }
         }
         playerLight++;
       }

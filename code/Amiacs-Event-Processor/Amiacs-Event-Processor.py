@@ -82,18 +82,19 @@ class PlayerLights:
 
 
 class CabinetLights:
-    def __init__(self, player1Lights=PlayerLights(), isTwoControllerGame=True, player2Lights=PlayerLights()):
+    def __init__(self, player1Lights=PlayerLights(), isTwoControllerGame=True, player2Lights=PlayerLights(), usesTrackball=False):
         self.player1Lights = player1Lights
         if isTwoControllerGame:
             self.player2Lights = player1Lights
         else:
             self.player2Lights = player2Lights
+        self.usesTrackball = usesTrackball
 
     def __repr__(self):
-        return "{}(\n    'player1Lights':{}\n    'player2Lights':{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights)
+        return "{}(\n    'player1Lights':{}\n    'player2Lights':{}\n    usesTrackball:{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights, self.usesTrackball)
 
     def I2CData(self):
-        return self.player1Lights.I2CData() + self.player2Lights.I2CData()
+        return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [1 if self.usesTrackball else 0]
 
 
 systemLights = {
@@ -210,6 +211,9 @@ if args.event == 'game-start':
     else:
         logging.info('Configuring default lights.')
         lights = systemLights['default']
+
+    if romname.lower() == "720.zip"
+        lights.usesTrackball = True
 
     logging.info(lights)
 
