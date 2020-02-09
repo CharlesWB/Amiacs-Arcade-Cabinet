@@ -29,6 +29,14 @@ import smbus
 from enum import Enum
 
 
+# These value match what is found in Amiacs_Light_Controller.ino.
+class DisplayMode(Enum):
+    Starting = 0
+    Attract = 1
+    Emulation_Station = 2
+    Game_Running = 3
+
+
 class Light(Enum):
     Off = False
     On = True
@@ -201,7 +209,7 @@ if args.event == 'game-start':
 
     logging.info(lights)
 
-    bus.write_i2c_block_data(address, 3, lights.I2CData())
+    bus.write_i2c_block_data(address, DisplayMode.Game_Running, lights.I2CData())
 
 if args.event == 'game-end':
-    bus.write_byte(address, 2)
+    bus.write_byte(address, DisplayMode.Emulation_Station)

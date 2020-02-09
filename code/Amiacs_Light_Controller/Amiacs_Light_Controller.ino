@@ -99,18 +99,23 @@ CRGB trackballs[NUM_TRACKBALLS];
 CRGB ambientLights[NUM_AMBIENT_LEDS];
 
 
+// These value match what is found in Amiacs_Light_Controller.py.
 enum DisplayMode {
   // Initial mode while system starts.
-  STARTING,
+  STARTING = 0,
   // Mode used when Emulation Station displays a screensaver.
-  ATTRACT,
+  ATTRACT = 1,
   // Mode used when the Emulation Station is running.
-  EMULATION_STATION,
+  EMULATION_STATION = 2,
   // Mode used when a game system is running.
-  GAME_RUNNING,
+  GAME_RUNNING = 3,
 };
 
 DisplayMode displayMode = STARTING;
+
+// For each DisplayMode, identify if an initialization must be done while running in loop.
+// NOTE: This is manually sized to match the number of DisplayModes.
+int initializeDisplayMode[] = {false, true, true, true};
 
 enum AttractDisplayMode {
   RANDOM_BLINK,
@@ -161,6 +166,8 @@ void loop() {
     case EMULATION_STATION:
       LoopEmulationStationDisplayMode();
       break;
+    case GAME_RUNNING:
+      break;
   }
 }
 
@@ -203,20 +210,19 @@ void LoopStartingDisplayMode() {
   }
   else {
     displayMode = EMULATION_STATION;
+    initializeDisplayMode[EMULATION_STATION] = true;
   }
 }
 
 void LoopEmulationStationDisplayMode() {
-  static bool initializeDisplayMode = true;
-
   static unsigned long startTime = millis();
 
-  if(initializeDisplayMode) {
+  if(initializeDisplayMode[EMULATION_STATION]) {
     startTime = millis();
 
     EmulationStationDisplayModeInitialize();
 
-    initializeDisplayMode = false;
+    initializeDisplayMode[EMULATION_STATION] = false;
   }
 
   // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
@@ -225,7 +231,7 @@ void LoopEmulationStationDisplayMode() {
   // This will probably be confusing when the player is actively using Emulation Station.
   if((millis() - startTime) > 300000) {
     displayMode = ATTRACT;
-    initializeDisplayMode = true;
+    initializeDisplayMode[ATTRACT] = true;
   }
 }
 
@@ -247,18 +253,16 @@ void EmulationStationDisplayModeInitialize() {
 }
 
 void LoopAttractDisplayMode() {
-  static bool initializeDisplayMode = true;
-
   static unsigned long startTime = millis();
 
   unsigned long now = millis() - startTime;
 
-  if(initializeDisplayMode) {
+  if(initializeDisplayMode[ATTRACT]) {
     startTime = millis();
 
     AttractDisplayModeInitialize();
 
-    initializeDisplayMode = false;
+    initializeDisplayMode[ATTRACT] = false;
   }
 
   if((millis() - startTime) <= 60000) {
@@ -282,7 +286,7 @@ void LoopAttractDisplayMode() {
     // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
     // This will probably be confusing when the player is actively using Emulation Station.
     displayMode = EMULATION_STATION;
-    initializeDisplayMode = true;
+    initializeDisplayMode[EMULATION_STATION] = true;
   }
 }
 
@@ -386,9 +390,32 @@ void AttractDisplayModeRandomBlink() {
 }
 
 void receiveEvent(int byteCount) {
-  byte command = Wire.read();
-//  Serial.print("Command: ");
-//  Serial.println(command);
+  if(Wire.available()) {
+    displayMode = (DisplayMode)Wire.read();
+    initializeDisplayMode[displayMode] = true;
+    Serial.print(displayMode);
+    Serial.print(" ");
+
+    int playerLight = 0;
+    while(Wire.available()) {
+      byte b = Wire.read();
+
+      if(displayMode == GAME_RUNNING) {
+        if(b == 1) {
+          playerLights[playerLight] = playerLightColor;
+        }
+        else {
+          playerLights[playerLight] = CRGB::Black;
+        }
+        playerLight++;
+      }
+      
+      Serial.print(b);
+      Serial.print(" ");
+    }
+    Serial.println("");
+  }
+  FastLED.show();
 }
 
 void SetLightsToSystemDefaultColor() {
