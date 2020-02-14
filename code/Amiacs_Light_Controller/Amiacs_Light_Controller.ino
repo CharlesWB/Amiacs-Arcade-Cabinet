@@ -13,6 +13,7 @@ Ideas:
 #include "SingleTriColorLEDController.h"
 #include "TLC5947SingleColorController.h"
 
+
 // General definitions.
 // Can only be 2. No other values have been implemented.
 #define NUM_PLAYERS 2
@@ -21,7 +22,6 @@ Ideas:
 // Can only be 1. No other values have been implemented.
 #define NUM_AMBIENT_LEDS 1
 
-#define SLAVE_ADDRESS 0x07
 
 // Pin definitions.
 #define PLAYER_LIGHTS_LATCH_PIN 10
@@ -34,6 +34,7 @@ Ideas:
 #define MARQUEE_LIGHT_PIN 9
 #define AMBIENT_LIGHT_DATA_PIN 11
 #define AMBIENT_LIGHT_CLOCK_PIN 13
+
 
 // Player button pin numbers for the Adafruit TLC5947.
 #define NUM_PLAYER_LIGHTS 24
@@ -99,6 +100,13 @@ CRGB trackballs[NUM_TRACKBALLS];
 CRGB ambientLights[NUM_AMBIENT_LEDS];
 
 
+// I2C communications between the Arduino and the Raspberry Pi.
+#define SLAVE_ADDRESS 0x07
+#define COMMAND_ARRAY_SIZE NUM_PLAYER_LIGHTS + NUM_TRACKBALLS
+byte command = 0;
+byte commandData[COMMAND_ARRAY_SIZE];
+
+
 // These value match what is found in Amiacs_Light_Controller.py.
 enum DisplayMode {
   // Initial mode while system starts.
@@ -144,7 +152,7 @@ void setup() {
   SetupMarqueeLights();
 
   Wire.begin(SLAVE_ADDRESS);
-  Wire.onReceive(receiveEvent);
+  Wire.onReceive(ReceiveEvent);
 
   SetLightsToSystemDefaultColor();
 
@@ -167,6 +175,7 @@ void loop() {
       LoopEmulationStationDisplayMode();
       break;
     case GAME_RUNNING:
+      LoopGameRunningDisplayMode();
       break;
   }
 }
@@ -248,6 +257,34 @@ void EmulationStationDisplayModeInitialize() {
   playerLights[PLAYER2_LIGHT_HOTKEY] = CRGB::Black;
 
   fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+
+  FastLED.show();
+}
+
+void LoopGameRunningDisplayMode() {
+  if(initializeDisplayMode[GAME_RUNNING]) {
+    GameRunningDisplayModeInitialize();
+
+    initializeDisplayMode[GAME_RUNNING] = false;
+  }
+}
+
+void GameRunningDisplayModeInitialize() {
+  for(int light = 0; light < NUM_PLAYER_LIGHTS; light++) {
+    if(commandData[light] == 1) {
+      playerLights[light] = playerLightColor;
+    }
+    else {
+      playerLights[light] = CRGB::Black;
+    }
+  }
+
+  if(commandData[COMMAND_ARRAY_SIZE - 1] == 1) {
+    fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+  }
+  else {
+    fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+  }
 
   FastLED.show();
 }
@@ -389,43 +426,29 @@ void AttractDisplayModeRandomBlink() {
   }
 }
 
-void receiveEvent(int byteCount) {
+void ReceiveEvent(int byteCount) {
   if(Wire.available()) {
-    displayMode = (DisplayMode)Wire.read();
-    initializeDisplayMode[displayMode] = true;
-    Serial.print(displayMode);
-    Serial.print(" ");
+    command = Wire.read();
 
-    int playerLight = 0;
+    memset(commandData, 0, sizeof(commandData));
+
+    int dataIndex = 0;
     while(Wire.available()) {
-      byte b = Wire.read();
+      byte data = Wire.read();
 
-      if(displayMode == GAME_RUNNING) {
-        if(b == 1) {
-          if(playerLight < NUM_PLAYER_LIGHTS) {
-            playerLights[playerLight] = playerLightColor;
-          }
-          else {
-            fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
-          }
-        }
-        else {
-          if(playerLight < NUM_PLAYER_LIGHTS) {
-            playerLights[playerLight] = CRGB::Black;
-          }
-          else {
-            fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
-          }
-        }
-        playerLight++;
+      // The command data array is a certain size. I'm not going to
+      // assume the data size matches the array size. Any excess data
+      // will simply be read and ignored.
+      if(dataIndex < COMMAND_ARRAY_SIZE) {
+        commandData[dataIndex] = data;
       }
-      
-      Serial.print(b);
-      Serial.print(" ");
+
+      dataIndex++;
     }
-    Serial.println("");
+
+    displayMode = (DisplayMode)command;
+    initializeDisplayMode[displayMode] = true;
   }
-  FastLED.show();
 }
 
 void SetLightsToSystemDefaultColor() {
