@@ -2,9 +2,6 @@
 To Do:
 - How should the color palette index be handled? Such as in CycleTrackballByPalette.
 - Attract display mode should dim over time.
-
-Ideas:
-- DisplayMode may turn into the command byte of I2C. It would define the action to be done. Such as set or enable.
 */
 
 #include <Adafruit_TLC5947.h>
@@ -179,6 +176,7 @@ void loop() {
       break;
   }
 }
+
 
 // The display mode during startup is about verifying that all the lights work.
 // The lights are expected to have been turned on to their default colors during setup.
@@ -426,6 +424,7 @@ void AttractDisplayModeRandomBlink() {
   }
 }
 
+
 void ReceiveEvent(int byteCount) {
   if(Wire.available()) {
     command = Wire.read();
@@ -451,12 +450,16 @@ void ReceiveEvent(int byteCount) {
   }
 }
 
+
+// *** Cabinet Lights ***
+
 void SetLightsToSystemDefaultColor() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
   fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
   FastLED.show();
 }
+
 
 // *** Player Lights ***
 
@@ -465,19 +468,6 @@ void SetupPlayerLights() {
   FastLED.addLeds(&playerLightController, playerLights, NUM_PLAYER_LIGHTS);
 }
 
-void SetAllPlayerLightsBrightness(uint8_t brightness) {
-  for(int pin = 0; pin < NUM_PLAYER_LIGHTS; pin++) {
-    // playerLightController.setPWM(pin, brightness);
-  }
-}
-
-void TurnOnAllPlayerLights() {
-  fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
-}
-
-void TurnOffAllPlayerLights() {
-  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
-}
 
 // *** Trackball Lights ***
 
@@ -507,11 +497,13 @@ void CycleTrackballByPlayerColor() {
   }
 }
 
+
 // *** Ambient Lights ***
 
 void SetupAmbientLights() {
   FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN>(ambientLights, NUM_AMBIENT_LEDS).setCorrection(TypicalLEDStrip);
 }
+
 
 // *** Marquee Lights ***
 
@@ -525,6 +517,7 @@ void CycleMarqueeBrightness() {
   analogWrite(MARQUEE_LIGHT_PIN, 255);
   marqueeBrightness -= 4;
 }
+
 
 // *** Debug ***
 
