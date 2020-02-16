@@ -260,7 +260,9 @@ gameLights = {
     'centiped.zip': CabinetLights(
         PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
     'milliped.zip': CabinetLights(
-        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False)
+        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
+    'spyhunt.zip': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False)
 }
 
 logging.basicConfig(
