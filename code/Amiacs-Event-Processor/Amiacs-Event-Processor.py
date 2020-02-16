@@ -225,7 +225,7 @@ systemLights = {
     'n64': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'neogeo': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'nes': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'nesh': CabinetLights(
