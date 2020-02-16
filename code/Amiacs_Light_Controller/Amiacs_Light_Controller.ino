@@ -263,7 +263,7 @@ void LoopGameRunningDisplayMode() {
 
 void GameRunningDisplayModeInitialize() {
   for(int light = 0; light < NUM_PLAYER_LIGHTS; light++) {
-    if(commandData[light] == 1) {
+    if(commandData[light] != 0) {
       playerLights[light] = playerLightColor;
     }
     else {
@@ -271,7 +271,7 @@ void GameRunningDisplayModeInitialize() {
     }
   }
 
-  if(commandData[COMMAND_ARRAY_SIZE - 1] == 1) {
+  if(commandData[COMMAND_ARRAY_SIZE - 1] != 0) {
     fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   }
   else {
