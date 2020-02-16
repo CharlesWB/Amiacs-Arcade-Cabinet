@@ -258,7 +258,7 @@ gameLights = {
     'asteroid.zip': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
     'centiped.zip': CabinetLights(
-        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
+        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
     'milliped.zip': CabinetLights(
         PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
     'spyhunt.zip': CabinetLights(
