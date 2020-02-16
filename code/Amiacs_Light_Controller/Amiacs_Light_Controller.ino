@@ -1,7 +1,7 @@
 /*
-To Do:
-- How should the color palette index be handled? Such as in CycleTrackballByPalette.
-- Attract display mode should dim over time.
+Ideas:
+- Cycling the play color palette index should be by time.
+- Control brightness with a potentiometer.
 */
 
 #include <Adafruit_TLC5947.h>
@@ -82,15 +82,14 @@ int playerPrimaryLightLayout[PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS][PLAYER_PRIMARY_L
 };
 
 // Although the color of the player lights is defined by the button plastic,
-// for FastLED the player light color is white.
+// for FastLED the player light color is white so that it is fully lit.
 const CHSV playerLightColor = CHSV(0, 0, 255);
 
 const CHSV defaultSystemColor = CHSV(HUE_ORANGE, 255, 255);
 CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
 
-// The intent for this palette is to cycle through the player colors while a game is playing.
-// Because we don't know when a specific player is playing so we show both colors.
-CRGBPalette16 trackballPlayersPalette = CRGBPalette16(playerColors[0], playerColors[1]);
+// The intent for this palette is to cycle through the player colors.
+CRGBPalette16 playerColorPalette = CRGBPalette16(playerColors[0], playerColors[1]);
 
 CRGB playerLights[NUM_PLAYER_LIGHTS];
 CRGB trackballs[NUM_TRACKBALLS];
@@ -140,7 +139,6 @@ void setup() {
   // We'll wait for that so that the TLC5947 will be properly initialized.
   delay(5000);
 
-  // TODO This could be read from a potentiometer.
   FastLED.setBrightness(255);
 
   SetupPlayerLights();
@@ -157,10 +155,6 @@ void setup() {
 }
 
 void loop() {
-  // Temporary testing until display modes are implemented.
-  // CycleTrackballByPalette();
-  // CycleMarqueeBrightness();
-
   switch(displayMode) {
     case STARTING:
       LoopStartingDisplayMode();
@@ -180,7 +174,7 @@ void loop() {
 
 // The display mode during startup is about verifying that all the lights work.
 // The lights are expected to have been turned on to their default colors during setup.
-// This will fade the brightness in and out and an increasing rate then pause before switching to attract mode.
+// This will fade the brightness in and out at an increasing rate then pause before switching to attract mode.
 // The typical time from power on to Emulation Station start is about one minute.
 void LoopStartingDisplayMode() {
   static unsigned long startTime = millis();
@@ -477,24 +471,12 @@ void SetupTrackballLights() {
 }
 
 void CycleTrackballByPalette() {
-  static uint8_t trackballPlayersPaletteIndex = 128;
+  static uint8_t playerColorPaletteIndex = 128;
 
   // Although ColorFromPalette takes 0 to 255, CRGBPalette16 is an array of 16 so after 240 (15 x 16) it
   // appears to be rapidly cycling back to the start. To work around this we'll only use 0 to 240.
-  trackballs[0] = ColorFromPalette(trackballPlayersPalette, scale8(cos8(trackballPlayersPaletteIndex), 240));
-  trackballPlayersPaletteIndex += 4;
-}
-
-void CycleTrackballByPlayerColor() {
-  static uint8_t trackballPlayerIndex = 0;
-
-  trackballs[0] = playerColors[trackballPlayerIndex];
-
-  trackballPlayerIndex++;
-  if(trackballPlayerIndex >= NUM_PLAYERS)
-  {
-    trackballPlayerIndex = 0;
-  }
+  fill_solid(trackballs, NUM_TRACKBALLS, ColorFromPalette(playerColorPalette, scale8(cos8(playerColorPaletteIndex), 240)));
+  playerColorPaletteIndex += 1;
 }
 
 
