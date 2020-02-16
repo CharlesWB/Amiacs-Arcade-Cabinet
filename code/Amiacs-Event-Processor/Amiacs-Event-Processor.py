@@ -84,10 +84,23 @@ class PlayerLights:
 class CabinetLights:
     def __init__(self, player1Lights=PlayerLights(), isTwoControllerGame=True, player2Lights=PlayerLights(), usesTrackball=False):
         self.player1Lights = player1Lights
+        self.player2Lights = player2Lights
+
+        # When this is a two controller game, we'll automatically copy the lights from player one to simplify construction.
+        # Excluding hotkey and command because they are not normal player buttons.
+        # For example, the arcade system uses player one's hotkey and command, but not player two's.
         if isTwoControllerGame:
-            self.player2Lights = player1Lights
-        else:
-            self.player2Lights = player2Lights
+            self.player2Lights.B = player1Lights.B
+            self.player2Lights.A = player1Lights.A
+            self.player2Lights.L1 = player1Lights.L1
+            self.player2Lights.R1 = player1Lights.R1
+            self.player2Lights.Y = player1Lights.Y
+            self.player2Lights.X = player1Lights.X
+            self.player2Lights.L2 = player1Lights.L2
+            self.player2Lights.R2 = player1Lights.R2
+            self.player2Lights.Select = player1Lights.Select
+            self.player2Lights.Start = player1Lights.Start
+
         self.usesTrackball = usesTrackball
 
     def __repr__(self):
