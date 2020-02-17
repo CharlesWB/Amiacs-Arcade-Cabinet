@@ -97,8 +97,16 @@ CRGB ambientLights[NUM_AMBIENT_LEDS];
 
 
 // I2C communications between the Arduino and the Raspberry Pi.
+// Data format:
+// - 1 byte for the command. The command value is the same as the DisplayMode enum.
+// - Data for game running display mode:
+//   - 12 bytes for player 1 lights. In same order as Adafruit TLC5947 pins defined above. Non-zero value indicates light is on.
+//   - 12 bytes for player 2 lights. In same order as Adafruit TLC5947 pins defined above. Non-zero value indicates light is on.
+//   - 1 byte for trackball. Non-zero value indicates trackball light is on.
+//   - 1 byte to indicate that the game has two separate player controls.
+// Any additional data is read but ignored.
 #define SLAVE_ADDRESS 0x07
-#define COMMAND_ARRAY_SIZE NUM_PLAYER_LIGHTS + NUM_TRACKBALLS
+#define COMMAND_ARRAY_SIZE NUM_PLAYER_LIGHTS + NUM_TRACKBALLS + 1
 byte command = 0;
 byte commandData[COMMAND_ARRAY_SIZE];
 
@@ -259,6 +267,10 @@ void LoopGameRunningDisplayMode() {
 
     initializeDisplayMode[GAME_RUNNING] = false;
   }
+
+  if(commandData[COMMAND_ARRAY_SIZE - 1] != 0) {
+    CycleTrackballByPalette();
+  }
 }
 
 void GameRunningDisplayModeInitialize() {
@@ -271,8 +283,8 @@ void GameRunningDisplayModeInitialize() {
     }
   }
 
-  if(commandData[COMMAND_ARRAY_SIZE - 1] != 0) {
-    fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+  if(commandData[COMMAND_ARRAY_SIZE - 2] != 0) {
+    fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
   }
   else {
     fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
@@ -471,12 +483,22 @@ void SetupTrackballLights() {
 }
 
 void CycleTrackballByPalette() {
+  static unsigned long startTime = millis();
+
   static uint8_t playerColorPaletteIndex = 128;
 
-  // Although ColorFromPalette takes 0 to 255, CRGBPalette16 is an array of 16 so after 240 (15 x 16) it
-  // appears to be rapidly cycling back to the start. To work around this we'll only use 0 to 240.
-  fill_solid(trackballs, NUM_TRACKBALLS, ColorFromPalette(playerColorPalette, scale8(cos8(playerColorPaletteIndex), 240)));
-  playerColorPaletteIndex += 1;
+  if(millis() - startTime > 70) {
+    // Although ColorFromPalette takes 0 to 255, CRGBPalette16 is an array of 16 so after 240 (15 x 16) it
+    // appears to be rapidly cycling back to the start. To work around this we'll only use 0 to 240.
+    fill_solid(trackballs, NUM_TRACKBALLS, ColorFromPalette(playerColorPalette, scale8(cos8(playerColorPaletteIndex), 240)));
+
+    FastLED[1].showLeds();
+    // FastLED.show();
+
+    playerColorPaletteIndex += 1;
+
+    startTime = millis();
+  }
 }
 
 
