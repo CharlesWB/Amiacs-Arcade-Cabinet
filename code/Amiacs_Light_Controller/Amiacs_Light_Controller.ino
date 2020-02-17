@@ -268,7 +268,7 @@ void LoopGameRunningDisplayMode() {
     initializeDisplayMode[GAME_RUNNING] = false;
   }
 
-  if(commandData[COMMAND_ARRAY_SIZE - 1] != 0) {
+  if(commandData[COMMAND_ARRAY_SIZE - 2] != 0 && commandData[COMMAND_ARRAY_SIZE - 1] != 0) {
     CycleTrackballByPalette();
   }
 }
