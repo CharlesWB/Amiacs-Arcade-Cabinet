@@ -86,6 +86,8 @@ class CabinetLights:
         self.player1Lights = player1Lights if player1Lights is not None else PlayerLights()
         self.player2Lights = player2Lights if player2Lights is not None else PlayerLights()
 
+        self.isTwoControllerGame = isTwoControllerGame
+
         # When this is a two controller game, we'll automatically copy the lights from player one to simplify construction.
         # Excluding hotkey and command because they are not normal player buttons.
         # For example, the arcade system uses player one's hotkey and command, but not player two's.
@@ -107,7 +109,7 @@ class CabinetLights:
         return "{}(\n    'player1Lights':{}\n    'player2Lights':{}\n    usesTrackball:{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights, self.usesTrackball)
 
     def I2CData(self):
-        return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [1 if self.usesTrackball else 0]
+        return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [1 if self.usesTrackball else 0] + [1 if self.isTwoControllerGame else 0]
 
 
 trackballGames = [
