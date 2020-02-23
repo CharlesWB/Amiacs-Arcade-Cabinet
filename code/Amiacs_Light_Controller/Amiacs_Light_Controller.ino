@@ -2,6 +2,7 @@
 Ideas:
 - Cycling the play color palette index should be by time.
 - Control brightness with a potentiometer.
+- I2C command data and related methods could be a separate class.
 */
 
 #include <Adafruit_TLC5947.h>
@@ -107,6 +108,8 @@ CRGB ambientLights[NUM_AMBIENT_LEDS];
 // Any additional data is read but ignored.
 #define SLAVE_ADDRESS 0x07
 #define COMMAND_ARRAY_SIZE NUM_PLAYER_LIGHTS + NUM_TRACKBALLS + 1
+#define COMMAND_TRACKBALL_INDEX COMMAND_ARRAY_SIZE - 2
+#define COMMAND_TWO_CONTROLS_INDEX COMMAND_ARRAY_SIZE - 1
 byte command = 0;
 byte commandData[COMMAND_ARRAY_SIZE];
 
@@ -155,7 +158,7 @@ void setup() {
   SetupMarqueeLights();
 
   Wire.begin(SLAVE_ADDRESS);
-  Wire.onReceive(ReceiveEvent);
+  Wire.onReceive(CommandReceiveEvent);
 
   SetLightsToSystemDefaultColor();
 
@@ -268,7 +271,7 @@ void LoopGameRunningDisplayMode() {
     initializeDisplayMode[GAME_RUNNING] = false;
   }
 
-  if(commandData[COMMAND_ARRAY_SIZE - 2] != 0 && commandData[COMMAND_ARRAY_SIZE - 1] != 0) {
+  if(CommandIsTrackballOn() && CommandIsTwoControllerGame()) {
     CycleTrackballByPalette();
   }
 }
@@ -283,7 +286,7 @@ void GameRunningDisplayModeInitialize() {
     }
   }
 
-  if(commandData[COMMAND_ARRAY_SIZE - 2] != 0) {
+  if(CommandIsTrackballOn()) {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
   }
   else {
@@ -431,7 +434,7 @@ void AttractDisplayModeRandomBlink() {
 }
 
 
-void ReceiveEvent(int byteCount) {
+void CommandReceiveEvent(int byteCount) {
   if(Wire.available()) {
     command = Wire.read();
 
@@ -454,6 +457,14 @@ void ReceiveEvent(int byteCount) {
     displayMode = (DisplayMode)command;
     initializeDisplayMode[displayMode] = true;
   }
+}
+
+bool CommandIsTrackballOn() {
+  return commandData[COMMAND_TRACKBALL_INDEX] != 0;
+}
+
+bool CommandIsTwoControllerGame() {
+  return commandData[COMMAND_TWO_CONTROLS_INDEX] != 0;
 }
 
 
