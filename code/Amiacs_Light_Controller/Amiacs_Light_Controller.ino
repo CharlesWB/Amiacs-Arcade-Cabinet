@@ -89,8 +89,13 @@ const CHSV playerLightColor = CHSV(0, 0, 255);
 const CHSV defaultSystemColor = CHSV(HUE_ORANGE, 255, 255);
 CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
 
-// The intent for this palette is to cycle through the player colors.
-CRGBPalette16 playerColorPalette = CRGBPalette16(playerColors[0], playerColors[1]);
+// The intent for this palette is to cycle between the player colors.
+CRGBPalette16 playerColorPalette = CRGBPalette16(
+  playerColors[0], playerColors[0], playerColors[0], playerColors[0],
+  playerColors[0], playerColors[0], playerColors[0], playerColors[0],
+  playerColors[1], playerColors[1], playerColors[1], playerColors[1],
+  playerColors[1], playerColors[1], playerColors[1], playerColors[1]
+);
 
 CRGB playerLights[NUM_PLAYER_LIGHTS];
 CRGB trackballs[NUM_TRACKBALLS];
@@ -272,7 +277,7 @@ void LoopGameRunningDisplayMode() {
   }
 
   if(CommandIsTrackballOn() && CommandIsTwoControllerGame()) {
-    CycleTrackballByPalette();
+    CycleTrackballBetweenPlayerColors();
   }
 }
 
@@ -493,20 +498,19 @@ void SetupTrackballLights() {
   FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
 }
 
-void CycleTrackballByPalette() {
+void CycleTrackballBetweenPlayerColors() {
   static unsigned long startTime = millis();
 
-  static uint8_t playerColorPaletteIndex = 128;
+  static uint8_t playerColorPaletteIndex = 0;
 
-  if(millis() - startTime > 70) {
-    // Although ColorFromPalette takes 0 to 255, CRGBPalette16 is an array of 16 so after 240 (15 x 16) it
-    // appears to be rapidly cycling back to the start. To work around this we'll only use 0 to 240.
-    fill_solid(trackballs, NUM_TRACKBALLS, ColorFromPalette(playerColorPalette, scale8(cos8(playerColorPaletteIndex), 240)));
+  // 40 ms per step is approximately 10 seconds over 256 steps.
+  if(millis() - startTime > 40) {
+    fill_solid(trackballs, NUM_TRACKBALLS, ColorFromPalette(playerColorPalette, playerColorPaletteIndex));
 
     FastLED[1].showLeds();
     // FastLED.show();
 
-    playerColorPaletteIndex += 1;
+    playerColorPaletteIndex++;
 
     startTime = millis();
   }
