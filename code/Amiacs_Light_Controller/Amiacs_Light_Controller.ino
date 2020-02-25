@@ -1,8 +1,10 @@
 /*
 Ideas:
-- Cycling the play color palette index should be by time.
 - Control brightness with a potentiometer.
 - I2C command data and related methods could be a separate class.
+- The player buttons flicker when using FastLED.show() and no changes were made.
+  Is that an error in TLC5947SingleColorController or normal? Right now this code gets
+  around this by not calling show() when no colors change.
 */
 
 #include <Adafruit_TLC5947.h>
