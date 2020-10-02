@@ -8,7 +8,7 @@
 CRGB leds[NUM_LEDS];
 
 void setup() {
-  FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN>(leds, NUM_LEDS);
+  FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RBG>(leds, NUM_LEDS);
 
   leds[0] = CRGB::Blue;
   leds[1] = CRGB::Red;
