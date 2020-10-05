@@ -217,6 +217,7 @@ void LoopStartingDisplayMode() {
     if(playerLights[0] != CHSV(playerLightColor.hue, playerLightColor.sat, brightness)) {
       fill_solid(playerLights, NUM_PLAYER_LIGHTS, CHSV(playerLightColor.hue, playerLightColor.sat, brightness));
       fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
+      fill_solid(ambientLights, NUM_AMBIENT_LEDS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
       FastLED.show();
     }
   }
@@ -224,6 +225,7 @@ void LoopStartingDisplayMode() {
     if(playerLights[0] != playerLightColor) {
       fill_solid(playerLights, NUM_PLAYER_LIGHTS, playerLightColor);
       fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
+      fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
       FastLED.show();
     }
   }
