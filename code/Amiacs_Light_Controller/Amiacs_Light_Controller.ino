@@ -19,8 +19,8 @@ Ideas:
 #define NUM_PLAYERS 2
 // Can only be 1. No other values have been implemented.
 #define NUM_TRACKBALLS 1
-// Can only be 1. No other values have been implemented.
-#define NUM_AMBIENT_LEDS 1
+// Can only be 2. No other values have been implemented.
+#define NUM_AMBIENT_LEDS 2
 
 
 // Pin definitions.
@@ -522,7 +522,7 @@ void CycleTrackballBetweenPlayerColors() {
 // *** Ambient Lights ***
 
 void SetupAmbientLights() {
-  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN>(ambientLights, NUM_AMBIENT_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN, RBG>(ambientLights, NUM_AMBIENT_LEDS).setCorrection(TypicalLEDStrip);
 }
 
 
