@@ -270,6 +270,8 @@ void EmulationStationDisplayModeInitialize() {
 
   fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
 
+  fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
+
   FastLED.show();
 }
 
