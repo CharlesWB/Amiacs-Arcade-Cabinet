@@ -90,6 +90,7 @@ const CHSV playerLightColor = CHSV(0, 0, 255);
 
 const CHSV defaultSystemColor = CHSV(HUE_ORANGE, 255, 255);
 CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
+CHSV playerColorsHSV[NUM_PLAYERS] = {rgb2hsv_approximate(playerColors[0]), rgb2hsv_approximate(playerColors[1])};
 
 // The intent for this palette is to cycle between the player colors.
 CRGBPalette16 playerColorPalette = CRGBPalette16(
@@ -350,12 +351,14 @@ void LoopAttractDisplayMode() {
 void AttractDisplayModeInitialize() {
   fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
   fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+  fill_solid(ambientLights, NUM_AMBIENT_LEDS, CRGB::Black);
 
   FastLED.show();
 }
 
 // Cycle columns in to the center and back, fading out the other columns.
 // Fade the trackball in sync with the cycle.
+// Fade in and out each side of the ambient lights to match the cycling player colors.
 void AttractDisplayModeInToCenter() {
   static unsigned long duration = 2400;
 
@@ -386,11 +389,15 @@ void AttractDisplayModeInToCenter() {
     }
   }
 
-  fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS, 20, 255)));
+  fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255)));
+
+  ambientLights[0] = CHSV(playerColorsHSV[0].hue, playerColorsHSV[0].sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
+  ambientLights[1] = CHSV(playerColorsHSV[1].hue, playerColorsHSV[1].sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
 }
 
 // Cycle back and forth through the columns, fading out the other columns.
 // Cycle the trackball between player colors.
+// Fade in and out each side of the ambient lights to match the cycling player colors.
 void AttractDisplayModeCylon() {
   static unsigned long duration = 2400;
 
@@ -418,14 +425,21 @@ void AttractDisplayModeCylon() {
 
   if(playerColumn < PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
+
+    ambientLights[0] = CHSV(playerColorsHSV[0].hue, playerColorsHSV[0].sat, map(PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - playerColumn - 1, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
+    ambientLights[1] = CRGB::Black;
   }
   else {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
+
+    ambientLights[0] = CRGB::Black;
+    ambientLights[1] = CHSV(playerColorsHSV[1].hue, playerColorsHSV[1].sat, map(playerColumn, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS, PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
   }
 }
 
 // Randomly blink the player lights.
 // Randomly change the color of the trackball.
+// Randomly change the color of the ambient per side.
 void AttractDisplayModeRandomBlink() {
   static unsigned long startTime = millis();
 
@@ -441,6 +455,9 @@ void AttractDisplayModeRandomBlink() {
   if(millis() - startTime > 500) {
     CRGB color = ColorFromPalette(RainbowColors_p, random8(240), 255, LINEARBLEND);
     fill_solid(trackballs, NUM_TRACKBALLS, color);
+
+    ambientLights[0] = ColorFromPalette(RainbowColors_p, random8(240), 255, LINEARBLEND);
+    ambientLights[1] = ColorFromPalette(RainbowColors_p, random8(240), 255, LINEARBLEND);
 
     startTime = millis();
   }
