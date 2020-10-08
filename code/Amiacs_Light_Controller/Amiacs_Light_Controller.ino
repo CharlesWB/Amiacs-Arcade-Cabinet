@@ -1,6 +1,5 @@
 /*
 Ideas:
-- Control brightness with a potentiometer.
 - I2C command data and related methods could be a separate class.
 - The player buttons flicker when using FastLED.show() and no changes were made.
   Is that an error in TLC5947SingleColorController or normal? Right now this code gets
@@ -34,6 +33,7 @@ Ideas:
 #define MARQUEE_LIGHT_PIN 9
 #define AMBIENT_LIGHT_DATA_PIN 11
 #define AMBIENT_LIGHT_CLOCK_PIN 13
+#define BRIGHTNESS_PIN A7
 
 
 // Player button pin numbers for the Adafruit TLC5947.
@@ -158,7 +158,7 @@ void setup() {
   // We'll wait for that so that the TLC5947 will be properly initialized.
   delay(5000);
 
-  FastLED.setBrightness(255);
+  SetBrightness();
 
   SetupPlayerLights();
   SetupTrackballLights();
@@ -174,6 +174,8 @@ void setup() {
 }
 
 void loop() {
+  SetBrightness();
+
   switch(displayMode) {
     case STARTING:
       LoopStartingDisplayMode();
@@ -464,6 +466,8 @@ void AttractDisplayModeRandomBlink() {
 }
 
 
+// *** I2C Command Processing ***
+
 void CommandReceiveEvent(int byteCount) {
   if(Wire.available()) {
     command = Wire.read();
@@ -560,6 +564,43 @@ void CycleMarqueeBrightness() {
   static uint8_t marqueeBrightness = 255;
   analogWrite(MARQUEE_LIGHT_PIN, 255);
   marqueeBrightness -= 4;
+}
+
+
+// *** Brightness ***
+
+uint8_t GetBrightness() {
+  static float brightness = -1;
+
+  float dampingCoefficient = .1;
+
+  // The first time this is called, the analogRead value will be used directly.
+  if(brightness == -1) {
+    dampingCoefficient = 1;
+    brightness = 0;
+  }
+
+  int value = map(analogRead(BRIGHTNESS_PIN), 0, 1023, 0, 255);
+
+  // Uses exponential smoothing.
+  // References:
+  // https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_(simple)_exponential_smoothing_(Holt_Linear)
+  // https://www.megunolink.com/articles/coding/3-methods-filter-noisy-arduino-measurements/
+  brightness += (dampingCoefficient * (value - brightness));
+
+  if(brightness >= 254) {
+    brightness = 255;
+  }
+
+  return brightness;
+}
+
+void SetBrightness() {
+  uint8_t brightness = GetBrightness();
+  if(FastLED.getBrightness() != brightness) {
+    FastLED.setBrightness(brightness);
+    FastLED.show();
+  }
 }
 
 
