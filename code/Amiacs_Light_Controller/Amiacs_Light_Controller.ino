@@ -362,18 +362,19 @@ void AttractDisplayModeInitialize() {
 // Fade the trackball in sync with the cycle.
 // Fade in and out each side of the ambient lights to match the cycling player colors.
 void AttractDisplayModeInToCenter() {
-  static unsigned long duration = 2400;
+  const static unsigned long duration = 2400;
 
   static unsigned long startTime = millis();
 
   unsigned long now = millis() - startTime;
 
-  int player1Column = (now - duration * int(now / duration)) / (duration / (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS));
+  unsigned long elapsed = now - (duration * int(now / duration));
+  int player1Column = elapsed / (duration / (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS));
   if(player1Column >= PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) {
     player1Column = (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) - player1Column - 1;
   }
 
-  int player2Column = (now - duration * int(now / duration)) / (duration / (2 * PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS));
+  int player2Column = elapsed / (duration / (2 * PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS));
   if(player2Column >= PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS) {
     player2Column = (2 * PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS) - player2Column - 1;
   }
@@ -391,23 +392,36 @@ void AttractDisplayModeInToCenter() {
     }
   }
 
-  fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255)));
+  if(elapsed > duration / 2) {
+    elapsed = duration - elapsed;
+  }
+  fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, map(elapsed, 0, duration / 2, 20, 255)));
 
-  ambientLights[0] = CHSV(playerColorsHSV[0].hue, playerColorsHSV[0].sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
-  ambientLights[1] = CHSV(playerColorsHSV[1].hue, playerColorsHSV[1].sat, map(player1Column, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
+  ambientLights[0] = CHSV(playerColorsHSV[0].hue, playerColorsHSV[0].sat, map(elapsed, 0, duration / 2, 50, 255));
+  ambientLights[1] = CHSV(playerColorsHSV[1].hue, playerColorsHSV[1].sat, map(elapsed, 0, duration / 2, 50, 255));
 }
 
 // Cycle back and forth through the columns, fading out the other columns.
 // Cycle the trackball between player colors.
 // Fade in and out each side of the ambient lights to match the cycling player colors.
+// Duration is for the full cycle, which is divided into four parts.
+// First part moves left to right through player 1.
+// Second part moves left to right through player 2.
+// Third part moves right to left through player 2.
+// Fourth part moves right to left through player 1.
+// Note that the player columns may not be an equal amount. So duration is not evenly divided between the two players.
 void AttractDisplayModeCylon() {
-  static unsigned long duration = 2400;
+  const static unsigned long durationPerColumn = 125;
+  const static unsigned long duration = durationPerColumn * 2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS;
+  const static unsigned long player1Duration = durationPerColumn * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS;
+  const static unsigned long player2Duration = durationPerColumn * PLAYER2_ALL_LIGHTS_LAYOUT_COLUMNS;
 
   static unsigned long startTime = millis();
 
   unsigned long now = millis() - startTime;
 
-  int playerColumn = (now - duration * int(now / duration)) / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
+  unsigned long elapsed = now - (duration * int(now / duration));
+  int playerColumn = elapsed / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
   if(playerColumn >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
     playerColumn = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - playerColumn - 1;
   }
@@ -428,14 +442,32 @@ void AttractDisplayModeCylon() {
   if(playerColumn < PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[0]);
 
-    ambientLights[0] = CHSV(playerColorsHSV[0].hue, playerColorsHSV[0].sat, map(PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - playerColumn - 1, 0, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
+    // Example:
+    // If duration is 100 and player columns are equal then
+    // player 1 runs from 0 to 25 (player1Duration) and 75 (delta is 2 * player2Duration) to 100.
+    // This is converted to 25 (player1Duration) to 0 and back to 25.
+    unsigned long playerElapsed = player1Duration - elapsed;
+    if(elapsed >= player1Duration) {
+      playerElapsed = player1Duration - (duration - elapsed);
+    }
+
+    ambientLights[0] = CHSV(playerColorsHSV[0].hue, playerColorsHSV[0].sat, map(playerElapsed, 0, player1Duration, 50, 255));
     ambientLights[1] = CRGB::Black;
   }
   else {
     fill_solid(trackballs, NUM_TRACKBALLS, playerColors[1]);
 
+    // Example:
+    // If duration is 100 and player columns are equal then
+    // player 2 runs from 25 (player1Duration) to 75 (delta is 2 * player2Duration).
+    // This is converted to 0 to 25 (player2Duration) and back to 0.
+    unsigned long playerElapsed = elapsed - player1Duration;
+    if(elapsed >= duration - player1Duration - player2Duration) {
+      playerElapsed = duration - elapsed - player1Duration;
+    }
+
     ambientLights[0] = CRGB::Black;
-    ambientLights[1] = CHSV(playerColorsHSV[1].hue, playerColorsHSV[1].sat, map(playerColumn, PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS, PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS - 1, 20, 255));
+    ambientLights[1] = CHSV(playerColorsHSV[1].hue, playerColorsHSV[1].sat, map(playerElapsed, 0, player2Duration, 50, 255));
   }
 }
 
