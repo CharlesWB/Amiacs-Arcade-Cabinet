@@ -6,6 +6,8 @@ Ideas:
   around this by not calling show() when no colors change.
 */
 
+#define FASTLED_INTERNAL
+
 #include <Adafruit_TLC5947.h>
 #include <FastLED.h>
 #include <Wire.h>
