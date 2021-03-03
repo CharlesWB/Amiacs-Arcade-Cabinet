@@ -90,7 +90,7 @@ int playerPrimaryLightLayout[PLAYER_PRIMARY_LIGHTS_LAYOUT_ROWS][PLAYER_PRIMARY_L
 // for FastLED the player light color is white so that it is fully lit.
 const CHSV playerLightColor = CHSV(0, 0, 255);
 
-const CHSV defaultSystemColor = CHSV(HUE_ORANGE, 255, 255);
+const CHSV defaultSystemColor = CHSV(24, 255, 255);
 CRGB playerColors[NUM_PLAYERS] = {CRGB::Blue, CRGB::Red};
 CHSV playerColorsHSV[NUM_PLAYERS] = {rgb2hsv_approximate(playerColors[0]), rgb2hsv_approximate(playerColors[1])};
 
@@ -558,7 +558,7 @@ void SetupPlayerLights() {
 
 void SetupTrackballLights() {
   static SingleTriColorLEDController<TRACKBALL_RED_PIN, TRACKBALL_GREEN_PIN, TRACKBALL_BLUE_PIN> trackballLEDController;
-  FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(TypicalLEDStrip);
+  FastLED.addLeds(&trackballLEDController, trackballs, NUM_TRACKBALLS).setCorrection(0xC0FFE0);
 }
 
 void CycleTrackballBetweenPlayerColors() {
@@ -583,7 +583,7 @@ void CycleTrackballBetweenPlayerColors() {
 // *** Ambient Lights ***
 
 void SetupAmbientLights() {
-  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN, RBG>(ambientLights, NUM_AMBIENT_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.addLeds<P9813, AMBIENT_LIGHT_DATA_PIN, AMBIENT_LIGHT_CLOCK_PIN, RBG>(ambientLights, NUM_AMBIENT_LEDS).setCorrection(0xFF90FF);
 }
 
 
