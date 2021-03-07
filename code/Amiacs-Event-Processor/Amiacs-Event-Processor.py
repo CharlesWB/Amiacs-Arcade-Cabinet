@@ -215,18 +215,32 @@ trackballGames = [
 
 systemLights = {
     'default': CabinetLights(PlayerLights(B=Light.On, A=Light.On), False),
+    '3do': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False),
+    'amigacd32': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'arcade': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'atari800': CabinetLights(
+        PlayerLights(B=Light.On, Hotkey=Light.On, Command=Light.On)),
     'atari2600': CabinetLights(
         PlayerLights(B=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'atari5200': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'atari7800': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'atarijaguar': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'atomiswave': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'c64': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On)),
     'coleco': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On)),
     'daphne': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Select=Light.On, Start=Light.On, Command=Light.On)),
+    'dreamcast': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'famicom': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'fds': CabinetLights(
@@ -247,10 +261,16 @@ systemLights = {
         PlayerLights(B=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'mastersystem': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On), False),
+    'megadrive': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'megadrivej': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'n64': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'naomi': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'nds': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'neogeo': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'nes': CabinetLights(
@@ -261,6 +281,12 @@ systemLights = {
         PlayerLights(B=Light.On, A=Light.On), False),
     'pcengine': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False),
+    'ps2': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'psp': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'pspminis': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'psx': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'scummvm': CabinetLights(
@@ -274,6 +300,8 @@ systemLights = {
     'sg-1000': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'snes': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+    'snescd': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'turbografx16': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False),
