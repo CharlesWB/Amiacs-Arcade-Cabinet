@@ -77,7 +77,7 @@ class PlayerLights:
 
     # Returns the lights in a list. The order matches what Amiacs_Light_Controller.ino will expect.
     def I2CData(self):
-        return [self.A.I2CData(), self.B.I2CData(), self.Y.I2CData(), self.X.I2CData(), self.L2.I2CData(), self.R2.I2CData(),
+        return [self.B.I2CData(), self.A.I2CData(), self.Y.I2CData(), self.X.I2CData(), self.L2.I2CData(), self.R2.I2CData(),
                 self.L1.I2CData(), self.R1.I2CData(), self.Select.I2CData(), self.Start.I2CData(), self.Command.I2CData(), self.Hotkey.I2CData()]
 
 
