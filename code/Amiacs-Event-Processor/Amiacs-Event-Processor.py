@@ -2,6 +2,8 @@
 #
 # The event bash scripts expect this to be located in ~/amiacs.
 #
+# This is a simplistic version of what https://www.ledblinky.net/ provides.
+#
 # Install
 # cd ~
 # mkdir amiacs
