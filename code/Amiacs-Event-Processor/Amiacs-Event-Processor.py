@@ -91,7 +91,7 @@ class CabinetLights:
         # When this is a two controller game, we'll automatically copy the lights from player one to simplify construction.
         # Excluding hotkey and command because they are not normal player buttons.
         # For example, the arcade system uses player one's hotkey and command, but not player two's.
-        if isTwoControllerGame:
+        if isTwoControllerGame and player2Lights is None:
             self.player2Lights.B = player1Lights.B
             self.player2Lights.A = player1Lights.A
             self.player2Lights.L1 = player1Lights.L1
@@ -311,11 +311,11 @@ systemLights = {
 
 gameLights = {
     'asteroid.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
+        PlayerLights(B=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
     'centiped.zip': CabinetLights(
-        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, PlayerLights(Start=Light.On, Select=Light.On)),
     'milliped.zip': CabinetLights(
-        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False),
+        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, PlayerLights(Start=Light.On, Select=Light.On)),
     'spyhunt.zip': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False)
 }
