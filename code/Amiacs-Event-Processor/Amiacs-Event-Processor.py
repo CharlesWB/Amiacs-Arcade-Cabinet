@@ -253,7 +253,7 @@ systemLights = {
     'gbc': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False),
     'genesis': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'intellivision': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'markiii': CabinetLights(
@@ -261,7 +261,7 @@ systemLights = {
     'mastersystem': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On), False),
     'megadrive': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'megadrivej': CabinetLights(
         PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
     'n64': CabinetLights(
