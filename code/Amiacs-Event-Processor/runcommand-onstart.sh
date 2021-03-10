@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Reference
-# https://github.com/RetroPie/RetroPie-Setup/wiki/runcommand#runcommand-onstart-and-runcommand-onend-scripts
+# https://retropie.org.uk/docs/Runcommand/#runcommand-onstart-and-runcommand-onend-scripts
 #
 # /opt/retropie/configs/all/runcommand-onstart.sh
 #
