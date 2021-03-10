@@ -11,9 +11,9 @@
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py --output-document=Amiacs-Event-Processor.py
 #
 # References
-# https://github.com/RetroPie/RetroPie-Setup/wiki/runcommand#runcommand-onstart-and-runcommand-onend-scripts
+# https://retropie.org.uk/docs/Runcommand/#runcommand-onstart-and-runcommand-onend-scripts
 #
-# https://github.com/RetroPie/RetroPie-Setup/wiki/EmulationStation#scripting
+# https://retropie.org.uk/docs/EmulationStation/#scripting
 # Event scripting was added with RetroPie 4.5 (Emulation Station v2.8.4).
 # I was able to get game-start, game-end and quit events to fire, but not sleep, wake, screensaver-start, and screensaver-stop.
 # Sleep and wake are in the source code (es-core/src/Window.cpp), but not the screensaver events. Maybe I
