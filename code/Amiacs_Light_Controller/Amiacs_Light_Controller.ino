@@ -370,7 +370,7 @@ void AttractDisplayModeInToCenter() {
 
   unsigned long now = millis() - startTime;
 
-  unsigned long elapsed = now - (duration * int(now / duration));
+  unsigned long elapsed = now - (duration * (now / duration));
   int player1Column = elapsed / (duration / (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS));
   if(player1Column >= PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) {
     player1Column = (2 * PLAYER1_ALL_LIGHTS_LAYOUT_COLUMNS) - player1Column - 1;
@@ -422,7 +422,7 @@ void AttractDisplayModeCylon() {
 
   unsigned long now = millis() - startTime;
 
-  unsigned long elapsed = now - (duration * int(now / duration));
+  unsigned long elapsed = now - (duration * (now / duration));
   int playerColumn = elapsed / (duration / (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS));
   if(playerColumn >= PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) {
     playerColumn = (2 * PLAYER_ALL_LIGHTS_LAYOUT_COLUMNS) - playerColumn - 1;
