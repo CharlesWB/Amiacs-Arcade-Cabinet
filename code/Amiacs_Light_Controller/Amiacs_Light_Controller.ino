@@ -142,6 +142,9 @@ DisplayMode displayMode = STARTING;
 // NOTE: This is manually sized to match the number of DisplayModes.
 int initializeDisplayMode[] = {false, true, true, true};
 
+// The attract DisplayMode has an additional initialization step for the brightness.
+bool initializeAttractDisplayModeBrightness = true;
+
 enum AttractDisplayMode {
   RANDOM_BLINK,
   CYLON,
@@ -176,8 +179,6 @@ void setup() {
 }
 
 void loop() {
-  SetBrightness();
-
   switch(displayMode) {
     case STARTING:
       LoopStartingDisplayMode();
@@ -204,6 +205,8 @@ void LoopStartingDisplayMode() {
 
   static unsigned long startingStepTimeline[] = {0, 5000, 9900, 14700, 19200, 23200, 26700, 29600, 31900, 33400, 34200, 34800, 35400, 36000, 36400, 60000};
   uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
+
+  SetBrightness();
 
   unsigned long now = millis() - startTime;
   uint8_t step = 0;
@@ -243,21 +246,14 @@ void LoopStartingDisplayMode() {
 void LoopEmulationStationDisplayMode() {
   static unsigned long startTime = millis();
 
+  SetBrightness();
+
   if(initializeDisplayMode[EMULATION_STATION]) {
     startTime = millis();
 
     EmulationStationDisplayModeInitialize();
 
     initializeDisplayMode[EMULATION_STATION] = false;
-  }
-
-  // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
-  // See the comments about event scripting in Amiacs-Event-Processor.py.
-  // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
-  // This will probably be confusing when the player is actively using Emulation Station.
-  if((millis() - startTime) > 300000) {
-    displayMode = ATTRACT;
-    initializeDisplayMode[ATTRACT] = true;
   }
 }
 
@@ -281,6 +277,8 @@ void EmulationStationDisplayModeInitialize() {
 }
 
 void LoopGameRunningDisplayMode() {
+  SetBrightness();
+
   if(initializeDisplayMode[GAME_RUNNING]) {
     GameRunningDisplayModeInitialize();
 
@@ -314,10 +312,24 @@ void GameRunningDisplayModeInitialize() {
   FastLED.show();
 }
 
+// Randomly alternate between the various attract display modes.
+// Dim the lights over time. At a low level completely turn off the lights.
 void LoopAttractDisplayMode() {
-  static unsigned long startTime = millis();
+  const static unsigned long duration = 120000;
+  const static unsigned long dimmingDuration = 2 * duration;
 
-  unsigned long now = millis() - startTime;
+  static unsigned long startTime = millis();
+  static unsigned long dimmingStartTime = millis();
+
+  static float brightnessFactor = 1;
+
+  if(initializeAttractDisplayModeBrightness) {
+    dimmingStartTime = millis();
+
+    brightnessFactor = 1;
+
+    initializeAttractDisplayModeBrightness = false;
+  }
 
   if(initializeDisplayMode[ATTRACT]) {
     startTime = millis();
@@ -327,28 +339,43 @@ void LoopAttractDisplayMode() {
     initializeDisplayMode[ATTRACT] = false;
   }
 
-  if((millis() - startTime) <= 60000) {
-    if(attractDisplayMode == RANDOM_BLINK) {
-      AttractDisplayModeRandomBlink();
-    }
-    else if(attractDisplayMode == CYLON) {
-      AttractDisplayModeCylon();
-    }
-    else if(attractDisplayMode == IN_TO_CENTER) {
-      AttractDisplayModeInToCenter();
+  if(brightnessFactor > .2) {
+    SetBrightness(brightnessFactor);
+
+    unsigned long dimmingNow = millis() - dimmingStartTime;
+    if(dimmingNow > dimmingDuration) {
+      brightnessFactor *= .6;
+      dimmingStartTime = millis();
     }
 
-    FastLED.show();
+    unsigned long now = millis() - startTime;
+    if(now <= duration) {
+      if(attractDisplayMode == RANDOM_BLINK) {
+        AttractDisplayModeRandomBlink();
+      }
+      else if(attractDisplayMode == CYLON) {
+        AttractDisplayModeCylon();
+      }
+      else if(attractDisplayMode == IN_TO_CENTER) {
+        AttractDisplayModeInToCenter();
+      }
+
+      FastLED.show();
+    }
+    else {
+      AttractDisplayMode nextAttractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
+      if(nextAttractDisplayMode != attractDisplayMode) {
+        attractDisplayMode = nextAttractDisplayMode;
+        initializeDisplayMode[ATTRACT] = true;
+      }
+    }
   }
   else {
-    attractDisplayMode = random8(NUM_ATTRACT_DISPLAY_MODES);
+    fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
+    fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
+    fill_solid(ambientLights, NUM_AMBIENT_LEDS, CRGB::Black);
 
-    // Emulation Station in RetroPie v4.5.1 does not provide events for the screensaver.
-    // See the comments about event scripting in Amiacs-Event-Processor.py.
-    // Instead I'll manually switch between Emulation Station and Attract display modes based on time.
-    // This will probably be confusing when the player is actively using Emulation Station.
-    displayMode = EMULATION_STATION;
-    initializeDisplayMode[EMULATION_STATION] = true;
+    FastLED.show();
   }
 }
 
@@ -524,6 +551,7 @@ void CommandReceiveEvent(int byteCount) {
 
     displayMode = (DisplayMode)command;
     initializeDisplayMode[displayMode] = true;
+    initializeAttractDisplayModeBrightness = true;
   }
 }
 
@@ -630,7 +658,11 @@ uint8_t GetBrightness() {
 }
 
 void SetBrightness() {
-  uint8_t brightness = GetBrightness();
+  SetBrightness(1);
+}
+
+void SetBrightness(const float factor) {
+  uint8_t brightness = GetBrightness() * factor;
   if(FastLED.getBrightness() != brightness) {
     FastLED.setBrightness(brightness);
     FastLED.show();
