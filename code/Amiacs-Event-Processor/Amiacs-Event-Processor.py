@@ -320,8 +320,16 @@ gameLights = {
         PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
     'milliped.zip': CabinetLights(
         PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+    'pacman.zip': CabinetLights(
+        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+    'polepos.zip': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+    'polepos2.zip': CabinetLights(
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
     'spyhunt.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False)
+        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+    'wacko.zip': CabinetLights(
+        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False)
 }
 
 logging.basicConfig(
