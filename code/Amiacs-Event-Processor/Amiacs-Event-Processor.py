@@ -9,6 +9,7 @@
 # mkdir amiacs
 # cd amiacs
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py --output-document=Amiacs-Event-Processor.py
+# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Trackball-Games.json --output-document=Amiacs-Trackball-Games.json
 #
 # References
 # https://retropie.org.uk/docs/Runcommand/#runcommand-onstart-and-runcommand-onend-scripts
@@ -21,10 +22,13 @@
 
 import argparse
 import logging
+import json
 import os
 import smbus
 from enum import Enum
+from pathlib import Path
 
+path = Path('/home/pi/amiacs/')
 
 # These values match what is found in Amiacs_Light_Controller.ino.
 class DisplayMode(Enum):
@@ -114,105 +118,6 @@ class CabinetLights:
     def I2CData(self):
         return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [1 if self.usesTrackball else 0] + [1 if self.isTwoPlayerGame else 0]
 
-
-trackballGames = [
-    "720.zip",
-    "aburner2.zip",
-    "aburner.zip",
-    "alien3.zip",
-    "amspdwy.zip",
-    "apb.zip",
-    "arcadecl.zip",
-    "arkanoid.zip",
-    "arkatour.zip",
-    "arknoid2.zip",
-    "arkretrn.zip",
-    "ataxx.zip",
-    "beezer.zip",
-    "bking2.zip",
-    "bking3.zip",
-    "bking.zip",
-    "blaster.zip",
-    "cameltry.zip",
-    "capbowl.zip",
-    "ccastles.zip",
-    "centiped.zip",
-    "champbwl.zip",
-    "chasehq.zip",
-    "chqflag.zip",
-    "contcirc.zip",
-    "countryc.zip",
-    "csprint.zip",
-    "dblaxle.zip",
-    "dunkshot.zip",
-    "ebases.zip",
-    "esb.zip",
-    "gghost.zip",
-    "gimeabrk.zip",
-    "gloc.zip",
-    "gridiron.zip",
-    "gt2k.zip",
-    "gt3d.zip",
-    "gt97.zip",
-    "gt98.zip",
-    "gt99.zip",
-    "gtclassc.zip",
-    "gtg2.zip",
-    "gtg.zip",
-    "hangon.zip",
-    "hangonjr.zip",
-    "hcrash.zip",
-    "horshoes.zip",
-    "hotrod.zip",
-    "hydra.zip",
-    "ikarijpb.zip",
-    "indyheat.zip",
-    "irrmaze.zip",
-    "jedi.zip",
-    "jpark.zip",
-    "kick.zip",
-    "konamigt.zip",
-    "krzybowl.zip",
-    "le2.zip",
-    "liberatr.zip",
-    "marble.zip",
-    "mhavoc.zip",
-    "milliped.zip",
-    "minigolf.zip",
-    "missile.zip",
-    "mjleague.zip",
-    "nightstr.zip",
-    "offroad.zip",
-    "offroadt.zip",
-    "opwolf.zip",
-    "othunder.zip",
-    "outrun.zip",
-    "paperboy.zip",
-    "polepos2.zip",
-    "polepos.zip",
-    "poundfor.zip",
-    "quantum.zip",
-    "rachero.zip",
-    "redbaron.zip",
-    "roadblst.zip",
-    "sbrkout.zip",
-    "shangon.zip",
-    "sharrier.zip",
-    "shuuz.zip",
-    "spiker.zip",
-    "spyhunt2.zip",
-    "spyhunt.zip",
-    "ssprint.zip",
-    "startrek.zip",
-    "starwars.zip",
-    "superchs.zip",
-    "syvalion.zip",
-    "teedoff.zip",
-    "tempest.zip",
-    "toutrun.zip",
-    "wacko.zip",
-    "wcbowl.zip",
-    "wcbowldx.zip"]
 
 systemLights = {
     'default': CabinetLights(PlayerLights(B=Light.On, A=Light.On), False, False),
@@ -423,8 +328,12 @@ gameLights = {
         PlayerLights(A=Light.On, L1=Light.On, R1=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, True, PlayerLights(A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On))
 }
 
+
+with open(path / 'Amiacs-Trackball-Games.json') as file:
+    trackballGames = json.load(file)
+
 logging.basicConfig(
-    filename='/home/pi/amiacs/Amiacs-Event-Processor.log', level=logging.INFO)
+    filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO)
 
 bus = smbus.SMBus(1)
 address = 0x07
