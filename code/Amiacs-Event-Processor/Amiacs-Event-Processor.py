@@ -38,24 +38,12 @@ class DisplayMode(Enum):
     Game_Running = 3
 
 
-class Light(Enum):
-    Off = False
-    On = True
-
-    # Not the best practice for repr, but it looks good in PlayerLights.
-    def __repr__(self):
-        return self.name
-
-    def I2CData(self):
-        return 1 if self == Light.On else 0
-
-
 class PlayerLights:
     def __init__(
             self,
-            B=Light.Off, A=Light.Off, Y=Light.Off, X=Light.Off,
-            L1=Light.Off, R1=Light.Off, L2=Light.Off, R2=Light.Off,
-            Hotkey=Light.Off, Select=Light.Off, Start=Light.Off, Command=Light.Off):
+            B=False, A=False, Y=False, X=False,
+            L1=False, R1=False, L2=False, R2=False,
+            Hotkey=False, Select=False, Start=False, Command=False):
         # The order appears to be used by __dict__ which I use in __repr__.
         # This order roughly aligns with the three rows of buttons.
         self.B = B
@@ -73,12 +61,12 @@ class PlayerLights:
 
     # The indenting is designed for use with the CabinetLights class.
     def __repr__(self):
-        return '{}(\n        {})'.format(self.__class__.__name__, self.__dict__)
+        return '{}(\n        {})'.format(self.__class__.__name__, {k: "On" if v else "Off" for k, v in self.__dict__.items()})
 
     # Returns the lights in a list. The order matches what Amiacs_Light_Controller.ino will expect.
     def I2CData(self):
-        return [self.B.I2CData(), self.A.I2CData(), self.Y.I2CData(), self.X.I2CData(), self.L2.I2CData(), self.R2.I2CData(),
-                self.L1.I2CData(), self.R1.I2CData(), self.Select.I2CData(), self.Start.I2CData(), self.Command.I2CData(), self.Hotkey.I2CData()]
+        return [int(self.B), int(self.A), int(self.Y), int(self.X), int(self.L2), int(self.R2),
+                int(self.L1), int(self.R1), int(self.Select), int(self.Start), int(self.Command), int(self.Hotkey)]
 
 
 class CabinetLights:
@@ -116,216 +104,216 @@ class CabinetLights:
         return "{}(\n    'player1Lights':{}\n    'player2Lights':{}\n    usesTrackball:{})".format(self.__class__.__name__, self.player1Lights, self.player2Lights, self.usesTrackball)
 
     def I2CData(self):
-        return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [1 if self.usesTrackball else 0] + [1 if self.isTwoPlayerGame else 0]
+        return self.player1Lights.I2CData() + self.player2Lights.I2CData() + [int(self.usesTrackball)] + [int(self.isTwoPlayerGame)]
 
 
 systemLights = {
-    'default': CabinetLights(PlayerLights(B=Light.On, A=Light.On), False, False),
+    'default': CabinetLights(PlayerLights(B=True, A=True), False, False),
     '3do': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, L1=True, Select=True, Start=True, Hotkey=True, Command=True), False, False),
     'amigacd32': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'arcade': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, Y=True, X=True, L2=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'atari800': CabinetLights(
-        PlayerLights(B=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, Hotkey=True, Command=True)),
     'atari2600': CabinetLights(
-        PlayerLights(B=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, Hotkey=True, Command=True)),
     'atari5200': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'atari7800': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'atarijaguar': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, Y=True, X=True, L2=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'atomiswave': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, Y=True, X=True, L2=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'c64': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Hotkey=True, Command=True)),
     'coleco': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Hotkey=True, Command=True)),
     'daphne': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R2=Light.On, Select=Light.On, Start=Light.On, Command=Light.On), False),
+        PlayerLights(B=True, A=True, L1=True, R2=True, Select=True, Start=True, Command=True), False),
     'dreamcast': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'famicom': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'fds': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'gamegear': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Start=True, Hotkey=True, Command=True), False, False),
     'gb': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True), False, False),
     'gba': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Select=True, Start=True, Hotkey=True, Command=True), False, False),
     'gbc': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True), False, False),
     'genesis': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, Start=True, Hotkey=True, Command=True)),
     'intellivision': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'markiii': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, Start=True, Hotkey=True, Command=True)),
     'mastersystem': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Hotkey=True, Command=True), False, False),
     'megadrive': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'megadrivej': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, X=True, Start=True, Hotkey=True, Command=True)),
     'n64': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'naomi': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, Y=True, X=True, L2=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'nds': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, Y=True, X=True, L2=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'neogeo': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'neogeocd': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'nes': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'nesh': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'openbor': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Start=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Start=True)),
     'pc': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On), False, False),
+        PlayerLights(B=True, A=True), False, False),
     'pcengine': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True), False, False),
     'ps2': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'psp': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'pspminis': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'psx': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'scummvm': CabinetLights(
-        PlayerLights(B=Light.On, L2=Light.On, R2=Light.On), False, False),
+        PlayerLights(B=True, L2=True, R2=True), False, False),
     'sega32x': CabinetLights(
-        PlayerLights(B=Light.On, X=Light.On, Y=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, X=True, Y=True, Start=True, Hotkey=True, Command=True)),
     'segacd': CabinetLights(
-        PlayerLights(B=Light.On, X=Light.On, Y=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, X=True, Y=True, Start=True, Hotkey=True, Command=True)),
     'segah': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, X=True, Start=True, Hotkey=True, Command=True)),
     'sg-1000': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Hotkey=True, Command=True)),
     'snes': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'snescd': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, X=True, Select=True, Start=True, Hotkey=True, Command=True)),
     'turbografx16': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Hotkey=True, Command=True), False, False),
     'virtualboy': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Select=Light.On, Start=Light.On, Hotkey=Light.On, Command=Light.On))
+        PlayerLights(B=True, A=True, L1=True, R1=True, Select=True, Start=True, Hotkey=True, Command=True))
 }
 
 gameLights = {
     '1941.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     '1942.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     '1943.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     '1943kai.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     '1943mii.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     '1944.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     '19xx.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     '720.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     '88games.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Y=True, Start=True, Select=True, Hotkey=True, Command=True)),
     'aburner.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'aburner2.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'ace.daphne': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, R2=Light.On, Select=Light.On, Start=Light.On, Command=Light.On), False),
+        PlayerLights(B=True, A=True, L1=True, Y=True, X=True, L2=True, R2=True, Select=True, Start=True, Command=True), False),
     'airwolf.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'alcon.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True)),
     'altbeast.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, X=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, X=True, Start=True, Select=True, Hotkey=True, Command=True)),
     'arcadecl.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, Y=True, X=True, Start=True, Select=True, Hotkey=True, Command=True)),
     'arkanoid.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'astdelux.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Y=True, X=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'asteroid.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Y=True, X=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'batman.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, Y=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'bwidow.zip': CabinetLights(
-        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'bzone.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'centiped.zip': CabinetLights(
-        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(A=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'cliff.daphne': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Start=Light.On, Command=Light.On), False),
+        PlayerLights(B=True, A=True, Select=True, Start=True, Command=True), False),
     'commando.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, A=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'csprint.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True)),
     'ccastles.zip': CabinetLights(
-        PlayerLights(B=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False, PlayerLights(B=Light.On, Select=Light.On)),
+        PlayerLights(B=True, Select=True, Hotkey=True, Command=True), True, False, PlayerLights(B=True, Select=True)),
     'gauntlet2p.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, True, PlayerLights(B=Light.On, A=Light.On, Select=Light.On)),
+        PlayerLights(B=True, A=True, Select=True, Hotkey=True, Command=True), True, True, PlayerLights(B=True, A=True, Select=True)),
     'gaunt2.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, Y=True, Start=True, Select=True, Hotkey=True, Command=True)),
     'gravitar.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Y=True, X=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'indytemp.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'jedi.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, Y=True, X=True, Select=True, Hotkey=True, Command=True), False, False),
     'lair.daphne': CabinetLights(
-        PlayerLights(B=Light.On, Select=Light.On, Start=Light.On, Command=Light.On), False),
+        PlayerLights(B=True, Select=True, Start=True, Command=True), False),
     'lair2.daphne': CabinetLights(
-        PlayerLights(B=Light.On, Select=Light.On, Start=Light.On, Command=Light.On), False),
+        PlayerLights(B=True, Select=True, Start=True, Command=True), False),
     'llander.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'marble.zip': CabinetLights(
-        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(Start=True, Select=True, Hotkey=True, Command=True)),
     'mhavoc.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Y=True, Select=True, Hotkey=True, Command=True), True, False),
     'milliped.zip': CabinetLights(
-        PlayerLights(A=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(A=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'missile.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, A=True, L1=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'pacman.zip': CabinetLights(
-        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'paperboy.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'polepos.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, L1=True, Select=True, Hotkey=True, Command=True), False, False),
     'polepos2.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, L1=True, Select=True, Hotkey=True, Command=True), False, False),
     'quantum.zip': CabinetLights(
-        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'redbaron.zip': CabinetLights(
-        PlayerLights(B=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'roadblst.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, X=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, X=True, Select=True, Hotkey=True, Command=True), False, False),
     'robotron.zip': CabinetLights(
-        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'spyhunt.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, R1=Light.On, Y=Light.On, X=Light.On, L2=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, L1=True, R1=True, Y=True, X=True, L2=True, Start=True, Select=True, Hotkey=True, Command=True), False, False),
     'starwars.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, Y=Light.On, X=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), False, False),
+        PlayerLights(B=True, A=True, Y=True, X=True, Select=True, Hotkey=True, Command=True), False, False),
     'tempest.zip': CabinetLights(
-        PlayerLights(B=Light.On, Y=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(B=True, Y=True, Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'toobin.zip': CabinetLights(
-        PlayerLights(B=Light.On, A=Light.On, L1=Light.On, L2=Light.On, R2=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On)),
+        PlayerLights(B=True, A=True, L1=True, L2=True, R2=True, Select=True, Hotkey=True, Command=True)),
     'wacko.zip': CabinetLights(
-        PlayerLights(Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, False),
+        PlayerLights(Start=True, Select=True, Hotkey=True, Command=True), True, False),
     'xybots.zip': CabinetLights(
-        PlayerLights(A=Light.On, L1=Light.On, R1=Light.On, Start=Light.On, Select=Light.On, Hotkey=Light.On, Command=Light.On), True, True, PlayerLights(A=Light.On, Y=Light.On, X=Light.On, Start=Light.On, Select=Light.On))
+        PlayerLights(A=True, L1=True, R1=True, Start=True, Select=True, Hotkey=True, Command=True), True, True, PlayerLights(A=True, Y=True, X=True, Start=True, Select=True))
 }
 
 
