@@ -118,11 +118,12 @@ def lightsJsonDecoder(data):
         return CabinetLights(data['player1Lights'], data['isTwoPlayerGame'], data['isTwoControllerGame'], data['player2Lights'], data['usesTrackball'])
     return data
 
+
 with open(path / 'Amiacs-System-Lights.json') as file:
-    systemLights = json.load(file, object_hook = lightsJsonDecoder)
+    systemLights = json.load(file, object_hook=lightsJsonDecoder)
 
 with open(path / 'Amiacs-Game-Lights.json') as file:
-    gameLights = json.load(file, object_hook = lightsJsonDecoder)
+    gameLights = json.load(file, object_hook=lightsJsonDecoder)
 
 with open(path / 'Amiacs-Trackball-Games.json') as file:
     trackballGames = json.load(file)
