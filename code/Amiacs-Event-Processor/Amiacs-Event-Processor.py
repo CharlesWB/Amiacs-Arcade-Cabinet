@@ -128,7 +128,7 @@ with open(path / 'Amiacs-Trackball-Games.json') as file:
     trackballGames = json.load(file)
 
 logging.basicConfig(
-    filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO)
+    filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
 bus = smbus.SMBus(1)
 address = 0x07
@@ -149,7 +149,7 @@ args = parser.parse_args()
 
 romname = os.path.basename(args.rompath)
 
-logging.info('--------')
+logging.info('Begin Amiacs event processing.')
 logging.info('Arguments:')
 logging.info('event: %s', args.event)
 logging.info('system: %s', args.system)
@@ -185,3 +185,5 @@ if args.event == 'screensaver-start':
 
 if args.event == 'screensaver-stop':
     bus.write_byte(address, DisplayMode.Emulation_Station.value)
+
+logging.info('End Amiacs event processing.')
