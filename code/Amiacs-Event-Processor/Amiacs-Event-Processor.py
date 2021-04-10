@@ -24,7 +24,7 @@ import argparse
 import logging
 import json
 import os
-import smbus
+# import smbus
 from enum import Enum
 from pathlib import Path
 
@@ -316,65 +316,99 @@ gameLights = {
         PlayerLights(A=True, L1=True, R1=True, Start=True, Select=True, Hotkey=True, Command=True), True, True, PlayerLights(A=True, Y=True, X=True, Start=True, Select=True))
 }
 
+# Methods for exporting light dictionaries to JSON.
+# Only the required attributes are in the output.
+# The intent was to minimize the amount of data needed in the JSON, similar to how the class can be defined.
+class SimpleLights:
+    def __init__(self, player1Lights=None, isTwoPlayerGame=True, isTwoControllerGame=True, player2Lights=None):
+        self.player1Lights = player1Lights
+        self.isTwoPlayerGame = isTwoPlayerGame
+        self.isTwoControllerGame = isTwoControllerGame
+        self.player2Lights = player2Lights
 
-with open(path / 'Amiacs-Trackball-Games.json') as file:
-    trackballGames = json.load(file)
+sysLights = {}
+for system, lights in systemLights.items():
+    player1 = []
+    for v in vars(lights.player1Lights):
+        if getattr(lights.player1Lights, v):
+            player1.append(v)
+    player2 = []
+    if lights.player2Lights is not None:
+        for v in vars(lights.player2Lights):
+            if getattr(lights.player2Lights, v):
+                player2.append(v)
+    if not player2:
+        player2 = None
+    sysLights[system] = SimpleLights(player1, lights.isTwoPlayerGame, lights.isTwoPlayerGame, player2).__dict__
 
-logging.basicConfig(
-    filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO)
+print(json.dumps(sysLights, indent=4))
 
-bus = smbus.SMBus(1)
-address = 0x07
+# Methods for exporting light dictionaries as JSON.
+# All attributes are defined in the output.
+# The intent is to make the output simple to maintain.
+print(json.dumps(systemLights, default=lambda o: o.__dict__, indent=4))
 
-parser = argparse.ArgumentParser(
-    'Given event information, send a command to the Amiacs light controller.')
-parser.add_argument('event', choices=[
-                    'game-start', 'game-end', 'screensaver-start', 'screensaver-stop'], help='the event that has occurred')
-parser.add_argument(
-    'system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
-parser.add_argument(
-    'emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
-parser.add_argument('rompath', help='the full path to the rom file')
-parser.add_argument(
-    'commandline', help='the full command line used to launch the emulator')
+print(json.dumps(gameLights, default=lambda o: o.__dict__, indent=4))
 
-args = parser.parse_args()
 
-romname = os.path.basename(args.rompath)
+# with open(path / 'Amiacs-Trackball-Games.json') as file:
+#     trackballGames = json.load(file)
 
-logging.info('--------')
-logging.info('Arguments:')
-logging.info('event: %s', args.event)
-logging.info('system: %s', args.system)
-logging.info('emulator: %s', args.emulator)
-logging.info('rom name: %s', romname)
-logging.info('rompath: %s', args.rompath)
-logging.info('commandline: %s', args.commandline)
+# logging.basicConfig(
+#     filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO)
 
-if args.event == 'game-start':
-    if romname.lower() in gameLights:
-        logging.info('Configuring lights for game %s.', romname)
-        lights = gameLights[romname.lower()]
-    elif args.system.lower() in systemLights:
-        logging.info('Configuring lights for system %s.', args.system)
-        lights = systemLights[args.system.lower()]
-    else:
-        logging.info('Configuring default lights.')
-        lights = systemLights['default']
+# bus = smbus.SMBus(1)
+# address = 0x07
 
-    if romname.lower() in trackballGames:
-        lights.usesTrackball = True
+# parser = argparse.ArgumentParser(
+#     'Given event information, send a command to the Amiacs light controller.')
+# parser.add_argument('event', choices=[
+#                     'game-start', 'game-end', 'screensaver-start', 'screensaver-stop'], help='the event that has occurred')
+# parser.add_argument(
+#     'system', help='the system (eg: atari2600, nes, snes, megadrive, fba, etc)')
+# parser.add_argument(
+#     'emulator', help='the emulator (eg: lr-stella, lr-fceumm, lr-picodrive, pifba, etc)')
+# parser.add_argument('rompath', help='the full path to the rom file')
+# parser.add_argument(
+#     'commandline', help='the full command line used to launch the emulator')
 
-    logging.info(lights)
+# args = parser.parse_args()
 
-    bus.write_i2c_block_data(
-        address, DisplayMode.Game_Running.value, lights.I2CData())
+# romname = os.path.basename(args.rompath)
 
-if args.event == 'game-end':
-    bus.write_byte(address, DisplayMode.Emulation_Station.value)
+# logging.info('--------')
+# logging.info('Arguments:')
+# logging.info('event: %s', args.event)
+# logging.info('system: %s', args.system)
+# logging.info('emulator: %s', args.emulator)
+# logging.info('rom name: %s', romname)
+# logging.info('rompath: %s', args.rompath)
+# logging.info('commandline: %s', args.commandline)
 
-if args.event == 'screensaver-start':
-    bus.write_byte(address, DisplayMode.Attract.value)
+# if args.event == 'game-start':
+#     if romname.lower() in gameLights:
+#         logging.info('Configuring lights for game %s.', romname)
+#         lights = gameLights[romname.lower()]
+#     elif args.system.lower() in systemLights:
+#         logging.info('Configuring lights for system %s.', args.system)
+#         lights = systemLights[args.system.lower()]
+#     else:
+#         logging.info('Configuring default lights.')
+#         lights = systemLights['default']
 
-if args.event == 'screensaver-stop':
-    bus.write_byte(address, DisplayMode.Emulation_Station.value)
+#     if romname.lower() in trackballGames:
+#         lights.usesTrackball = True
+
+#     logging.info(lights)
+
+#     bus.write_i2c_block_data(
+#         address, DisplayMode.Game_Running.value, lights.I2CData())
+
+# if args.event == 'game-end':
+#     bus.write_byte(address, DisplayMode.Emulation_Station.value)
+
+# if args.event == 'screensaver-start':
+#     bus.write_byte(address, DisplayMode.Attract.value)
+
+# if args.event == 'screensaver-stop':
+#     bus.write_byte(address, DisplayMode.Emulation_Station.value)
