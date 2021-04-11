@@ -118,14 +118,16 @@ def lightsJsonDecoder(data):
     return data
 
 
+logging.basicConfig(
+    filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO, format='%(asctime)s %(message)s')
+
+logging.info('Begin Amiacs event processing.')
+
 with open(path / 'Amiacs-System-Lights.json') as file:
     systemLights = json.load(file, object_hook=lightsJsonDecoder)
 
 with open(path / 'Amiacs-Game-Lights.json') as file:
     gameLights = json.load(file, object_hook=lightsJsonDecoder)
-
-logging.basicConfig(
-    filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
 bus = smbus.SMBus(1)
 address = 0x07
@@ -146,7 +148,6 @@ args = parser.parse_args()
 
 romname = os.path.basename(args.rompath)
 
-logging.info('Begin Amiacs event processing.')
 logging.info('Arguments:')
 logging.info('event: %s', args.event)
 logging.info('system: %s', args.system)
