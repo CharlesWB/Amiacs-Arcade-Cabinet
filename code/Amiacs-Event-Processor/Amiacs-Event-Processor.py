@@ -123,19 +123,6 @@ logging.basicConfig(
 
 logging.info('Begin Amiacs event processing.')
 
-with open(path / 'Amiacs-System-Lights.json') as file:
-    systemLights = json.load(file, object_hook=lightsJsonDecoder)
-
-logging.info('Loaded {} system lights.'.format(len(systemLights)))
-
-with open(path / 'Amiacs-Game-Lights.json') as file:
-    gameLights = json.load(file, object_hook=lightsJsonDecoder)
-
-logging.info('Loaded {} game lights.'.format(len(gameLights)))
-
-bus = smbus.SMBus(1)
-address = 0x07
-
 parser = argparse.ArgumentParser(
     'Given event information, send a command to the Amiacs light controller.')
 parser.add_argument('event', choices=[
@@ -160,7 +147,20 @@ logging.info('rom name: {}'.format(romname))
 logging.info('rompath: {}'.format(args.rompath))
 logging.info('commandline: {}'.format(args.commandline))
 
+bus = smbus.SMBus(1)
+address = 0x07
+
 if args.event == 'game-start':
+    with open(path / 'Amiacs-System-Lights.json') as file:
+        systemLights = json.load(file, object_hook=lightsJsonDecoder)
+
+    logging.info('Loaded {} system lights.'.format(len(systemLights)))
+
+    with open(path / 'Amiacs-Game-Lights.json') as file:
+        gameLights = json.load(file, object_hook=lightsJsonDecoder)
+
+    logging.info('Loaded {} game lights.'.format(len(gameLights)))
+
     if romname.lower() in gameLights:
         logging.info('Configuring lights for game {}.'.format(romname))
         lights = gameLights[romname.lower()]
