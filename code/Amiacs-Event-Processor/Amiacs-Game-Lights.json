@@ -261,7 +261,7 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "88games.zip": {
         "player1Lights": {
@@ -327,7 +327,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "aburner2.zip": {
         "player1Lights": {
@@ -360,7 +360,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "ace.daphne": {
         "player1Lights": {
@@ -461,6 +461,39 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "alien3.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
     "altbeast.zip": {
         "player1Lights": {
             "B": true,
@@ -494,6 +527,72 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "amspdwy.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "apb.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "arcadecl.zip": {
         "player1Lights": {
             "B": true,
@@ -525,7 +624,7 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": true,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "arkanoid.zip": {
         "player1Lights": {
@@ -558,7 +657,106 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "arkatour.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "arknoid2.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "arkretrn.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "astdelux.zip": {
         "player1Lights": {
@@ -626,6 +824,39 @@
         "isTwoControllerGame": false,
         "usesTrackball": false
     },
+    "ataxx.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
     "batman.zip": {
         "player1Lights": {
             "B": true,
@@ -658,6 +889,171 @@
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
         "usesTrackball": false
+    },
+    "beezer.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "bking.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "bking2.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "bking3.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "blaster.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "bwidow.zip": {
         "player1Lights": {
@@ -725,6 +1121,105 @@
         "isTwoControllerGame": false,
         "usesTrackball": false
     },
+    "cameltry.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "capbowl.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "ccastles.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "centiped.zip": {
         "player1Lights": {
             "B": false,
@@ -756,7 +1251,106 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "champbwl.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "chasehq.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "chqflag.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "cliff.daphne": {
         "player1Lights": {
@@ -824,6 +1418,72 @@
         "isTwoControllerGame": false,
         "usesTrackball": false
     },
+    "contcirc.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "countryc.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "csprint.zip": {
         "player1Lights": {
             "B": true,
@@ -855,9 +1515,75 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": true,
-        "usesTrackball": false
+        "usesTrackball": true
     },
-    "ccastles.zip": {
+    "dblaxle.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "dunkshot.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "ebases.zip": {
         "player1Lights": {
             "B": true,
             "A": false,
@@ -868,12 +1594,12 @@
             "L2": false,
             "R2": false,
             "Select": true,
-            "Start": false,
+            "Start": true,
             "Hotkey": true,
             "Command": true
         },
         "player2Lights": {
-            "B": true,
+            "B": false,
             "A": false,
             "L1": false,
             "R1": false,
@@ -881,14 +1607,47 @@
             "X": false,
             "L2": false,
             "R2": false,
-            "Select": true,
+            "Select": false,
             "Start": false,
             "Hotkey": false,
             "Command": false
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "esb.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "gauntlet2p.zip": {
         "player1Lights": {
@@ -956,6 +1715,105 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "gghost.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "gimeabrk.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gloc.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "gravitar.zip": {
         "player1Lights": {
             "B": true,
@@ -988,6 +1846,534 @@
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
         "usesTrackball": false
+    },
+    "gridiron.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "gtg2.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gt2k.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gt3d.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gt97.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gt98.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gt99.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "gtclassc.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "hangon.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "hangonjr.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "hcrash.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "horshoes.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "hotrod.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "hydra.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "ikarijpb.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": false
+    },
+    "indyheat.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
     },
     "indytemp.zip": {
         "player1Lights": {
@@ -1022,6 +2408,39 @@
         "isTwoControllerGame": false,
         "usesTrackball": false
     },
+    "irrmaze.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "jedi.zip": {
         "player1Lights": {
             "B": true,
@@ -1053,7 +2472,139 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "jpark.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "kick.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "konamigt.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "krzybowl.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "lair.daphne": {
         "player1Lights": {
@@ -1121,6 +2672,72 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "le2.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "liberatr.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "llander.zip": {
         "player1Lights": {
             "B": true,
@@ -1185,7 +2802,7 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": true,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "mhavoc.zip": {
         "player1Lights": {
@@ -1218,7 +2835,7 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "milliped.zip": {
         "player1Lights": {
@@ -1251,7 +2868,40 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "minigolf.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "missile.zip": {
         "player1Lights": {
@@ -1284,7 +2934,205 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "nightstr.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "offroad.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "offroadt.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "opwolf.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "othunder.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "outrun.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "pacman.zip": {
         "player1Lights": {
@@ -1350,7 +3198,7 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "polepos.zip": {
         "player1Lights": {
@@ -1383,7 +3231,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "polepos2.zip": {
         "player1Lights": {
@@ -1416,7 +3264,40 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "poundfor.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "quantum.zip": {
         "player1Lights": {
@@ -1449,7 +3330,40 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "rachero.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "redbaron.zip": {
         "player1Lights": {
@@ -1482,7 +3396,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "roadblst.zip": {
         "player1Lights": {
@@ -1515,7 +3429,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "robotron.zip": {
         "player1Lights": {
@@ -1550,6 +3464,171 @@
         "isTwoControllerGame": false,
         "usesTrackball": false
     },
+    "sbrkout.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "shangon.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "sharrier.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "shuuz.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "spiker.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
     "spyhunt.zip": {
         "player1Lights": {
             "B": true,
@@ -1581,7 +3660,106 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "spyhunt2.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "ssprint.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": true
+    },
+    "startrek.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "starwars.zip": {
         "player1Lights": {
@@ -1614,7 +3792,106 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "superchs.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "syvalion.zip": {
+        "player1Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "teedoff.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "tempest.zip": {
         "player1Lights": {
@@ -1647,7 +3924,7 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "toobin.zip": {
         "player1Lights": {
@@ -1682,6 +3959,39 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "toutrun.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": true,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "wacko.zip": {
         "player1Lights": {
             "B": false,
@@ -1713,7 +4023,73 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
+    },
+    "wcbowl.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": true,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
+    "wcbowldx.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "xybots.zip": {
         "player1Lights": {

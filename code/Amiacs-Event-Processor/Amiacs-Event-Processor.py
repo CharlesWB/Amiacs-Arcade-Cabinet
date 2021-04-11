@@ -11,7 +11,6 @@
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py --output-document=Amiacs-Event-Processor.py
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Trackball-Games.json --output-document=Amiacs-System-Lights.json
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Trackball-Games.json --output-document=Amiacs-Game-Lights.json
-# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Trackball-Games.json --output-document=Amiacs-Trackball-Games.json
 #
 # References
 # https://retropie.org.uk/docs/Runcommand/#runcommand-onstart-and-runcommand-onend-scripts
@@ -125,9 +124,6 @@ with open(path / 'Amiacs-System-Lights.json') as file:
 with open(path / 'Amiacs-Game-Lights.json') as file:
     gameLights = json.load(file, object_hook=lightsJsonDecoder)
 
-with open(path / 'Amiacs-Trackball-Games.json') as file:
-    trackballGames = json.load(file)
-
 logging.basicConfig(
     filename=path / 'Amiacs-Event-Processor.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
@@ -169,9 +165,6 @@ if args.event == 'game-start':
     else:
         logging.info('Configuring default lights.')
         lights = systemLights['default']
-
-    if romname.lower() in trackballGames:
-        lights.usesTrackball = True
 
     logging.info(lights)
 
