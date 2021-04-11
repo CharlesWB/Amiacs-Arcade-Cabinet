@@ -153,19 +153,19 @@ args = parser.parse_args()
 romname = os.path.basename(args.rompath)
 
 logging.info('Arguments:')
-logging.info('event: %s', args.event)
-logging.info('system: %s', args.system)
-logging.info('emulator: %s', args.emulator)
-logging.info('rom name: %s', romname)
-logging.info('rompath: %s', args.rompath)
-logging.info('commandline: %s', args.commandline)
+logging.info('event: {}'.format(args.event))
+logging.info('system: {}'.format(args.system))
+logging.info('emulator: {}'.format(args.emulator))
+logging.info('rom name: {}'.format(romname))
+logging.info('rompath: {}'.format(args.rompath))
+logging.info('commandline: {}'.format(args.commandline))
 
 if args.event == 'game-start':
     if romname.lower() in gameLights:
-        logging.info('Configuring lights for game %s.', romname)
+        logging.info('Configuring lights for game {}.'.format(romname))
         lights = gameLights[romname.lower()]
     elif args.system.lower() in systemLights:
-        logging.info('Configuring lights for system %s.', args.system)
+        logging.info('Configuring lights for system {}.'.format(args.system))
         lights = systemLights[args.system.lower()]
     else:
         logging.info('Configuring default lights.')
