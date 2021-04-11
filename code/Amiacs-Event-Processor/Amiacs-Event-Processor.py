@@ -126,8 +126,12 @@ logging.info('Begin Amiacs event processing.')
 with open(path / 'Amiacs-System-Lights.json') as file:
     systemLights = json.load(file, object_hook=lightsJsonDecoder)
 
+logging.info('Loaded {} system lights.'.format(len(systemLights)))
+
 with open(path / 'Amiacs-Game-Lights.json') as file:
     gameLights = json.load(file, object_hook=lightsJsonDecoder)
+
+logging.info('Loaded {} game lights.'.format(len(gameLights)))
 
 bus = smbus.SMBus(1)
 address = 0x07
