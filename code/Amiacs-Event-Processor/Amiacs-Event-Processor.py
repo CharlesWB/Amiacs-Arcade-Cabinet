@@ -9,8 +9,8 @@
 # mkdir amiacs
 # cd amiacs
 # wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Event-Processor.py --output-document=Amiacs-Event-Processor.py
-# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Trackball-Games.json --output-document=Amiacs-System-Lights.json
-# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Trackball-Games.json --output-document=Amiacs-Game-Lights.json
+# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-System-Lights.json --output-document=Amiacs-System-Lights.json
+# wget https://github.com/CharlesWB/Amiacs-Arcade-Cabinet/raw/master/code/Amiacs-Event-Processor/Amiacs-Game-Lights.json --output-document=Amiacs-Game-Lights.json
 #
 # References
 # https://retropie.org.uk/docs/Runcommand/#runcommand-onstart-and-runcommand-onend-scripts
