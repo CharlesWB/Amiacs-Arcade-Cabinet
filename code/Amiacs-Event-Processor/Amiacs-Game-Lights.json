@@ -2375,6 +2375,39 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "enduror.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
+    },
     "esb.zip": {
         "player1Lights": {
             "B": true,
@@ -2902,6 +2935,39 @@
         "isTwoPlayerGame": true,
         "isTwoControllerGame": false,
         "usesTrackball": false
+    },
+    "gprider.zip": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": true
     },
     "gravitar.zip": {
         "player1Lights": {
