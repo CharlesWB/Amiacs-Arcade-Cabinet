@@ -65,6 +65,39 @@
         "isTwoControllerGame": false,
         "usesTrackball": false
     },
+    "amiga": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": false
+    },
     "amigacd32": {
         "player1Lights": {
             "B": true,
