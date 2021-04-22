@@ -69,7 +69,7 @@
         "player1Lights": {
             "B": true,
             "A": true,
-            "L1": false,
+            "L1": true,
             "R1": false,
             "Y": false,
             "X": false,
@@ -129,6 +129,39 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": true,
+        "usesTrackball": false
+    },
+    "amstradcpc": {
+        "player1Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
         "usesTrackball": false
     },
     "arcade": {
@@ -207,8 +240,8 @@
             "X": false,
             "L2": false,
             "R2": false,
-            "Select": false,
-            "Start": false,
+            "Select": true,
+            "Start": true,
             "Hotkey": true,
             "Command": true
         },
@@ -232,7 +265,7 @@
     },
     "atari5200": {
         "player1Lights": {
-            "B": true,
+            "B": false,
             "A": true,
             "L1": false,
             "R1": false,
@@ -240,22 +273,22 @@
             "X": false,
             "L2": false,
             "R2": false,
-            "Select": true,
+            "Select": false,
             "Start": true,
             "Hotkey": true,
             "Command": true
         },
         "player2Lights": {
-            "B": true,
-            "A": true,
+            "B": false,
+            "A": false,
             "L1": false,
             "R1": false,
             "Y": false,
             "X": false,
             "L2": false,
             "R2": false,
-            "Select": true,
-            "Start": true,
+            "Select": false,
+            "Start": false,
             "Hotkey": false,
             "Command": false
         },
@@ -270,7 +303,7 @@
             "L1": false,
             "R1": false,
             "Y": false,
-            "X": false,
+            "X": true,
             "L2": false,
             "R2": false,
             "Select": true,
@@ -287,8 +320,8 @@
             "X": false,
             "L2": false,
             "R2": false,
-            "Select": true,
-            "Start": true,
+            "Select": false,
+            "Start": false,
             "Hotkey": false,
             "Command": false
         },
@@ -329,6 +362,39 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "atarilynx": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": true,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": false
+    },
     "atomiswave": {
         "player1Lights": {
             "B": true,
@@ -366,6 +432,20 @@
         "player1Lights": {
             "B": true,
             "A": true,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": false,
+            "L2": true,
+            "R2": true,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": false,
             "L1": false,
             "R1": false,
             "Y": false,
@@ -374,12 +454,31 @@
             "R2": false,
             "Select": false,
             "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": true,
+        "usesTrackball": false
+    },
+    "channelf": {
+        "player1Lights": {
+            "B": true,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": true,
             "Hotkey": true,
             "Command": true
         },
         "player2Lights": {
             "B": true,
-            "A": true,
+            "A": false,
             "L1": false,
             "R1": false,
             "Y": false,
@@ -399,28 +498,28 @@
         "player1Lights": {
             "B": true,
             "A": true,
-            "L1": false,
-            "R1": false,
-            "Y": false,
-            "X": false,
-            "L2": false,
-            "R2": false,
-            "Select": false,
-            "Start": false,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": true,
+            "Select": true,
+            "Start": true,
             "Hotkey": true,
             "Command": true
         },
         "player2Lights": {
             "B": true,
             "A": true,
-            "L1": false,
-            "R1": false,
-            "Y": false,
-            "X": false,
-            "L2": false,
-            "R2": false,
-            "Select": false,
-            "Start": false,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": true,
+            "Select": true,
+            "Start": true,
             "Hotkey": false,
             "Command": false
         },
@@ -473,7 +572,7 @@
             "R2": false,
             "Select": true,
             "Start": true,
-            "Hotkey": true,
+            "Hotkey": false,
             "Command": true
         },
         "player2Lights": {
@@ -488,7 +587,7 @@
             "Select": true,
             "Start": true,
             "Hotkey": false,
-            "Command": false
+            "Command": true
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": true,
@@ -558,6 +657,39 @@
         },
         "isTwoPlayerGame": true,
         "isTwoControllerGame": true,
+        "usesTrackball": false
+    },
+    "gameandwatch": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": true,
+            "L2": true,
+            "R2": true,
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
         "usesTrackball": false
     },
     "gamegear": {
