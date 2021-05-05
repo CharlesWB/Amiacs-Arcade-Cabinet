@@ -828,10 +828,10 @@
         "player1Lights": {
             "B": true,
             "A": true,
-            "L1": false,
-            "R1": false,
+            "L1": true,
+            "R1": true,
             "Y": true,
-            "X": false,
+            "X": true,
             "L2": false,
             "R2": false,
             "Select": false,
@@ -842,10 +842,10 @@
         "player2Lights": {
             "B": true,
             "A": true,
-            "L1": false,
-            "R1": false,
+            "L1": true,
+            "R1": true,
             "Y": true,
-            "X": false,
+            "X": true,
             "L2": false,
             "R2": false,
             "Select": false,
@@ -1022,6 +1022,39 @@
         "isTwoControllerGame": true,
         "usesTrackball": false
     },
+    "msx2": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": false
+    },
     "n64": {
         "player1Lights": {
             "B": true,
@@ -1093,10 +1126,10 @@
             "B": true,
             "A": true,
             "L1": true,
-            "R1": false,
+            "R1": true,
             "Y": true,
             "X": true,
-            "L2": true,
+            "L2": false,
             "R2": false,
             "Select": true,
             "Start": true,
@@ -1104,21 +1137,87 @@
             "Command": true
         },
         "player2Lights": {
-            "B": true,
-            "A": true,
-            "L1": true,
+            "B": false,
+            "A": false,
+            "L1": false,
             "R1": false,
-            "Y": true,
-            "X": true,
-            "L2": true,
+            "Y": false,
+            "X": false,
+            "L2": false,
             "R2": false,
-            "Select": true,
-            "Start": true,
+            "Select": false,
+            "Start": false,
             "Hotkey": false,
             "Command": false
         },
-        "isTwoPlayerGame": true,
-        "isTwoControllerGame": true,
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": false
+    },
+    "ngp": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
+        "usesTrackball": false
+    },
+    "ngpc": {
+        "player1Lights": {
+            "B": true,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
+        },
+        "player2Lights": {
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
         "usesTrackball": false
     },
     "neogeo": {
@@ -1246,6 +1345,39 @@
             "R2": false,
             "Select": true,
             "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "isTwoPlayerGame": true,
+        "isTwoControllerGame": true,
+        "usesTrackball": false
+    },
+    "odyssey2": {
+        "player1Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": true,
+            "Start": true,
+            "Hotkey": false,
+            "Command": false
+        },
+        "player2Lights": {
+            "B": false,
+            "A": true,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
+            "L2": false,
+            "R2": false,
+            "Select": false,
+            "Start": false,
             "Hotkey": false,
             "Command": false
         },
@@ -1401,21 +1533,21 @@
             "Command": true
         },
         "player2Lights": {
-            "B": true,
-            "A": true,
-            "L1": true,
-            "R1": true,
-            "Y": true,
-            "X": true,
+            "B": false,
+            "A": false,
+            "L1": false,
+            "R1": false,
+            "Y": false,
+            "X": false,
             "L2": false,
             "R2": false,
-            "Select": true,
-            "Start": true,
+            "Select": false,
+            "Start": false,
             "Hotkey": false,
             "Command": false
         },
-        "isTwoPlayerGame": true,
-        "isTwoControllerGame": true,
+        "isTwoPlayerGame": false,
+        "isTwoControllerGame": false,
         "usesTrackball": false
     },
     "pspminis": {
@@ -1487,17 +1619,17 @@
     "scummvm": {
         "player1Lights": {
             "B": true,
-            "A": false,
-            "L1": false,
-            "R1": false,
-            "Y": false,
-            "X": false,
+            "A": true,
+            "L1": true,
+            "R1": true,
+            "Y": true,
+            "X": true,
             "L2": true,
             "R2": true,
-            "Select": false,
-            "Start": false,
-            "Hotkey": false,
-            "Command": false
+            "Select": true,
+            "Start": true,
+            "Hotkey": true,
+            "Command": true
         },
         "player2Lights": {
             "B": false,
@@ -1515,7 +1647,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "sega32x": {
         "player1Lights": {
