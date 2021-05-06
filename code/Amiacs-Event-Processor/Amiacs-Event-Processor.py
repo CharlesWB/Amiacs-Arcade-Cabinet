@@ -161,12 +161,12 @@ if args.event == 'game-start':
 
     logging.info('Loaded {} game lights.'.format(len(gameLights)))
 
-    if romname.lower() in gameLights:
+    if romname in gameLights:
         logging.info('Configuring lights for game {}.'.format(romname))
-        lights = gameLights[romname.lower()]
-    elif args.system.lower() in systemLights:
+        lights = gameLights[romname]
+    elif args.system in systemLights:
         logging.info('Configuring lights for system {}.'.format(args.system))
-        lights = systemLights[args.system.lower()]
+        lights = systemLights[args.system]
     else:
         logging.info('Configuring default lights.')
         lights = systemLights['default']
