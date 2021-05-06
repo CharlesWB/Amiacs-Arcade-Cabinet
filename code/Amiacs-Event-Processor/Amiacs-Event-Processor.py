@@ -151,11 +151,6 @@ bus = smbus.SMBus(1)
 address = 0x07
 
 if args.event == 'game-start':
-    with open(path / 'Amiacs-System-Lights.json') as file:
-        systemLights = json.load(file, object_hook=lightsJsonDecoder)
-
-    logging.info('Loaded {} system lights.'.format(len(systemLights)))
-
     with open(path / 'Amiacs-Game-Lights.json') as file:
         gameLights = json.load(file, object_hook=lightsJsonDecoder)
 
@@ -164,12 +159,18 @@ if args.event == 'game-start':
     if romname in gameLights:
         logging.info('Configuring lights for game {}.'.format(romname))
         lights = gameLights[romname]
-    elif args.system in systemLights:
-        logging.info('Configuring lights for system {}.'.format(args.system))
-        lights = systemLights[args.system]
     else:
-        logging.info('Configuring default lights.')
-        lights = systemLights['default']
+        with open(path / 'Amiacs-System-Lights.json') as file:
+            systemLights = json.load(file, object_hook=lightsJsonDecoder)
+
+        logging.info('Loaded {} system lights.'.format(len(systemLights)))
+
+        if args.system in systemLights:
+            logging.info('Configuring lights for system {}.'.format(args.system))
+            lights = systemLights[args.system]
+        else:
+            logging.info('Configuring default lights.')
+            lights = systemLights['default']
 
     logging.info(lights)
 
