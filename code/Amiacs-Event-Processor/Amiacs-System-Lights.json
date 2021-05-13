@@ -280,7 +280,7 @@
         },
         "player2Lights": {
             "B": false,
-            "A": false,
+            "A": true,
             "L1": false,
             "R1": false,
             "Y": false,
@@ -288,7 +288,7 @@
             "L2": false,
             "R2": false,
             "Select": false,
-            "Start": false,
+            "Start": true,
             "Hotkey": false,
             "Command": false
         },
