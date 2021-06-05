@@ -1529,7 +1529,7 @@
             "R2": false,
             "Select": true,
             "Start": true,
-            "Hotkey": true,
+            "Hotkey": false,
             "Command": true
         },
         "player2Lights": {
@@ -1562,7 +1562,7 @@
             "R2": false,
             "Select": true,
             "Start": true,
-            "Hotkey": true,
+            "Hotkey": false,
             "Command": true
         },
         "player2Lights": {
