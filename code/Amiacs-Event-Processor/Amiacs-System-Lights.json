@@ -1125,26 +1125,26 @@
         "player1Lights": {
             "B": true,
             "A": true,
-            "L1": true,
+            "L1": false,
             "R1": true,
             "Y": true,
             "X": true,
-            "L2": false,
-            "R2": false,
+            "L2": true,
+            "R2": true,
             "Select": true,
             "Start": true,
-            "Hotkey": true,
+            "Hotkey": false,
             "Command": true
         },
         "player2Lights": {
             "B": false,
             "A": false,
             "L1": false,
-            "R1": false,
+            "R1": true,
             "Y": false,
-            "X": false,
-            "L2": false,
-            "R2": false,
+            "X": true,
+            "L2": true,
+            "R2": true,
             "Select": false,
             "Start": false,
             "Hotkey": false,
@@ -1152,7 +1152,7 @@
         },
         "isTwoPlayerGame": false,
         "isTwoControllerGame": false,
-        "usesTrackball": false
+        "usesTrackball": true
     },
     "ngp": {
         "player1Lights": {
