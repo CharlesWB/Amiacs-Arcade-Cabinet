@@ -2,6 +2,14 @@
 
 This folder contains various "models" used to create the Amiacs arcade cabinet. Such as 3D models, artwork, and Fritzing diagrams.
 
+## Amiacs Arcade Cabinet Prototype.skp
+
+3D CAD model of the original prototype cabinet. Created using [SketchUp](https://www.sketchup.com/).
+
+## Amiacs Arcade Cabinet v32.step
+
+A STEP file format export of the CAD model prior to the removal the export functionality from the personal version of AutoDesk Fusion 360. This export occurred at v32 of the Fusion 360 model.
+
 ## Amiacs Arcade.fzz
 
 Fritzing diagram representing the wiring of all the components in the cabinet. Created using [Fritzing](https://fritzing.org/).
@@ -35,6 +43,16 @@ In Inkscape, Document Resources also has a list of the fonts used in the file.
     * Technically Inkscape size is .1 mm larger due to stroke thickness.
 4. Ungroup top level group.
 5. Select each button label group and Attach to keep the shapes together.
+
+## Cabinet Artwork.svg
+
+Vector image used for describing the cabinet graphics. Created using [Inkscape](https://inkscape.org/).
+
+### Fonts Used
+
+* To do
+
+In Inkscape, Document Resources also has a list of the fonts used in the file.
 
 ## Cabinet Labels.svg
 
