@@ -4,7 +4,7 @@ This folder contains various "models" used to create the Amiacs arcade cabinet. 
 
 ## Button Labels.svg
 
-These are the vector images for the labels that are placed directly on the control panel buttons. This file is created using [Inkscape](https://inkscape.org/).
+Vector images for the labels that are placed directly on the control panel buttons. This file is created using [Inkscape](https://inkscape.org/).
 
 ### Fonts Used
 
@@ -30,3 +30,16 @@ In Inkscape, Document Resources also has a list of the fonts used in the file.
     * Technically Inkscape size is .1 mm larger due to stroke thickness.
 4. Ungroup top level group.
 5. Select each button label group and Attach to keep the shapes together.
+
+## Cabinet Labels.svg
+
+Vector images of various labels placed on the cabinet. This file is created using [Inkscape](https://inkscape.org/).
+
+### Fonts Used
+
+In Inkscape, Document Resources also has a list of the fonts used in the file.
+* Arial for all text
+
+### Usage
+
+I'm using an adhesive backed vinyl. Trying to get the best durability and adhesion.
