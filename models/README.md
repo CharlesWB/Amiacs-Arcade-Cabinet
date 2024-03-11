@@ -2,16 +2,21 @@
 
 This folder contains various "models" used to create the Amiacs arcade cabinet. Such as 3D models, artwork, and Fritzing diagrams.
 
+## Amiacs Arcade.fzz
+
+Fritzing diagram representing the wiring of all the components in the cabinet. Created using [Fritzing](https://fritzing.org/).
+
 ## Button Labels.svg
 
-Vector images for the labels that are placed directly on the control panel buttons. This file is created using [Inkscape](https://inkscape.org/).
+Vector images for the labels that are placed directly on the control panel buttons. Created using [Inkscape](https://inkscape.org/).
 
 ### Fonts Used
 
-In Inkscape, Document Resources also has a list of the fonts used in the file.
 * [Game Played](https://www.dafont.com/game-played.font) for button text
 * [Restroom](https://www.dafont.com/restroom.font) for one and two player button labels (character 'G')
 * [Fire](https://www.dafont.com/fire.font) for hotkey button label (character 't')
+
+In Inkscape, Document Resources also has a list of the fonts used in the file.
 
 ### Usage
 
@@ -33,13 +38,24 @@ In Inkscape, Document Resources also has a list of the fonts used in the file.
 
 ## Cabinet Labels.svg
 
-Vector images of various labels placed on the cabinet. This file is created using [Inkscape](https://inkscape.org/).
+Vector images of various labels placed on the cabinet. Created using [Inkscape](https://inkscape.org/).
 
 ### Fonts Used
 
-In Inkscape, Document Resources also has a list of the fonts used in the file.
 * Arial for all text
+
+In Inkscape, Document Resources also has a list of the fonts used in the file.
 
 ### Usage
 
 I'm using an adhesive backed vinyl. Trying to get the best durability and adhesion.
+
+## Test Amiacs Light Controller.fzz
+
+Fritzing breadboard diagram for testing the various LEDs of the cabinet. Created using [Fritzing](https://fritzing.org/).
+
+## Test MCP23017 Arcade Button LEDs.fzz
+
+Fritzing breadboard diagram for testing control of the button LEDs using an MCP23017. Created using [Fritzing](https://fritzing.org/).
+
+This was an early prototype for controlling multiple LEDs using two pins on the Arduino. This is not used in the current cabinet design.
