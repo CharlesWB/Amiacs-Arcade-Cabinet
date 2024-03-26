@@ -8,7 +8,7 @@ This folder contains various "models" used to create the Amiacs arcade cabinet. 
 
 ## Amiacs Arcade Cabinet v32.step
 
-A STEP file format export of the CAD model prior to the removal the export functionality from the personal version of AutoDesk Fusion 360. This export occurred at v32 of the Fusion 360 model.
+A STEP file format export of the CAD model prior to the removal of the export functionality from the personal version of AutoDesk Fusion 360. This export occurred at v32 of the Fusion 360 model.
 
 ## Amiacs Arcade.fzz
 
@@ -20,9 +20,9 @@ Vector images for the labels that are placed directly on the control panel butto
 
 ### Fonts Used
 
-* [Game Played](https://www.dafont.com/game-played.font) for button text
-* [Restroom](https://www.dafont.com/restroom.font) for one and two player button labels (character 'G')
-* [Fire](https://www.dafont.com/fire.font) for hotkey button label (character 't')
+* [Game Played](https://www.dafont.com/game-played.font) for button text.
+* [Restroom](https://www.dafont.com/restroom.font) for one and two player button labels (character 'G').
+* [Fire](https://www.dafont.com/fire.font) for hotkey button symbol (character 't').
 
 In Inkscape, Document Resources also has a list of the fonts used in the file.
 
@@ -50,7 +50,11 @@ Vector image used for describing the cabinet graphics. Created using [Inkscape](
 
 ### Fonts Used
 
-* To do
+* [Game Played](https://www.dafont.com/game-played.font) for button text and console labels.
+* [Fire](https://www.dafont.com/fire.font) for hotkey button symbol (character 't')
+* [Aurebesh](https://www.dafont.com/aurebesh.font) for the secret names.
+* [Back to the Future 2002](https://www.dafont.com/back-to-the-future.font) for the representation of the logo on the marquee. This is not meant to be the final look.
+* Arial for drawing notes and reference dimensions.
 
 In Inkscape, Document Resources also has a list of the fonts used in the file.
 
@@ -60,7 +64,7 @@ Vector images of various labels placed on the cabinet. Created using [Inkscape](
 
 ### Fonts Used
 
-* Arial for all text
+* Arial for all text.
 
 In Inkscape, Document Resources also has a list of the fonts used in the file.
 
