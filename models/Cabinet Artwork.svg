@@ -216,17 +216,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.19707661"
-     inkscape:cx="3696.532"
+     inkscape:cx="3693.9949"
      inkscape:cy="2976"
      inkscape:document-units="in"
-     inkscape:current-layer="layer9"
+     inkscape:current-layer="layer13"
      inkscape:document-rotation="0"
      showgrid="false"
      units="in"
      inkscape:window-width="3440"
      inkscape:window-height="1369"
      inkscape:window-x="1432"
-     inkscape:window-y="716"
+     inkscape:window-y="595"
      inkscape:window-maximized="1"
      inkscape:pagecheckerboard="0"
      inkscape:object-paths="false"
@@ -245,6 +245,117 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="Button Border Concepts"
+     style="display:none"
+     sodipodi:insensitive="true">
+    <g
+       inkscape:groupmode="layer"
+       id="layer13"
+       inkscape:label="Border Tangent"
+       style="display:inline">
+      <path
+         id="path3"
+         style="display:inline;fill:none;fill-opacity:1;stroke:#00ffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:type="inkscape:offset"
+         inkscape:radius="21.694113"
+         inkscape:original="M 164.91016 105.80859 L 133.41016 124.05859 L 133.41016 160.55859 L 164.91016 142.30859 L 201.41016 142.30859 L 236.91016 151.30859 L 236.91016 114.80859 L 201.41016 105.80859 L 164.91016 105.80859 z "
+         d="m 164.91016,84.115234 a 21.696282,21.696282 0 0 0 -10.875,2.921875 l -31.5,18.250001 a 21.696282,21.696282 0 0 0 -10.81836,18.77148 v 36.5 a 21.696282,21.696282 0 0 0 32.56836,18.77149 l 26.45507,-15.32813 h 27.96289 l 32.875,8.33594 a 21.696282,21.696282 0 0 0 27.0254,-21.0293 v -36.5 A 21.696282,21.696282 0 0 0 242.24219,93.779297 l -35.5,-9 a 21.696282,21.696282 0 0 0 -5.33203,-0.664063 z"
+         transform="translate(615.21109,190.36238)" />
+      <path
+         id="path5"
+         style="display:inline;fill:none;fill-opacity:1;stroke:#00ffff;stroke-width:2;stroke-linejoin:bevel;stroke-dasharray:none;paint-order:markers fill stroke"
+         d="m 672.92023,218.32036 a 19.101299,19.101297 0 0 0 -19.10116,19.10116 19.101299,19.101297 0 0 0 19.10116,19.10168 19.101299,19.101297 0 0 0 0.48989,-0.0351 c 0.0567,0.0157 0.11228,0.0351 0.17415,0.0351 h 43.12192 c 0.0619,0 0.11787,-0.0194 0.17466,-0.0351 a 19.101299,19.101297 0 0 0 0.48938,0.0351 19.101299,19.101297 0 0 0 19.10168,-19.10168 19.101299,19.101297 0 0 0 -19.10168,-19.10116 19.101299,19.101297 0 0 0 -0.48989,0.0351 c -0.0567,-0.0156 -0.1124,-0.0351 -0.17415,-0.0351 h -43.12192 c -0.0259,0 -0.0478,0.0116 -0.0729,0.0145 a 19.101299,19.101297 0 0 0 -0.59118,-0.0145 z" />
+      <circle
+         style="display:inline;fill:none;fill-opacity:1;stroke:#00ffff;stroke-width:2;stroke-linejoin:bevel;stroke-dasharray:none;paint-order:markers fill stroke"
+         id="path9"
+         cx="787.22046"
+         cy="237.42175"
+         r="18.584892" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer12"
+       inkscape:label="Border Cloud"
+       style="display:inline">
+      <path
+         id="path2-1"
+         style="display:inline;fill:none;fill-opacity:1;stroke:#ff00ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 816.6205,274.04099 a 22,22 0 0 0 -18.28157,9.80406 22,22 0 0 0 -18.21853,-9.67332 22,22 0 0 0 -21.89013,20.46491 22,22 0 0 0 -9.60975,-2.21486 22,22 0 0 0 -22.00021,22.00021 22,22 0 0 0 9.76168,18.25005 22,22 0 0 0 -9.76168,18.24953 22,22 0 0 0 22.00021,22.00021 22,22 0 0 0 21.8922,-20.49384 22,22 0 0 0 9.60768,2.24379 22,22 0 0 0 18.25005,-9.76219 22,22 0 0 0 18.25005,9.76219 22,22 0 0 0 14.7836,-5.75004 22,22 0 0 0 20.71656,14.75001 22,22 0 0 0 21.99969,-21.99969 22,22 0 0 0 -9.73997,-18.26659 22,22 0 0 0 9.73997,-18.23351 22,22 0 0 0 -21.99969,-22.00021 22,22 0 0 0 -14.7128,5.67924 22,22 0 0 0 -20.78736,-14.80995 z" />
+      <path
+         id="path6"
+         style="display:inline;fill:none;fill-opacity:1;stroke:#ff00ff;stroke-width:2;stroke-linejoin:bevel;stroke-dasharray:none;paint-order:markers fill stroke"
+         d="m 673.45146,218.46971 c -0.0184,0.002 -0.0354,0.009 -0.0532,0.0134 a 18.950264,18.950264 0 0 0 -0.478,-0.0119 18.950264,18.950264 0 0 0 -18.95027,18.95026 18.950264,18.950264 0 0 0 18.95027,18.95027 18.950264,18.950264 0 0 0 0.40617,-0.0289 c 0.0796,0.0312 0.16655,0.0429 0.25787,0.0289 0.22132,-0.0339 0.44185,-0.0623 0.66301,-0.0951 a 18.950264,18.950264 0 0 0 2.56315,-0.35709 c 12.52432,-1.62469 24.7809,-1.50029 36.82256,0.0331 a 18.950264,18.950264 0 0 0 2.36833,0.32143 c 0.2348,0.0335 0.47022,0.0631 0.70487,0.0977 0.091,0.0134 0.17803,0.002 0.25735,-0.0289 a 18.950264,18.950264 0 0 0 0.40669,0.0289 18.950264,18.950264 0 0 0 18.95026,-18.95027 18.950264,18.950264 0 0 0 -18.95026,-18.95026 18.950264,18.950264 0 0 0 -0.41031,0.0294 c -0.0783,-0.03 -0.16417,-0.042 -0.25373,-0.0294 -0.25901,0.0364 -0.51981,0.0681 -0.77928,0.10335 a 18.950264,18.950264 0 0 0 -2.096,0.27337 c -11.72289,1.43765 -23.93098,1.63911 -36.8329,0.0729 a 18.950264,18.950264 0 0 0 -3.26285,-0.42943 c -0.0505,-0.007 -0.1004,-0.0129 -0.15089,-0.0202 -0.0455,-0.007 -0.0898,-0.007 -0.13281,-0.002 z" />
+      <circle
+         style="display:inline;fill:none;fill-opacity:1;stroke:#ff00ff;stroke-width:2;stroke-linejoin:bevel;stroke-dasharray:none;paint-order:markers fill stroke"
+         id="circle8"
+         cx="787.22046"
+         cy="237.42175"
+         r="18.997507" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer11"
+       inkscape:label="Border Dimensions"
+       style="display:inline">
+      <path
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 799.92044,224.72175 7.29751,-7.29751"
+         id="path19-8" />
+      <ellipse
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.306111;stroke-miterlimit:4;stroke-dasharray:1.22444, 2.44889;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle22"
+         cx="787.22046"
+         cy="237.43744"
+         rx="17.846979"
+         ry="17.865944" />
+      <ellipse
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.348626;stroke-miterlimit:4;stroke-dasharray:1.3945, 2.78901;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;stop-color:#000000"
+         id="ellipse22"
+         cx="852.12042"
+         cy="305.18964"
+         rx="20.325726"
+         ry="20.347324" />
+      <path
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 864.90765,288.99285 7.29751,-7.29751"
+         id="path22-5" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';display:inline;stroke-width:0.264583"
+         x="807.31152"
+         y="217.33072"
+         id="text19-7"><tspan
+           sodipodi:role="line"
+           id="tspan19-5"
+           style="stroke-width:0.264583"
+           x="807.31152"
+           y="217.33072">36 mm inside diameter</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.264583"
+           x="807.31152"
+           y="220.85851"
+           id="tspan22">to give about 4 mm clearance around button</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';display:inline;stroke-width:0.264583"
+         x="872.29871"
+         y="281.60181"
+         id="text24-7"><tspan
+           sodipodi:role="line"
+           id="tspan23-3"
+           style="stroke-width:0.264583"
+           x="872.29871"
+           y="281.60181">41 mm inside diameter</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.264583"
+           x="872.29871"
+           y="285.12961"
+           id="tspan24-4">to give about 4 mm clearance around button</tspan></text>
+    </g>
+  </g>
   <g
      inkscape:groupmode="layer"
      id="layer8"
