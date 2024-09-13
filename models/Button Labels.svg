@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="403.75"
+     inkscape:cx="403.5"
      inkscape:cy="251.25"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -34,7 +34,7 @@
      inkscape:window-width="3440"
      inkscape:window-height="1369"
      inkscape:window-x="1432"
-     inkscape:window-y="716"
+     inkscape:window-y="595"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="2"
      inkscape:pagecheckerboard="0"
@@ -115,13 +115,13 @@
       <text
          id="text4562"
          y="90.148956"
-         x="51.975986"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:25.3835px;line-height:125%;font-family:'Nulshock Rg';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-opacity:1;stroke-dasharray:none"
+         x="51.299553"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:125%;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          xml:space="preserve"><tspan
            y="90.148956"
-           x="51.975986"
+           x="51.299553"
            sodipodi:role="line"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Game Played';-inkscape-font-specification:'Game Played';stroke-width:0.1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
            id="tspan4570">ONE</tspan></text>
       <text
          xml:space="preserve"
@@ -146,14 +146,14 @@
          style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:25.3835px;line-height:125%;font-family:'Nulshock Rg';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-opacity:1;stroke-dasharray:none"
-         x="51.23946"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:125%;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+         x="50.476894"
          y="110.12735"
          id="text4596"><tspan
            id="tspan4594"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Game Played';-inkscape-font-specification:'Game Played';stroke-width:0.1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
            sodipodi:role="line"
-           x="51.23946"
+           x="50.476894"
            y="110.12735">TWO</tspan></text>
       <text
          id="text4600"
