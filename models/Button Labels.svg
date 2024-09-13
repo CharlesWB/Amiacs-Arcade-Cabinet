@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
-     inkscape:cx="352.49273"
-     inkscape:cy="181.19611"
+     inkscape:cx="352.13918"
+     inkscape:cy="166.70043"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -49,16 +49,6 @@
        position="3.7217187,269.31372"
        orientation="0,-1"
        id="guide2"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="3.7217196,246.79146"
-       orientation="0,-1"
-       id="guide3"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="3.7217187,224.33454"
-       orientation="0,-1"
-       id="guide4"
        inkscape:locked="false" />
     <sodipodi:guide
        position="13.613533,301.66246"
@@ -99,21 +89,6 @@
        position="8.0559146,263.04365"
        orientation="0,-1"
        id="guide14"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="29.952507,253.1115"
-       orientation="0,-1"
-       id="guide15"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="29.952507,240.47138"
-       orientation="0,-1"
-       id="guide16"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="8.0059146,230.65458"
-       orientation="0,-1"
-       id="guide17"
        inkscape:locked="false" />
     <sodipodi:guide
        position="8.1891965,298.0907"
@@ -166,9 +141,14 @@
        id="guide64"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="142.67227,277.76401"
+       position="142.67227,300.22094"
        orientation="1,0"
        id="guide65"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="163.30978,300.22094"
+       orientation="1,0"
+       id="guide15"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -189,521 +169,354 @@
      id="layer1"
      style="display:inline;opacity:1"
      transform="translate(0,7.8)">
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle4540"
-       cx="35.37685"
-       cy="27.686256" />
-    <circle
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle4546"
-       cx="122.56596"
-       cy="50.20853"
-       r="8.4502926" />
-    <circle
-       r="8.4502926"
-       cy="27.686256"
-       cx="142.67227"
-       id="circle4556"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       id="text4562"
-       y="26.795929"
-       x="137.28847"
-       style="display:inline;opacity:1;font-size:5.64444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       xml:space="preserve"><tspan
+    <g
+       id="g13"
+       transform="translate(2.9523343e-6,-22.456922)">
+      <circle
+         r="8.4502926"
+         cy="27.686256"
+         cx="142.67227"
+         id="circle4556"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4562"
          y="26.795929"
          x="137.28847"
-         sodipodi:role="line"
-         id="tspan4570">ONE</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:3.88056px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       x="135.13097"
-       y="30.226265"
-       id="text4576"><tspan
-         sodipodi:role="line"
-         id="tspan4574"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="26.795929"
+           x="137.28847"
+           sodipodi:role="line"
+           id="tspan4570">ONE</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="135.13097"
-         y="30.226265">PLAYER</tspan></text>
-    <circle
-       r="8.4502926"
-       cy="72.665443"
-       cx="142.67227"
-       id="circle4592"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:5.64444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       x="136.59944"
-       y="71.775116"
-       id="text4596"><tspan
-         id="tspan4594"
-         sodipodi:role="line"
+         y="30.226265"
+         id="text4576"><tspan
+           sodipodi:role="line"
+           id="tspan4574"
+           x="135.13097"
+           y="30.226265">PLAYER</tspan></text>
+    </g>
+    <g
+       id="g15"
+       transform="translate(2.9523329e-6,-44.979187)">
+      <circle
+         r="8.4502926"
+         cy="72.665443"
+         cx="142.67227"
+         id="circle4592"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="136.59944"
-         y="71.775116">TWO</tspan></text>
-    <text
-       id="text4600"
-       y="75.20546"
-       x="135.13097"
-       style="display:inline;opacity:1;font-size:3.88056px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       xml:space="preserve"><tspan
+         y="71.775116"
+         id="text4596"><tspan
+           id="tspan4594"
+           sodipodi:role="line"
+           x="136.59944"
+           y="71.775116">TWO</tspan></text>
+      <text
+         id="text4600"
          y="75.20546"
          x="135.13097"
-         id="tspan4598"
-         sodipodi:role="line">PLAYER</tspan></text>
-    <circle
-       r="8.4502926"
-       cy="72.665443"
-       cx="122.56596"
-       id="circle858"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;line-height:1.25;font-family:Restroom;-inkscape-font-specification:'Restroom, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="117.44381"
-       y="78.573082"
-       id="text864"><tspan
-         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="75.20546"
+           x="135.13097"
+           id="tspan4598"
+           sodipodi:role="line">PLAYER</tspan></text>
+    </g>
+    <g
+       id="g14"
+       transform="translate(40.743824,-44.979184)">
+      <circle
+         r="8.4502926"
+         cy="72.665443"
+         cx="122.56596"
+         id="circle858"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;line-height:1.25;font-family:Restroom;-inkscape-font-specification:'Restroom, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="117.44381"
          y="78.573082"
-         id="tspan862">GG</tspan></text>
-    <circle
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle885"
-       cx="122.56596"
-       cy="27.686256"
-       r="8.4502926" />
-    <text
-       id="text889"
-       y="33.593895"
-       x="119.99868"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;line-height:1.25;font-family:Restroom;-inkscape-font-specification:'Restroom, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         id="tspan887"
+         id="text864"><tspan
+           sodipodi:role="line"
+           x="117.44381"
+           y="78.573082"
+           id="tspan862">GG</tspan></text>
+    </g>
+    <g
+       id="g12"
+       transform="translate(40.743824,-22.456922)">
+      <circle
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle885"
+         cx="122.56596"
+         cy="27.686256"
+         r="8.4502926" />
+      <text
+         id="text889"
          y="33.593895"
          x="119.99868"
-         sodipodi:role="line">G</tspan></text>
-    <circle
-       cy="27.686258"
-       cx="13.613532"
-       id="circle936"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle947"
-       cx="35.37685"
-       cy="5.2293353" />
-    <circle
-       cy="5.2293353"
-       cx="13.613533"
-       id="circle953"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       cy="27.686256"
-       cx="57.140175"
-       id="circle959"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle967"
-       cx="78.903496"
-       cy="27.686256" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle979"
-       cx="78.903503"
-       cy="5.2293348" />
-    <circle
-       cy="5.2293358"
-       cx="57.140175"
-       id="circle1007"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle1073"
-       cx="102.72086"
-       cy="72.665443"
-       r="8.4502926" />
-    <circle
-       r="8.4502926"
-       cy="27.686256"
-       cx="102.72086"
-       id="circle1092"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <circle
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle4743"
-       cx="102.72086"
-       cy="5.2293348"
-       r="8.4502926" />
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:7.05556px;line-height:1.25;font-family:Fire;-inkscape-font-specification:'Fire, Normal';stroke-width:0.1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
-       x="105.95975"
-       y="5.0061522"
-       id="text4747"><tspan
-         id="tspan4745"
-         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;line-height:1.25;font-family:Restroom;-inkscape-font-specification:'Restroom, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan887"
+           y="33.593895"
+           x="119.99868"
+           sodipodi:role="line">G</tspan></text>
+    </g>
+    <g
+       id="g5">
+      <circle
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle4743"
+         cx="102.72086"
+         cy="5.2293348"
+         r="8.4502926" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:7.05556px;line-height:1.25;font-family:Fire;-inkscape-font-specification:'Fire, Normal';stroke-width:0.1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
          x="105.95975"
-         y="5.0061522">t</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:4.93889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       x="95.632263"
-       y="5.007472"
-       id="text4751"><tspan
-         y="5.007472"
+         y="5.0061522"
+         id="text4747"><tspan
+           id="tspan4745"
+           sodipodi:role="line"
+           x="105.95975"
+           y="5.0061522">t</tspan></text>
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:4.93889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
          x="95.632263"
-         id="tspan4749"
-         sodipodi:role="line">HOT</tspan></text>
-    <text
-       id="text4755"
-       y="9.2986794"
-       x="100.3947"
-       style="display:inline;opacity:1;font-size:4.93889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       xml:space="preserve"><tspan
+         y="5.007472"
+         id="text4751"><tspan
+           y="5.007472"
+           x="95.632263"
+           id="tspan4749"
+           sodipodi:role="line">HOT</tspan></text>
+      <text
+         id="text4755"
          y="9.2986794"
          x="100.3947"
-         sodipodi:role="line"
-         id="tspan4753">KEY</tspan></text>
-    <circle
-       r="8.4502926"
-       cy="50.20853"
-       cx="102.72086"
-       id="circle4851"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       id="text4855"
-       y="49.985348"
-       x="105.95975"
-       style="display:inline;opacity:1;font-size:7.05556px;line-height:1.25;font-family:Fire;-inkscape-font-specification:'Fire, Normal';stroke-width:0.1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
-       xml:space="preserve"><tspan
-         y="49.985348"
-         x="105.95975"
-         sodipodi:role="line"
-         id="tspan4853">t</tspan></text>
-    <text
-       id="text4859"
-       y="49.986668"
-       x="95.632263"
-       style="display:inline;opacity:1;font-size:4.93889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       xml:space="preserve"><tspan
-         sodipodi:role="line"
-         id="tspan4857"
-         x="95.632263"
-         y="49.986668">HOT</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:4.93889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       x="100.3947"
-       y="54.277874"
-       id="text4863"><tspan
-         id="tspan4861"
-         sodipodi:role="line"
-         x="100.3947"
-         y="54.277874">KEY</tspan></text>
-    <circle
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle1"
-       cx="122.56596"
-       cy="5.2293348"
-       r="8.4502926" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle39"
-       cx="35.37685"
-       cy="72.665443" />
-    <circle
-       cy="72.665443"
-       cx="13.613532"
-       id="circle40"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle41"
-       cx="35.37685"
-       cy="50.208519" />
-    <circle
-       cy="50.208519"
-       cx="13.613533"
-       id="circle42"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       cy="72.665443"
-       cx="57.140175"
-       id="circle43"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle44"
-       cx="78.903496"
-       cy="72.665443" />
-    <circle
-       r="9.8918133"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle45"
-       cx="78.903503"
-       cy="50.208519" />
-    <circle
-       cy="50.208519"
-       cx="57.140175"
-       id="circle46"
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       r="9.8918133" />
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="95.82206"
-       y="74.835854"
-       id="text65"><tspan
-         sodipodi:role="line"
-         id="tspan65"
+         style="display:inline;opacity:1;font-size:4.93889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+         xml:space="preserve"><tspan
+           y="9.2986794"
+           x="100.3947"
+           sodipodi:role="line"
+           id="tspan4753">KEY</tspan></text>
+    </g>
+    <g
+       id="g11">
+      <circle
+         r="8.4502926"
+         cy="27.686256"
+         cx="102.72086"
+         id="circle1092"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         xml:space="preserve"
+         style="font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="95.82206"
-         y="74.835854">EXIT</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="95.82206"
-       y="29.856667"
-       id="text66"><tspan
-         sodipodi:role="line"
-         id="tspan66"
-         x="95.82206"
-         y="29.856667">EXIT</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="115.17624"
-       y="7.8820581"
-       id="text67"><tspan
-         sodipodi:role="line"
-         id="tspan67"
+         y="29.856667"
+         id="text66"><tspan
+           sodipodi:role="line"
+           id="tspan66"
+           x="95.82206"
+           y="29.856667">EXIT</tspan></text>
+    </g>
+    <g
+       id="g6">
+      <circle
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle1"
+         cx="122.56596"
+         cy="5.2293348"
+         r="8.4502926" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="115.17624"
-         y="7.8820581">25¢</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="115.17624"
-       y="52.861252"
-       id="text68"><tspan
-         sodipodi:role="line"
-         id="tspan68"
-         x="115.17624"
-         y="52.861252">25¢</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="8.2391968"
-       y="11.499394"
-       id="text8"><tspan
-         sodipodi:role="line"
-         id="tspan8"
+         y="7.8820581"
+         id="text67"><tspan
+           sodipodi:role="line"
+           id="tspan67"
+           x="115.17624"
+           y="7.8820581">25¢</tspan></text>
+    </g>
+    <g
+       id="g1">
+      <circle
+         cy="5.2293353"
+         cx="13.613533"
+         id="circle953"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         r="9.8918133" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="8.2391968"
-         y="11.499394">Y</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="30.002514"
-       y="11.499394"
-       id="text9"><tspan
-         sodipodi:role="line"
-         id="tspan9"
+         y="11.499394"
+         id="text8"><tspan
+           sodipodi:role="line"
+           id="tspan8"
+           x="8.2391968"
+           y="11.499394">Y</tspan></text>
+    </g>
+    <g
+       id="g2">
+      <circle
+         r="9.8918133"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle947"
+         cx="35.37685"
+         cy="5.2293353" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="30.002514"
-         y="11.499394">X</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="51.765839"
-       y="33.956314"
-       id="text10"><tspan
-         sodipodi:role="line"
-         id="tspan10"
+         y="11.499394"
+         id="text9"><tspan
+           sodipodi:role="line"
+           id="tspan9"
+           x="30.002514"
+           y="11.499394">X</tspan></text>
+    </g>
+    <g
+       id="g9">
+      <circle
+         cy="27.686256"
+         cx="57.140175"
+         id="circle959"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         r="9.8918133" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="51.765839"
-         y="33.956314">L</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="73.52916"
-       y="33.956314"
-       id="text11"><tspan
-         sodipodi:role="line"
-         id="tspan11"
+         y="33.956314"
+         id="text10"><tspan
+           sodipodi:role="line"
+           id="tspan10"
+           x="51.765839"
+           y="33.956314">L</tspan></text>
+    </g>
+    <g
+       id="g10">
+      <circle
+         r="9.8918133"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle967"
+         cx="78.903496"
+         cy="27.686256" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="73.52916"
-         y="33.956314">R</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="7.7913346"
-       y="33.956318"
-       id="text18"><tspan
-         sodipodi:role="line"
-         id="tspan18"
+         y="33.956314"
+         id="text11"><tspan
+           sodipodi:role="line"
+           id="tspan11"
+           x="73.52916"
+           y="33.956314">R</tspan></text>
+    </g>
+    <g
+       id="g7">
+      <circle
+         cy="27.686258"
+         cx="13.613532"
+         id="circle936"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         r="9.8918133" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="7.7913346"
-         y="33.956318">B</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="30.002514"
-       y="33.90633"
-       id="text19"><tspan
-         sodipodi:role="line"
-         id="tspan19"
+         y="33.956318"
+         id="text18"><tspan
+           sodipodi:role="line"
+           id="tspan18"
+           x="7.7913346"
+           y="33.956318">B</tspan></text>
+    </g>
+    <g
+       id="g8">
+      <circle
+         r="9.8918133"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle4540"
+         cx="35.37685"
+         cy="27.686256" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="30.002514"
-         y="33.90633">A</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="51.765839"
-       y="11.499394"
-       id="text20"><tspan
-         sodipodi:role="line"
-         id="tspan20"
+         y="33.90633"
+         id="text19"><tspan
+           sodipodi:role="line"
+           id="tspan19"
+           x="30.002514"
+           y="33.90633">A</tspan></text>
+    </g>
+    <g
+       id="g3">
+      <circle
+         cy="5.2293358"
+         cx="57.140175"
+         id="circle1007"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         r="9.8918133" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="51.765839"
-         y="11.499394">L</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="72.470833"
-       y="11.499393"
-       id="text21"><tspan
-         sodipodi:role="line"
-         id="tspan21"
-         x="72.470833"
-         y="11.499393">R</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="62.002998"
-       y="5.2293382"
-       id="text22"><tspan
-         sodipodi:role="line"
-         id="tspan22"
+         y="11.499394"
+         id="text20"><tspan
+           sodipodi:role="line"
+           id="tspan20"
+           x="51.765839"
+           y="11.499394">L</tspan></text>
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="62.002998"
-         y="5.2293382">2</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="83.765999"
-       y="5.2293382"
-       id="text23"><tspan
-         sodipodi:role="line"
-         id="tspan23"
-         x="83.765999"
-         y="5.2293382">2</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="8.2391968"
-       y="56.47858"
-       id="text46"><tspan
-         sodipodi:role="line"
-         id="tspan46"
-         x="8.2391968"
-         y="56.47858">Y</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="30.002514"
-       y="56.47858"
-       id="text47"><tspan
-         sodipodi:role="line"
-         id="tspan47"
-         x="30.002514"
-         y="56.47858">X</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="51.765839"
-       y="78.935501"
-       id="text48"><tspan
-         sodipodi:role="line"
-         id="tspan48"
-         x="51.765839"
-         y="78.935501">L</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="73.52916"
-       y="78.935501"
-       id="text49"><tspan
-         sodipodi:role="line"
-         id="tspan49"
-         x="73.52916"
-         y="78.935501">R</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="7.7913346"
-       y="78.935501"
-       id="text50"><tspan
-         sodipodi:role="line"
-         id="tspan50"
-         x="7.7913346"
-         y="78.935501">B</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="30.002514"
-       y="78.885513"
-       id="text51"><tspan
-         sodipodi:role="line"
-         id="tspan51"
-         x="30.002514"
-         y="78.885513">A</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="51.765839"
-       y="56.47858"
-       id="text52"><tspan
-         sodipodi:role="line"
-         id="tspan52"
-         x="51.765839"
-         y="56.47858">L</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="72.470833"
-       y="56.478577"
-       id="text53"><tspan
-         sodipodi:role="line"
-         id="tspan53"
+         y="5.2293382"
+         id="text22"><tspan
+           sodipodi:role="line"
+           id="tspan22"
+           x="62.002998"
+           y="5.2293382">2</tspan></text>
+    </g>
+    <g
+       id="g4">
+      <circle
+         r="9.8918133"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle979"
+         cx="78.903503"
+         cy="5.2293348" />
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-size:18.3444px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="72.470833"
-         y="56.478577">R</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="62.002998"
-       y="50.208523"
-       id="text54"><tspan
-         sodipodi:role="line"
-         id="tspan54"
-         x="62.002998"
-         y="50.208523">2</tspan></text>
-    <text
-       xml:space="preserve"
-       style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
-       x="83.765999"
-       y="50.208523"
-       id="text55"><tspan
-         sodipodi:role="line"
-         id="tspan55"
+         y="11.499393"
+         id="text21"><tspan
+           sodipodi:role="line"
+           id="tspan21"
+           x="72.470833"
+           y="11.499393">R</tspan></text>
+      <text
+         xml:space="preserve"
+         style="display:inline;opacity:1;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
          x="83.765999"
-         y="50.208523">2</tspan></text>
+         y="5.2293382"
+         id="text23"><tspan
+           sodipodi:role="line"
+           id="tspan23"
+           x="83.765999"
+           y="5.2293382">2</tspan></text>
+    </g>
   </g>
 </svg>
