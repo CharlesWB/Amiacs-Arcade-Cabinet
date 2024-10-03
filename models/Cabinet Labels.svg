@@ -11,6 +11,7 @@
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -27,15 +28,15 @@
      inkscape:bbox-paths="false"
      objecttolerance="20"
      inkscape:object-paths="true"
-     inkscape:zoom="3.1444824"
-     inkscape:cx="397.04467"
-     inkscape:cy="72.984984"
+     inkscape:zoom="6.283608"
+     inkscape:cx="68.750311"
+     inkscape:cy="235.29476"
      inkscape:window-width="3440"
      inkscape:window-height="1369"
      inkscape:window-x="1432"
-     inkscape:window-y="716"
+     inkscape:window-y="595"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer5"
      inkscape:snap-object-midpoints="true"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -221,6 +222,19 @@
        width="278.56638"
        height="31.038036"
        id="rect87862" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4"
+       x="-0.0071480819"
+       y="-0.028355053"
+       width="1.0142962"
+       height="1.0567101">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.093847659"
+         id="feGaussianBlur4" />
+    </filter>
   </defs>
   <g
      inkscape:groupmode="layer"
@@ -1050,11 +1064,6 @@
          id="tspan2113"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:Arial;-inkscape-font-specification:'Arial, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Shown</tspan></text>
   </g>
-  <text
-     xml:space="preserve"
-     transform="matrix(0.26458333,0,0,0.26458333,35.893961,-43.322219)"
-     id="text87860"
-     style="font-size:10.6667px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';white-space:pre;shape-inside:url(#rect87862);display:inline" />
   <g
      inkscape:groupmode="layer"
      id="layer2"
@@ -1294,13 +1303,29 @@
          y="40.272411"
          id="tspan16327">Orange</tspan></text>
   </g>
-  <text
-     xml:space="preserve"
-     style="font-size:2.82223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';stroke-width:0.264583"
-     x="-8.9722748"
-     y="19.966887"
-     id="text10893"><tspan
-       sodipodi:role="line"
-       id="tspan10891"
-       style="stroke-width:0.264583" /></text>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Base Cabinet Side Power Switch">
+    <path
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.2889px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ff4530;fill-opacity:1;stroke-width:0.264583;filter:url(#filter4)"
+       sodipodi:type="inkscape:offset"
+       inkscape:radius="1.0772536"
+       inkscape:original="M 8 60 L 8 65.787109 L 9.2402344 65.787109 L 9.2402344 64.134766 L 10.894531 64.134766 C 12.27257 64.134766 12.960938 63.444445 12.960938 62.066406 C 12.960938 60.688368 12.27257 60 10.894531 60 L 8 60 z M 16.0625 60 C 14.408854 60 13.582031 60.826822 13.582031 62.480469 L 13.582031 63.306641 C 13.582031 64.960287 14.408854 65.787109 16.0625 65.787109 C 17.716146 65.787109 18.542969 64.960287 18.542969 63.306641 L 18.542969 62.480469 C 18.542969 60.826822 17.716146 60 16.0625 60 z M 19.162109 60 L 19.162109 63.720703 C 19.162109 65.098742 19.85243 65.787109 21.230469 65.787109 C 21.853342 65.787109 22.334028 65.646354 22.675781 65.365234 C 23.017535 65.646354 23.500173 65.787109 24.123047 65.787109 C 25.501086 65.787109 26.191406 65.098742 26.191406 63.720703 L 26.191406 60 L 24.951172 60 L 24.951172 63.720703 C 24.951172 64.271919 24.674262 64.546875 24.123047 64.546875 C 23.571831 64.546875 23.296875 64.271919 23.296875 63.720703 L 23.296875 60 L 22.056641 60 L 22.056641 63.720703 C 22.056641 64.271919 21.781684 64.546875 21.230469 64.546875 C 20.679253 64.546875 20.402344 64.271919 20.402344 63.720703 L 20.402344 60 L 19.162109 60 z M 29.291016 60 C 27.637369 60 26.810547 60.826822 26.810547 62.480469 L 26.810547 63.306641 C 26.810547 64.960287 27.637369 65.787109 29.291016 65.787109 L 31.771484 65.787109 L 31.771484 64.546875 L 29.291016 64.546875 C 28.53585 64.546875 28.12474 64.202691 28.058594 63.513672 L 31.357422 63.513672 L 31.357422 62.273438 L 28.058594 62.273438 C 28.12474 61.584418 28.53585 61.240234 29.291016 61.240234 L 31.771484 61.240234 L 31.771484 60 L 29.291016 60 z M 32.392578 60 L 32.392578 65.787109 L 33.632812 65.787109 L 33.632812 64.134766 L 35.285156 64.134766 C 35.836372 64.134766 36.113281 64.409722 36.113281 64.960938 L 36.113281 65.787109 L 37.353516 65.787109 L 37.353516 64.960938 C 37.353516 64.338064 37.212761 63.855425 36.931641 63.513672 C 37.212761 63.171918 37.353516 62.68928 37.353516 62.066406 C 37.353516 60.688368 36.663195 60 35.285156 60 L 32.392578 60 z M 9.2402344 61.240234 L 10.894531 61.240234 C 11.445747 61.240234 11.720703 61.515191 11.720703 62.066406 C 11.720703 62.617622 11.445747 62.894531 10.894531 62.894531 L 9.2402344 62.894531 L 9.2402344 61.240234 z M 16.0625 61.240234 C 16.889323 61.240234 17.302734 61.653646 17.302734 62.480469 L 17.302734 63.306641 C 17.302734 64.133464 16.889323 64.546875 16.0625 64.546875 C 15.235677 64.546875 14.822266 64.133464 14.822266 63.306641 L 14.822266 62.480469 C 14.822266 61.653646 15.235677 61.240234 16.0625 61.240234 z M 33.632812 61.240234 L 35.285156 61.240234 C 35.836372 61.240234 36.113281 61.515191 36.113281 62.066406 C 36.113281 62.617622 35.836372 62.894531 35.285156 62.894531 L 33.632812 62.894531 L 33.632812 61.240234 z "
+       xlink:href="#text2"
+       id="path4"
+       inkscape:href="#text2"
+       d="m 8,60.851562 a 1.0773613,1.0773613 0 0 0 -1.078125,1.078125 v 5.78711 A 1.0773613,1.0773613 0 0 0 8,68.794922 h 1.2402344 a 1.0773613,1.0773613 0 0 0 1.0781246,-1.078125 v -0.576172 h 0.576172 c 0.665036,0 1.281044,-0.200283 1.81836,-0.533203 0.14942,0.470943 0.377499,0.90289 0.726562,1.251953 0.667322,0.667322 1.616683,0.935547 2.623047,0.935547 1.006364,0 1.955725,-0.268225 2.623047,-0.935547 0.03945,-0.03945 0.0473,-0.09926 0.08398,-0.140625 0.05977,0.07551 0.07911,0.174907 0.148438,0.244141 0.598865,0.598017 1.444109,0.832031 2.3125,0.832031 0.533008,0 0.982465,-0.247493 1.445312,-0.453125 0.46359,0.205831 0.914047,0.453125 1.447266,0.453125 0.868391,0 1.713635,-0.234014 2.3125,-0.832031 0.06933,-0.06923 0.08867,-0.168626 0.148437,-0.244141 0.03669,0.04137 0.04454,0.101177 0.08398,0.140625 0.667322,0.667322 1.616682,0.935547 2.623047,0.935547 h 2.480468 a 1.0773613,1.0773613 0 0 0 0.310547,-0.310547 1.0773613,1.0773613 0 0 0 0.310547,0.310547 h 1.240234 a 1.0773613,1.0773613 0 0 0 1.078125,-1.078125 v -0.576172 h 0.324219 v 0.576172 a 1.0773613,1.0773613 0 0 0 1.078125,1.078125 h 1.240235 a 1.0773613,1.0773613 0 0 0 1.078125,-1.078125 v -0.826172 c 0,-0.533219 -0.247294,-0.983676 -0.453125,-1.447266 0.205831,-0.463589 0.453125,-0.914047 0.453125,-1.447265 0,-0.8689 -0.235119,-1.714483 -0.833985,-2.3125 -0.598865,-0.598017 -1.444109,-0.832032 -2.3125,-0.832032 h -2.892578 a 1.0773613,1.0773613 0 0 0 -0.310547,0.310547 1.0773613,1.0773613 0 0 0 -0.310547,-0.310547 h -2.480468 c -0.885069,0 -1.694262,0.25775 -2.337891,0.761719 A 1.0773613,1.0773613 0 0 0 26.191406,60.851562 H 24.951172 A 1.0773613,1.0773613 0 0 0 24.125,61.679687 1.0773613,1.0773613 0 0 0 23.296875,60.851562 h -1.240234 a 1.0773613,1.0773613 0 0 0 -0.826172,0.828125 1.0773613,1.0773613 0 0 0 -0.828125,-0.828125 h -1.240235 a 1.0773613,1.0773613 0 0 0 -0.761718,0.761719 c -0.643629,-0.503969 -1.452823,-0.761719 -2.337891,-0.761719 -1.006364,0 -1.955725,0.268226 -2.623047,0.935547 -0.03945,0.03945 -0.0473,0.09926 -0.08398,0.140625 -0.05974,-0.0756 -0.07911,-0.174809 -0.148438,-0.24414 -0.598377,-0.598377 -1.444109,-0.832031 -2.3125,-0.832032 z m 7.894531,3.390625 c -0.02432,0.02343 0.3297,0.0046 0.335938,0 -0.04721,-0.04721 -0.0059,-0.0659 -0.0059,0.167969 v 0.826172 c 0,0.233869 -0.04135,0.215174 0.0059,0.167969 0.04721,-0.04721 0.0659,-0.0059 -0.167969,-0.0059 -0.233869,0 -0.215174,-0.04135 -0.167969,0.0059 0.04721,0.04721 0.0059,0.0659 0.0059,-0.167969 v -0.826172 c 0,-0.233869 0.04135,-0.215174 -0.0059,-0.167969 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+       x="8.0004578"
+       y="65.78756"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:'Game Played';-inkscape-font-specification:'Game Played, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="8.0004578"
+         y="65.78756">POWER</tspan></text>
+  </g>
 </svg>
