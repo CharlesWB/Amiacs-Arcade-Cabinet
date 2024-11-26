@@ -124,7 +124,7 @@ byte command = 0;
 byte commandData[COMMAND_ARRAY_SIZE];
 
 
-// These value match what is found in Amiacs_Light_Controller.py.
+// These values match what is found in Amiacs-Event-Processor.py.
 enum DisplayMode {
   // Initial mode while system starts.
   STARTING = 0,
