@@ -126,7 +126,7 @@ byte commandData[COMMAND_ARRAY_SIZE];
 
 // These values match what is found in Amiacs-Event-Processor.py.
 enum DisplayMode {
-  // Initial mode while system starts.
+  // Mode used while system starts.
   STARTING = 0,
   // Mode used when Emulation Station displays a screensaver.
   ATTRACT = 1,
@@ -170,6 +170,8 @@ void setup() {
   SetupAmbientLights();
   SetupMarqueeLights();
 
+  TestLightsDuringSetup();
+
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(CommandReceiveEvent);
 
@@ -196,14 +198,14 @@ void loop() {
 }
 
 
-// The display mode during startup is about verifying that all the lights work.
-// The lights are expected to have been turned on to their default colors during setup.
-// This will fade the brightness in and out at an increasing rate then pause before switching to attract mode.
+// The display mode during startup is a type of attract mode.
+// The lights are expected to have been turned on to their default colors prior to this.
+// This will fade the brightness in and out at an increasing rate then pause before switching to Emulation Station mode.
 // The typical time from power on to Emulation Station start is about one minute.
 void LoopStartingDisplayMode() {
   static unsigned long startTime = millis();
 
-  static unsigned long startingStepTimeline[] = {0, 5000, 9900, 14700, 19200, 23200, 26700, 29600, 31900, 33400, 34200, 34800, 35400, 36000, 36400, 60000};
+  static unsigned long startingStepTimeline[] = {0, 5000, 9900, 14700, 19200, 23200, 26700, 29600, 31900, 33400, 34200, 34800, 35400, 36000, 36400, 45000};
   uint8_t stepCount = (sizeof(startingStepTimeline) / sizeof(startingStepTimeline[0]));
 
   SetBrightness();
@@ -574,6 +576,25 @@ void SetLightsToSystemDefaultColor() {
   fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
   FastLED.show();
   SetMarqueeBrightness(GetBrightness());
+}
+
+void TestLightsDuringSetup() {
+  fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::White);
+
+  fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Red);
+  fill_solid(ambientLights, NUM_AMBIENT_LEDS, CRGB::Red);
+  FastLED.show();
+  delay(1000);
+
+  fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Green);
+  fill_solid(ambientLights, NUM_AMBIENT_LEDS, CRGB::Green);
+  FastLED.show();
+  delay(1000);
+
+  fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Blue);
+  fill_solid(ambientLights, NUM_AMBIENT_LEDS, CRGB::Blue);
+  FastLED.show();
+  delay(1000);
 }
 
 
