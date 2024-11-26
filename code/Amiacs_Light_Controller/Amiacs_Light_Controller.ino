@@ -601,8 +601,8 @@ void CycleTrackballBetweenPlayerColors() {
   if(millis() - startTime > 40) {
     fill_solid(trackballs, NUM_TRACKBALLS, ColorFromPalette(playerColorPalette, playerColorPaletteIndex));
 
-    // TODO Remove the hard-coding of the trackball LEDs index. Or resolve flicker when updating player lights.
-    FastLED[1].showLeds();
+    // TODO Remove the hard-coding of the trackball LEDs index. Or resolve flicker when updating player lights using FastLED.show().
+    FastLED[1].showLedsInternal(GetBrightness());
 
     playerColorPaletteIndex++;
 
