@@ -227,6 +227,7 @@ void LoopStartingDisplayMode() {
       fill_solid(trackballs, NUM_TRACKBALLS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
       fill_solid(ambientLights, NUM_AMBIENT_LEDS, CHSV(defaultSystemColor.hue, defaultSystemColor.sat, brightness));
       FastLED.show();
+      SetMarqueeBrightness(brightness);
     }
   }
   else if(step < stepCount - 1) {
@@ -374,6 +375,7 @@ void LoopAttractDisplayMode() {
     fill_solid(playerLights, NUM_PLAYER_LIGHTS, CRGB::Black);
     fill_solid(trackballs, NUM_TRACKBALLS, CRGB::Black);
     fill_solid(ambientLights, NUM_AMBIENT_LEDS, CRGB::Black);
+    SetMarqueeBrightness(0);
 
     FastLED.show();
   }
@@ -571,6 +573,7 @@ void SetLightsToSystemDefaultColor() {
   fill_solid(trackballs, NUM_TRACKBALLS, defaultSystemColor);
   fill_solid(ambientLights, NUM_AMBIENT_LEDS, defaultSystemColor);
   FastLED.show();
+  SetMarqueeBrightness(GetBrightness());
 }
 
 
@@ -619,13 +622,10 @@ void SetupAmbientLights() {
 
 void SetupMarqueeLights() {
   pinMode(MARQUEE_LIGHT_PIN, OUTPUT);
-  analogWrite(MARQUEE_LIGHT_PIN, 255);
 }
 
-void CycleMarqueeBrightness() {
-  static uint8_t marqueeBrightness = 255;
-  analogWrite(MARQUEE_LIGHT_PIN, 255);
-  marqueeBrightness -= 4;
+void SetMarqueeBrightness(uint8_t brightness) {
+  analogWrite(MARQUEE_LIGHT_PIN, brightness);
 }
 
 
@@ -666,6 +666,8 @@ void SetBrightness(const float factor) {
   if(FastLED.getBrightness() != brightness) {
     FastLED.setBrightness(brightness);
     FastLED.show();
+
+    SetMarqueeBrightness(brightness);
   }
 }
 
